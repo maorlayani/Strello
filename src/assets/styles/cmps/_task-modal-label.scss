@@ -1,0 +1,54 @@
+.task-model-label {
+    width: 304px;
+    padding: 10px;
+    position: absolute;
+    background-color: whitesmoke;
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+    z-index: 300;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    &:hover {
+        cursor: auto;
+    }
+
+    .close-btn {
+        max-width: 20px;
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        cursor: pointer;
+    }
+
+    .labels-modal-title {
+        padding: 6px 0;
+        color: #5e6c84;
+        text-align: center;
+        border-bottom: 1px solid #0000003d;
+        margin-bottom: 7px;
+    }
+
+    .sub-title {
+        color: #172b4d;
+        font-size: 14px;
+        line-height: 20px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    // .label-search-input {
+    //     border: 3px solid lightblue;
+    //     padding: 10px 5px 5px 10px;
+    //     border-radius: 3px;
+    //     margin-bottom: 10px;
+    //     font-size: 14px;
+
+    //     &:focus {
+    //         outline: none;
+    //     }
+    // }
+
+
+}

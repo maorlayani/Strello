@@ -1,7 +1,5 @@
-// import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
-// import { store } from '../store/store'
+import { socketService, SOCKET_EMIT_USER_WATCH } from './socket.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -19,22 +17,16 @@ export const userService = {
 
 window.userService = userService
 
-
 function getUsers() {
-    // return storageService.query('user')
     return httpService.get(`user`)
 }
-
-
 
 async function getById(userId) {
     // const user = await storageService.get('user', userId)
     const user = await httpService.get(`user/${userId}`)
-
     socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
     // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
     // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
-
     return user
 }
 function remove(userId) {

@@ -5,9 +5,7 @@ import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '.
 import { store } from '../store/store'
 import { httpService } from './http.service'
 
-// This file demonstrates how to use a BroadcastChannel to notify other browser tabs 
-
-const STORAGE_KEY = 'board'
+// const STORAGE_KEY = 'board'
 
 const boardChannel = new BroadcastChannel('boardChannel')
 
@@ -40,12 +38,10 @@ const BASE_URL = `board/`
 
 async function query(filterBy) {
     try {
-
         let boards = httpService.get(BASE_URL, { params: filterBy })
         if (filterBy?.title) {
             boards = boards.filter(b => b.title.toLowerCase().includes(filterBy.title.toLowerCase()))
         }
-
         return boards
     } catch (err) {
         console.log('Cannot complete the function query:', err)
@@ -60,7 +56,6 @@ async function getById(boardId) {
         console.log('Cannot complete the function getById:', err)
         throw err
     }
-
 }
 
 async function remove(boardId) {
@@ -98,7 +93,6 @@ async function removeGroupFromBoard(boardId, groupId, activity) {
 }
 
 async function save(board, activity = null) {
-
     var savedBoard
     if (activity) _addActivityDetails(activity)
     if (board._id) {
@@ -114,12 +108,13 @@ async function save(board, activity = null) {
             savedBoard.createdBy = {
                 _id: user._id,
                 fullname: user.fullname,
+                imgUrl: user.imgUrl
             }
         } else {
             savedBoard.createdBy = {
-                _id: user._id,
-                fullname: user.fullname,
-                // imgUrl: user.imgUrl
+                _id: 'u199',
+                fullname: 'Guest',
+                imgUrl: "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
             }
         }
         // savedBoard = await storageService.post(STORAGE_KEY, board)
@@ -189,7 +184,6 @@ async function addTodo(boardId, groupId, taskId, checklistId, title) {
         title,
         isDone: false,
     }
-
     try {
         const board = await getById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
@@ -271,7 +265,7 @@ function getTaskBackground(type) {
     }
 }
 
-function getLabelsColors(type) {
+function getLabelsColors() {
 
     return [
         '#D6ECD2', '#FAF3C0', '#FCE6C6', '#F5D3CE', '#EDDBF4',

@@ -37,6 +37,7 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
             const savedBoard = await dispatch(addBoard(board, activity))
             navigate(`/board/${savedBoard._id}`)
         } catch (err) {
+            console.log('Cannot save board', err)
         }
     }
 
@@ -103,7 +104,6 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
                                         onClick={() => setBoardBackground('url', imgUrl)}>
                                         {checkIsSelected(imgUrl) &&
                                             <span className="marked" style={{ backgroundColor: "#091e4233" }}>
-
                                             </span>}
                                         {!checkIsSelected(imgUrl) &&
                                             <span className="unmarked"></span>}

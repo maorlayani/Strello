@@ -3,54 +3,43 @@ import React, { useState, useRef } from 'react'
 import { useForm } from '../hooks/useForm'
 import { utilService } from '../services/util.service'
 import { useEffect } from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { Draggable } from 'react-beautiful-dnd'
 import { GroupActionModal } from './group-action'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeGroup } from '../store/board.actions'
 
-export const GroupPreview = ({ group, addTask, index, taskRef }) => {
+export const GroupPreview = ({ group, addTask, index, openQuickEdit }) => {
 
-    const disapcth = useDispatch()
     const board = useSelector(state => state.boardModule.board)
-
-    const refTitle = useRef(null)
     const [isAddTask, setIsAddTask] = useState(false)
     const [isEditTitle, setIsEditTitle] = useState(false)
     const [isOpenGroupAction, setIsOpenGroupAction] = useState(false)
     const [leftPosGroupModal, setLeftPosGroupModal] = useState(null)
 
-
-    useEffect(() => {
-        setGroup(group)
-    }, [])
+    const disapcth = useDispatch()
+    const refTitle = useRef(null)
+    const groupRef = useRef()
 
     useEffect(() => {
         document.addEventListener("click", handleClickOutside, true)
-
         return (
-            () => {
-                document.removeEventListener("click", handleClickOutside, false)
-                // console.log('listener disabled:')
-            }
+            () => document.removeEventListener("click", handleClickOutside, false)
         )
-
     }, [])
 
     const [task, handleChangeTask, setTask] = useForm({
         title: ''
     })
 
-    const [groupToEdit, handleChangeGroup, setGroup] = useForm({
-        title: ''
-    })
+    const [groupToEdit, handleChangeGroup, setGroup] = useForm(group)
+
     const handleClickOutside = (e) => {
         if (!refTitle.current) return
-        if (!refTitle.current.contains(e.target)) {
-            onEditGroupTitle()
-        }
+        if (!refTitle.current.contains(e.target)) onEditGroupTitle()
     }
 
     const toggaleEditTitle = () => {
+        // setGroup(group)
         setIsEditTitle(!isEditTitle)
     }
 
@@ -97,27 +86,20 @@ export const GroupPreview = ({ group, addTask, index, taskRef }) => {
     const onOpenGroupAction = (ev) => {
         const parentEl = ev.currentTarget.parentNode
         const position = parentEl.getBoundingClientRect()
-        // setLeftPosGroupModal(ev.target.offsetLeft - 200)
         setLeftPosGroupModal(position.x + 30)
-        console.log('ev.target.offsetLeft', ev.target.offsetLeft)
-        console.log('leftPosGroupMOdal', leftPosGroupModal)
-        console.log('position', position)
         setIsOpenGroupAction(!isOpenGroupAction)
     }
 
     return (
         <Draggable
             draggableId={group.id}
-            // key={group.id}
-            index={index}
-        >
+            index={index} >
             {(provided) => (
-                <article
-                    ref={(el) => { taskRef.current = el; provided.innerRef(el) }}
+                <section
+                    ref={(el) => { groupRef.current = el; provided.innerRef(el) }}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    className="group-preview-dnd"
-                >
+                    className="group-preview-dnd">
                     <section className="group-preview">
                         <div className="group-title">
                             {!isEditTitle && <span onClick={toggaleEditTitle}>{groupToEdit.title}</span>}
@@ -129,7 +111,6 @@ export const GroupPreview = ({ group, addTask, index, taskRef }) => {
                                         type="text"
                                         name="title"
                                         id="title"
-
                                     />
                                 </form>}
                             <div className="group-menu" onClick={onOpenGroupAction}></div>
@@ -150,9 +131,9 @@ export const GroupPreview = ({ group, addTask, index, taskRef }) => {
                                 isAddTask={isAddTask}
                                 handleChangeTask={handleChangeTask}
                                 task={task}
-                            />
-                            {isAddTask && <React.Fragment>
+                                openQuickEdit={openQuickEdit} />
 
+                            {isAddTask && <React.Fragment>
                                 <div className="add-task-btn-container">
                                     <button className="btn-add" onClick={onAddTask}>Add card</button>
                                     <div className="btn-close-add" onClick={toggaleAddTaskTextarea}></div>
@@ -165,9 +146,8 @@ export const GroupPreview = ({ group, addTask, index, taskRef }) => {
                         </div>}
 
                     </section >
-                </article>
+                </section>
             )}
         </Draggable>
     )
 }
-

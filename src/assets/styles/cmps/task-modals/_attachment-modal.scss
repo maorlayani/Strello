@@ -3,7 +3,7 @@
     padding: 10px;
     position: absolute;
     background-color: whitesmoke;
-    box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214);
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     z-index: 300;
     border-radius: 3px;
     display: flex;
@@ -18,10 +18,6 @@
         cursor: pointer;
     }
 
-    // &:hover {
-    //     cursor: auto;
-    // }
-
     .labels-modal-title {
         padding: 6px 0;
         color: #5e6c84;
@@ -33,17 +29,10 @@
 
     .btn-computer {
         text-align: left;
-        // cursor: pointer;
-        // // font-size: 23px;
-        // height: 32px;
-        // line-height: 32px;
-        // width: 100%;
-
         color: var(--ds-text, inherit);
         cursor: pointer;
         display: block;
         font-weight: 400;
-        // margin: 0 -12px;
         padding: 6px 12px;
         position: relative;
         text-decoration: none;
@@ -57,13 +46,11 @@
     .sub-title {
         margin-top: 5px;
         color: #172b4d;
-        // background-color: #ffffff;
         background-color: 'blue';
         font-size: 14px;
         line-height: 20px;
         letter-spacing: normal;
         text-align: start;
-        // border: 2px solid red;
         font-size: 12px;
         font-weight: 500;
     }
@@ -91,7 +78,6 @@
             outline: 0;
             background-color: var(--ds-background-input, #fff);
             box-shadow: inset 0 0 0 2px var(--ds-border-focused, #0079bf);
-            // border: none;
         }
     }
 

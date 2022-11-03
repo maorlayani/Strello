@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { ImTrello } from 'react-icons/im'
 import { IoSearchSharp } from 'react-icons/io5'
 import { SearchResult } from './search-result'
@@ -9,7 +9,6 @@ import { loadBoards } from '../store/board.actions';
 import { UserModal } from './user-modal'
 
 export function AppHeader() {
-    const navigate = useNavigate()
     const refOne = useRef(null)
     const [results, setResults] = useState(null)
     const [isSearching, setIsSearching] = useState(false)
@@ -21,10 +20,8 @@ export function AppHeader() {
     const user = useSelector(state => state.userModule.user)
     const themeColor = useSelector(state => state.boardModule.boardThemeColor)
 
-
     useEffect(() => {
         document.addEventListener("click", handleClickOutside, true)
-
         return (
             () => {
                 document.removeEventListener("click", handleClickOutside, false)
@@ -86,16 +83,16 @@ export function AppHeader() {
         <section className={_getHeaderClass()}
             style={(_getHeaderClass() === 'app-header' ?
                 { backgroundColor: themeColor + 'cc' } : { backgroundColor: '#026AA7' })}>
-            < Link to="/" className='home-logo-link' >
-                <ImTrello className='trello-logo' />
+            <Link to="/" className="home-logo-link" >
+                <ImTrello className="trello-logo" />
                 <section className="logo">
                     sTrello
                 </section>
             </Link >
-            <section className='nav-header'>
-                <ul className='nav-links-container'>
-                    <Link to="board" className='workspace-link'>
-                        <li className='nav-link'>
+            <section className="nav-header">
+                <ul className="nav-links-container">
+                    <Link to="board" className="workspace-link">
+                        <li className="nav-link">
                             Workspaces
                         </li>
                     </Link>
@@ -104,7 +101,7 @@ export function AppHeader() {
             </section>
 
             <section className={isSearching ? 'search search-wide' : 'search'} >
-                <IoSearchSharp className='mag-glass' /><input type="text" onChange={onChange} placeholder='Search' onClick={onSearching} />
+                <IoSearchSharp className="mag-glass" /><input type="text" onChange={onChange} placeholder="Search" onClick={onSearching} />
             </section>
 
             <section ref={refOne}>
@@ -116,11 +113,11 @@ export function AppHeader() {
             <div className="user-icon" style={getUserImg()} onClick={toggleUserModal}></div>
             {isUserModalOpen && <UserModal toggleUserModal={toggleUserModal} user={user} getUserImg={getUserImg} />}
 
-            <section className='space'></section>
-            <button className='login'>Log in</button>
+            <section className="space"></section>
+            <Link to="login" className="login"><span>Log in</span></Link>
+            <Link to="signup" className="signup"><span>sign up</span></Link>
 
         </section >
     )
-
 }
 

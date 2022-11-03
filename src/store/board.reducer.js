@@ -6,13 +6,17 @@ const initialState = {
     resizeLabel: false,
     imgJson: '',
     vidJson: '',
-    boardThemeColor: ''
+    boardThemeColor: '',
+    isQuickEditOpen: false
 }
+
 export function boardReducer(state = initialState, action) {
     var newState = state
     var boards
     var board
     var resizeLabel
+    var isQuickEditOpen
+
     switch (action.type) {
         case 'SET_BOARDS':
             newState = { ...state, boards: action.boards }
@@ -30,7 +34,6 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, vidJson: (action.vidJson) }
             break
         case 'REMOVE_BOARD':
-            // const lastRemovedBoard = state.boards.find(board => board._id === action.boardId)
             boards = state.boards.filter(board => board._id !== action.boardId)
             newState = { ...state, boards, board: null }
             break
@@ -54,6 +57,11 @@ export function boardReducer(state = initialState, action) {
 
         case 'SET_BOARD_THEME_COLOR':
             newState = { ...state, boardThemeColor: action.boardThemeColor }
+            break
+
+        case 'TOGGALE_TASK_QUICK_EDIT':
+            isQuickEditOpen = action.isQuickEditOpen
+            newState = { ...state, isQuickEditOpen: isQuickEditOpen }
             break
         default:
     }

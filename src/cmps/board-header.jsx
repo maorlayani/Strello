@@ -1,5 +1,5 @@
 import { HiOutlineStar, HiStar } from 'react-icons/hi'
-import { TaskMember } from './task-members'
+import { TaskMember } from './task-member'
 import memberSvg from '../assets/img/add-mem.svg'
 import { useDispatch } from 'react-redux'
 import { updateBoard } from '../store/board.actions'
@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { ActivityMenu } from './activity-menu'
 import { Loader } from './loader'
 
-export const BoardHeader = ({ board ,toggleDashboard}) => {
+export const BoardHeader = ({ board, toggleDashboard }) => {
     const dispatch = useDispatch()
     const [isActivityMenuOpen, setIsActivityMenuOpen] = useState(false)
     const getMembersIds = () => {

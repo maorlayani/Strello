@@ -29,12 +29,9 @@ function getCreatedTime(time) {
 }
 
 function formatDate(dueDate, isShortFormat = null) {
-
     let formatedDate = moment(dueDate.date).format('MMM D')
     if (isShortFormat) return formatedDate
     formatedDate += ', at ' + moment(dueDate.createdAt).format('LT')
-
-    // console.log("formatedDate", formatedDate)
     return formatedDate
 }
 
@@ -42,12 +39,6 @@ function getDueDateTag(time) {
     let dueDateTag = ""
     if (Date.now() - time > 0) dueDateTag = "over-due due-task-display"
     else if (time - Date.now() < 24 * 60 * 60 * 1000) dueDateTag = "due-soon due-task-display"
-    // let dueDateTag = moment(time)
-    // let currTime = moment(Date.now())
-    // const diff = dueDateTag.diff(currTime, 'hours')
-    // console.log("diff", diff)
-    // console.log('over', time)
-    // console.log('soon', (Date.now() - new Date(time)))
     return dueDateTag
 }
 

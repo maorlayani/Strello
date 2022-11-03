@@ -36,15 +36,14 @@
 @import "cmps/search-result";
 @import "cmps/group-edit";
 @import "cmps/task-label";
-@import "cmps/task-member-details";
+@import "cmps/task-details-member";
 @import "cmps/task-member";
 @import "cmps/group-action";
-@import "cmps/task-members-modal";
+@import "cmps/task-details-members-modal";
 @import "cmps/board-edit";
 @import "cmps/side-menu";
 @import "cmps/boards-list";
 @import "cmps/task-details-label";
-@import "cmps/task-labels-modal";
 @import "cmps/task-details-members";
 @import "cmps/checklist-modal";
 @import "cmps/task-checklist";
@@ -56,9 +55,15 @@
 @import "cmps/board-background-menu";
 @import "cmps/user-modal";
 @import "cmps/loader";
+@import "cmps/task-details-label-preview";
+@import "cmps/task-details-title";
+@import "cmps/task-modal-label";
+@import "cmps/task-modal-label-list";
+@import "cmps/task-details-due-date";
+@import "cmps/task-details-desc";
 
 @import "cmps/task-details-sections/task-details-attachments";
 @import "cmps/task-details-sections/task-details-cover";
 
 @import "cmps/task-modals/attachment-modal";
-@import "cmps/task-modals/edit-labels-modal";
+@import "cmps/task-modals/edit-label-modal";

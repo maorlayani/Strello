@@ -1,24 +1,28 @@
 .task-member-container {
     display: flex;
-    // justify-content: flex-end;
     gap: 4px;
-    // width: 100%
     margin-bottom: 8px;
 
-    & .member {
-        border-radius: 50%;
-        height: 28px;
-        width: 28px;
-        background-color: lightskyblue;
-        font-size: 12px;
-        font-weight: 500;
+    .member {
         display: flex;
-        align-items: center;
-        justify-content: center;
 
-        .member-content {
+        .member-icon {
+            border-radius: 50%;
             height: 28px;
             width: 28px;
+            background-color: lightskyblue;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .member-content {
+                height: 28px;
+                width: 28px;
+                background-size: cover;
+                border-radius: 50%;
+            }
         }
     }
 }

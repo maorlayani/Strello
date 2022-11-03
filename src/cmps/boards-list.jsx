@@ -1,39 +1,47 @@
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom"
-import { getBoard } from '../store/board.actions'
+import { useLocation, useNavigate } from "react-router-dom"
+import { getBoard, loadBoards } from '../store/board.actions'
 
-export const BoardsList = ({ boards }) => {
+export const BoardsList = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const pathname = useLocation().pathname
+    const boards = useSelector(state => state.boardModule.boards)
 
-    const _getBoardThumbnail = (board) => {
+    useEffect(() => {
+        if (!boards) dispatch(loadBoards())
+    }, [])
+
+    const getBoardThumbnail = (board) => {
         if (board.style?.imgUrl) return <img src={board.style.imgUrl} className="thumbnail"></img>
-        if (board.style?.bgColor) return <div style={{ backgroundColor: board.style.bgColor }} className="color-thumb"></div>
+        else if (board.style?.bgColor) return <div style={{ backgroundColor: board.style.bgColor }} className="color-thumb"></div>
         else return <div style={{ backgroundColor: "grey" }} className="color-thumb"></div>
     }
 
-    const _getActiveLink = (id) => {
-        if (pathname.includes(id)) {
-            return "active"
-        } else {
-            return ""
-        }
+    const getActiveLink = (id) => {
+        if (pathname.includes(id)) return 'active'
+        else return ''
     }
 
-    const onlinkClick = (boardId) => {
+    const onSelectedBoard = (boardId) => {
         dispatch(getBoard(boardId))
         navigate(`/board/${boardId}`)
     }
 
-    return <ul className="boards-list">
-        {boards.map(board => {
-            return <section className='boards-link' key={board._id}>
-                <li className={_getActiveLink(board._id)} onClick={() => onlinkClick(board._id)}>
-                    <span className='flex-left'>{_getBoardThumbnail(board)}{board.title}</span>
-                </li>
-            </section>
-        })}
-    </ul>
+    if (!boards || !boards.length) return
+    // console.log('render BOARD LIST')
+    return (
+        <ul className="boards-list">
+            {boards.map(board => {
+                return <section className="boards-link" key={board._id}>
+                    <li className={getActiveLink(board._id)} onClick={() => onSelectedBoard(board._id)}>
+                        <span className="flex-left">{getBoardThumbnail(board)}{board.title}</span>
+                    </li>
+                </section>
+            })}
+        </ul>
+    )
 }

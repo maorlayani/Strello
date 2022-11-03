@@ -3,8 +3,7 @@
     padding: 10px;
     position: absolute;
     background-color: whitesmoke;
-    box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214);
-    // z-index: 300;
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -40,16 +39,21 @@
         margin-top: 10px;
     }
 
-    .checklist-search-input {
-        border: 3px solid lightblue;
-        padding: 10px 5px 5px 10px;
-        border-radius: 3px;
-        margin-bottom: 10px;
-        font-size: 14px;
+    label {
+        width: 100%;
 
-        &:focus {
-            outline: none;
-            // border: none;
+        .checklist-search-input {
+            font-family: inherit;
+            border: 3px solid lightblue;
+            padding: 5px 5px 8px 10px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            width: 100%;
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 }

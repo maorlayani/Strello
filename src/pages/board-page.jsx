@@ -44,10 +44,9 @@ export function BoardPage() {
         dispatch(updateBoard(board))
     }
 
-    // if (!boards) return <div>Loading...</div>
     if (!boards) return <Loader />
     return (
-        <div className="board-page">
+        <div className="board-page ">
 
             <div className="board-list-container">
                 {filterBoardsByStarred()[0] && <div className="board-list-title">
@@ -55,7 +54,6 @@ export function BoardPage() {
                     <h3>Starred boards</h3>
                 </div>}
                 <ul className="board-list">
-
                     {filterBoardsByStarred().map(board => {
                         return <Link
                             to={`/board/${board._id}`}
@@ -74,7 +72,7 @@ export function BoardPage() {
                 </ul>
             </div>
 
-            <div className="board-list-container">
+            <div className="board-list-container ">
                 <div className="board-list-title">
                     <span className="board-list-title-icon"></span>
                     <h3>Your boards</h3>

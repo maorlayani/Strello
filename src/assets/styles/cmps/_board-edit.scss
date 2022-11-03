@@ -1,6 +1,6 @@
 .add-board {
     position: fixed;
-    box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     border-radius: 3px;
     z-index: 100;
     right: 350px;
@@ -86,7 +86,7 @@
                 background-position: center center;
                 background-size: cover;
                 border-radius: 3px;
-                box-shadow: 0 7px 15px rgb(0 0 0 / 15%);
+                box-shadow: 0 7px 15px #00000026;
                 display: flex;
                 align-items: center;
                 justify-content: center;

@@ -1,62 +1,71 @@
-import { LightenDarkenColor } from "lighten-darken-color"
 import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import PenIcon from '../assets/img/pen-icon.svg'
-import { EditLabelsModal } from "./task-details-modals/edit-labels-modal"
+import { GrAdd } from "react-icons/gr"
+import { useDispatch } from "react-redux"
+import { resizeLabel } from "../store/board.actions"
+import { TaskLabel } from "./task-label"
+import { TaskModalLabel } from "./task-modal-label"
 
-export const TaskDetailsLabel = ({ labelIds, onSetLabel, pos }) => {
-    const board = useSelector(state => state.boardModule.board)
-    const [isClicked, setIsClicked] = useState(false)
-    const [isEditLabelModal, setIsEditLabelModal] = useState(false)
-    const [labelForEdit, setLabelForEdit] = useState(null)
+export const TaskDetailsLabel = ({ task, onUpdateTask }) => {
+    const dispatch = useDispatch()
+    const [isLabelModal, setIsLabelModal] = useState(false)
+    const [labelModalPos, setLabelModalPos] = useState(null)
 
-    const getLabel = (labelId) => {
-        const currentLabel = board.labels.find(label => label.id === labelId)
-        const isTaskLabel = checkTaskLabel(labelId)
-        if (currentLabel?.color) {
+    const onOpenLabelsModal = () => {
+        dispatch(resizeLabel(false))
+    }
 
-            return (
-                <li key={currentLabel.id} className="label-details">
-                    <div className="checkbox-label" onClick={(ev) => onSetLabel(ev, isTaskLabel, currentLabel.id)}>
-                        <label htmlFor="label-body"></label>
-                        <input id="label-body" type="checkbox" checked={isTaskLabel} /*onChange={(ev) => onSetLabel(ev, isTaskLabel, currentLabel.id)}*/></input>
-                        <div className="label-details-body" style={{ backgroundColor: currentLabel.color }}>
-                            <div className="label-icon" style={{ backgroundColor: LightenDarkenColor(currentLabel.color, 30) }}></div>
-                            <div className="label-title"> {currentLabel.title}</div>
-                        </div>
-                    </div>
-                    <button className="btn-edit" onClick={(ev) => toggleEditLabelModal(ev, currentLabel)}><img src={PenIcon} alt="pen" className="pen-icon" /></button>
-                </li>
-            )
+    const toggleLabelsModal = (ev) => {
+        if (ev) ev.stopPropagation()
+        setIsLabelModal(!isLabelModal)
+        if (!isLabelModal && isLabelModal !== null) {
+            const parentEl = ev.currentTarget.parentNode
+            const position = parentEl.getBoundingClientRect()
+            const grandFatherEl = parentEl.parentNode
+            const style = {
+                top: grandFatherEl.offsetTop,
+                left: grandFatherEl.offsetLeft + (730 - 304)
+            }
+            let pos = {
+                position: position,
+                style: style
+            }
+            setLabelModalPos(pos)
+            setIsLabelModal(true)
+        } else {
+            setIsLabelModal(false)
         }
     }
 
-    const checkTaskLabel = (labelId1) => {
-        if (!labelIds) return
-        const checkedLabel = labelIds.find(labelId => labelId === labelId1)
-        
-        if (checkedLabel) return true
-        return false
-       
+    const onSetLabel = (ev, isLabelOnTask, labelId) => {
+        if (ev) ev.stopPropagation()
+        if (!isLabelOnTask) {
+            if (!task.labelIds) task.labelIds = [labelId]
+            else task.labelIds.push(labelId)
+        } else {
+            const idx = task.labelIds.findIndex(label => label === labelId)
+            task.labelIds.splice(idx, 1)
+        }
+        onUpdateTask(task)
     }
 
-    const toggleEditLabelModal = (ev, label) => {
-        
-        setLabelForEdit(label)
-        setIsEditLabelModal(!isEditLabelModal)
-    }
-
-   
     return (
-        <div className="task-label-container" >
-            {isEditLabelModal && <EditLabelsModal toggleEditLabelModal={toggleEditLabelModal} labelForEdit={labelForEdit} style={{ ...pos }} />}
-            <ul className="label-list">
-                {board.labels.map(label => {
-                    return (getLabel(label.id))
-                })}
-            </ul>
-            <div className="border"></div>
-            <button className="btn-create" onClick={(ev) => toggleEditLabelModal(ev, {})}>Create a new label</button>
-        </div>
+        <React.Fragment>
+            {task?.labelIds.length > 0 && <section className="task-details-label">
+                <div className="tag-title">Labels</div>
+                <div className="select-labels">
+                    <div className="label-container" onClick={onOpenLabelsModal}>
+                        <TaskLabel labelIds={task.labelIds} isDetailsOpen={true} />
+                    </div>
+                    <div onClick={toggleLabelsModal} className="plus-icon">
+                        <GrAdd />
+                    </div>
+                </div>
+            </section>}
+            {isLabelModal && <TaskModalLabel
+                labelIds={task.labelIds}
+                onSetLabel={onSetLabel}
+                toggleLabelsModal={toggleLabelsModal}
+                labelModalPos={labelModalPos} />}
+        </React.Fragment>
     )
-}
+} 

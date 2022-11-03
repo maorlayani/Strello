@@ -7,9 +7,8 @@ import { SneakPeek } from '../cmps/sneak-peek'
 export const HomePage = () => {
 
     return (
-        <section className='home-page'>
+        <section className="home-page">
             <Hero />
-            {/* <hr className='line-through'/> */}
             <SneakPeek />
         </section>
     )

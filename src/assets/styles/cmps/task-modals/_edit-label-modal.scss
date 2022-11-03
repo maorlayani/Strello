@@ -1,13 +1,16 @@
-.cover-modal {
+.edit-label-modal {
     width: 304px;
     padding: 10px;
     position: absolute;
+    top: 0;
+    left: 0;
     background-color: whitesmoke;
-    box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214);
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     z-index: 300;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     .close-btn {
         max-width: 20px;
@@ -21,35 +24,32 @@
         cursor: auto;
     }
 
-    .cover-modal-title {
+    .title {
         padding: 6px 0;
         color: #5e6c84;
         text-align: center;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+        border-bottom: 1px solid #0000003d;
         margin-bottom: 7px;
     }
 
     .sub-title {
         color: #172b4d;
-        // background-color: #ffffff;
         background-color: 'blue';
         font-size: 14px;
         line-height: 20px;
         letter-spacing: normal;
         text-align: start;
-        // border: 2px solid red;
         font-size: 12px;
         font-weight: 500;
     }
 
-    .input {
+    input[name="label-title"] {
         margin: 4px 0 12px;
         width: 100%;
-        -webkit-appearance: none;
-        background-color: var(--ds-background-input, #fafbfc);
+        background-color: #fafbfc;
         border: none;
         border-radius: 3px;
-        box-shadow: inset 0 0 0 2px var(--ds-border-input, #dfe1e6);
+        box-shadow: inset 0 0 0 2px #dfe1e6;
         box-sizing: border-box;
         display: block;
         line-height: 20px;
@@ -63,14 +63,12 @@
 
         &:focus {
             outline: 0;
-            background-color: var(--ds-background-input, #fff);
-            box-shadow: inset 0 0 0 2px var(--ds-border-focused, #0079bf);
-            // border: none;
+            background-color: #fff;
+            box-shadow: inset 0 0 0 2px #0079bf;
         }
     }
 
-    .cover-color {
-        -webkit-transform: translate3d(0, 0, 0);
+    .label-color-list {
         display: grid;
         gap: 8px;
         padding: 4px;
@@ -78,28 +76,22 @@
         overflow-x: hidden;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-        .cover-color-container {
+        .label-color-item {
 
-            .cover-color {
-                margin: 0;
+            .label-color {
                 border-radius: 3px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                box-shadow: none;
                 width: 50px;
                 height: 32px;
                 cursor: pointer;
+                margin: 1px;
 
                 &:hover {
                     filter: saturate(85%) brightness(85%);
                 }
 
                 &.selected {
-                    border: 1px blue solid;
+                    border: 2px #0079BF solid;
                 }
-
-
             }
         }
     }
@@ -110,36 +102,27 @@
         margin-bottom: 10px;
     }
 
-    .btns-container {
+    .btns-edit-label-container {
         display: flex;
         justify-content: space-between;
+
         .btn {
             font-size: 14px;
             line-height: 20px;
             font-weight: 400;
-            box-sizing: border-box;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
             border-radius: 3px;
             cursor: pointer;
             padding: 6px 12px;
-            text-decoration: none;
-            white-space: normal;
-            transition-property: background-color, border-color, box-shadow;
-            transition-duration: 85ms;
-            transition-timing-function: ease;
-            box-shadow: none;
             border: none;
-            color: var(--ds-text-inverse, #ffffff);
+            color: #ffffff;
             width: 60px;
 
             &.btn-save {
-                background-color: var(--ds-background-brand-bold, #0079bf);
+                background-color: #0079bf;
             }
 
             &.btn-delete {
-                background-color: var(--ds-background-danger-bold, #b04632);
+                background-color: #b04632;
             }
         }
     }

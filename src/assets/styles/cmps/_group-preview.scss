@@ -11,6 +11,8 @@
         max-height: 100%;
 
         .scroll {
+            min-height: 10px;
+
             margin-right: 4px;
             margin-bottom: 2px;
             overflow-y: auto;

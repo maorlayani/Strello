@@ -1,5 +1,4 @@
 import { boardService } from "../services/board.service.js"
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { uploadService } from "../services/upload.service.js"
 
 // Action Creators:
@@ -31,9 +30,7 @@ export function loadBoards(filterBY = {}) {
                 type: 'SET_BOARDS',
                 boards
             })
-
         } catch (err) {
-            showErrorMsg('Cannot load boards')
             console.log('Cannot load boards', err)
         }
     }
@@ -92,7 +89,9 @@ export function removeGroup(boardId, groupId, activity) {
 export function addBoard(board, activity) {
     return async (dispatch) => {
         try {
+            console.log('board from action BEFORE', board)
             const savedBoard = await boardService.save(board, activity)
+            console.log('board from action AFTER', savedBoard)
             return dispatch(getActionAddBoard(savedBoard)).board
         } catch (err) {
             console.log('Cannot add board', err)
@@ -101,7 +100,7 @@ export function addBoard(board, activity) {
 }
 
 export function updateBoard(board, activity) {
-    
+
     return async (dispatch) => {
         try {
             const savedBoard = await boardService.save(board, activity)
@@ -178,6 +177,17 @@ export function getTask(boardId, groupId, taskId) {
     }
 }
 
+// export function setTask(currTask) {
+//     return (dispatch) => {
+//         // const { task } =
+//         dispatch({
+//             type: 'SET_TASK',
+//             task: currTask
+//         })
+//         // return currTask
+//     }
+// }
+
 export function getImgUrl(ev) {
     return async (dispatch) => {
         try {
@@ -227,13 +237,26 @@ export function getVidUrl(ev) {
 export function resizeLabel(resizeLabel) {
     return async (dispatch) => {
         try {
-            // console.log('resizeLabel', resizeLabel)
             dispatch({
                 type: 'RESIZE_LABEL',
                 resizeLabel
             })
         } catch (err) {
             console.log('Cannot resize label', err)
+
+        }
+    }
+}
+
+export function toggleQuickEdit(isQuickEditOpen) {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type: 'TOGGALE_TASK_QUICK_EDIT',
+                isQuickEditOpen
+            })
+        } catch (err) {
+            console.log('Cannot toggle task details', err)
 
         }
     }
@@ -259,29 +282,6 @@ export function getUploadedImg(imgUrl) {
 /*------------------------------------------------------------------------------*/
 
 
-// Demo for Optimistic Mutation 
-// (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveBoardOptimistic(boardId) {
-
-    return async (dispatch, getState) => {
-        dispatch({
-            type: 'REMOVE_BOARD',
-            boardId
-        })
-        showSuccessMsg('Board removed')
-
-        try {
-            await boardService.remove(boardId)
-        } catch (err) {
-            showErrorMsg('Cannot remove board')
-            console.log('Cannot load boards', err)
-            dispatch({
-                type: 'UNDO_REMOVE_BOARD',
-            })
-        }
-    }
-}
-
 export function handleDrag(
     board,
     droppableIdStart,
@@ -293,10 +293,10 @@ export function handleDrag(
 
     return async dispatch => {
 
-        if (type === 'member') {
-            console.log('a member has been dragged')
-            return
-        }
+        // if (type === 'member') {
+        //     console.log('a member has been dragged')
+        //     return
+        // }
 
         if (type === 'group') {
             // remove group from origin

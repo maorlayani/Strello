@@ -1,0 +1,31 @@
+.members {
+    margin: 0 8px 8px 0;
+    width: 100%;
+    flex: 1;
+
+    .select-members {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+
+        .task-member-container {
+            margin: 0 0 4px 0;
+
+            .member {
+                min-width: 32px;
+                height: 32px;
+                margin-right: 4px;
+
+                .member-icon {
+                    height: 32px;
+                    width: 32px;
+
+                    .member-content {
+                        height: 32px;
+                        width: 32px;
+                    }
+                }
+            }
+        }
+    }
+}

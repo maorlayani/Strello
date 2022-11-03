@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-// import { boardService } from '../services/board.service'
 import { BoardsList } from './boards-list'
 import { ImTrello } from 'react-icons/im'
-import { useSelector, useDispatch } from 'react-redux'
-import { loadBoards } from '../store/board.actions'
+import { useSelector } from 'react-redux'
 
 export const SideMenu = ({ isSideBarOpen, toggleMenu }) => {
-    const dispatch = useDispatch()
-    const boards = useSelector(state => state.boardModule.boards)
-    const themeColor = useSelector(state => state.boardModule.boardThemeColor)
 
-    useEffect(() => {
-        dispatch(loadBoards())
-    }, [])
+    const themeColor = useSelector(state => state.boardModule.boardThemeColor)
 
     const _getMenuClass = () => {
         if (isSideBarOpen) {
@@ -22,28 +14,30 @@ export const SideMenu = ({ isSideBarOpen, toggleMenu }) => {
             return "side-menu"
         }
     }
+    // console.log('render SIDE MENU')
+    return (
+        <section
+            className={_getMenuClass()}
+            style={(_getMenuClass() === 'side-menu open' ?
+                { backgroundColor: themeColor } : { backgroundColor: '#ffffff42' })}>
 
-    return <section
-        className={_getMenuClass()}
-        style={(_getMenuClass() === 'side-menu open'
-            ? { backgroundColor: themeColor } : { backgroundColor: '#ffffff42' })}>
+            <header>
+                <div className="logo-icon"><ImTrello /></div>
+                <section className="header-txt">
+                    sTrello Workspace
+                </section>
+                <section className="arrow-div" onClick={toggleMenu}><FaChevronLeft className="arrow" /></section>
+                <section className="open-arrow-div" onClick={toggleMenu}><FaChevronRight className="arrow" /></section>
+            </header>
 
-        <header>
-            <div className="s"><ImTrello /></div>
-            <section className="header-txt">
-                sTrello Workspace
+            <section className="main">
+                <section className="title">Your boards</section>
             </section>
-            <section className='arrow-div' onClick={toggleMenu}><FaChevronLeft className='arrow' /></section>
-            <section className='open-arrow-div' onClick={toggleMenu}><FaChevronRight className='arrow' /></section>
-        </header>
 
-        <section className='main'>
-            <section className='title'>Your boards</section>
+            <section className="boards">
+                {isSideBarOpen && <BoardsList />}
+            </section>
+
         </section>
-
-        <section className='boards'>
-            {boards && <BoardsList boards={boards} />}
-        </section>
-
-    </section >
+    )
 }

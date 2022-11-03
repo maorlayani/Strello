@@ -1,10 +1,10 @@
 import { TaskPreview } from './task-preview'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { Droppable } from 'react-beautiful-dnd'
 import React, { useEffect, useRef } from 'react'
 
-export const TaskList = ({ tasks, groupId, group, isAddTask, handleChangeTask, task }) => {
+export const TaskList = ({ tasks, groupId, group, isAddTask, handleChangeTask, task, openQuickEdit }) => {
 
-    const taskRef = useRef()
+    const taskListRef = useRef()
     const inputRef = useRef()
 
     useEffect(() => {
@@ -18,11 +18,18 @@ export const TaskList = ({ tasks, groupId, group, isAddTask, handleChangeTask, t
         <Droppable droppableId={group.id}>
             {(provided) => (
                 <section
-                    ref={(el) => { taskRef.current = el; provided.innerRef(el) }}
+                    ref={(el) => { taskListRef.current = el; provided.innerRef(el) }}
                     {...provided.droppableProps}>
                     <section className="task-list" >
                         {tasks.map((task, index) => {
-                            return <TaskPreview key={task.id} task={task} groupId={groupId} taskRef={taskRef} index={index} groupTitle={group.title} />
+                            return <TaskPreview
+                                key={task.id}
+                                task={task}
+                                groupId={groupId}
+                                // taskRef={taskListRef}
+                                index={index}
+                                groupTitle={group.title}
+                                openQuickEdit={openQuickEdit} />
                         })}
                         {provided.placeholder}
                         {isAddTask && <div className="add-task-content task-preview">

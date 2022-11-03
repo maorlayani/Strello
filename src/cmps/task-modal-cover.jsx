@@ -2,11 +2,10 @@ import { useEffect, useState } from "react"
 import closeIcon from '../assets/img/icon-close-task-details.svg'
 import { boardService } from "../services/board.service"
 
-export const TaskDetailsCoverModal = ({ onSetImg, onShowModal, onSetColor, onRemoveCover, attachments }) => {
+export const TaskDetailsCoverModal = ({ onShowModal, task, onUpdateTask, setShowModal }) => {
 
     const [backgroundImages, setBackgroundImages] = useState([])
     const [backgroundColors, setBackgroundColors] = useState([])
-    // const [bg, setBg] = useState(null)
 
     useEffect(() => {
         loadBackGround()
@@ -17,6 +16,26 @@ export const TaskDetailsCoverModal = ({ onSetImg, onShowModal, onSetColor, onRem
         setBackgroundColors(boardService.getTaskBackground('color'))
     }
 
+    const onSetColor = (newColor) => {
+        if (!task.style) task.style = { bg: { color: newColor } }
+        else task.style.bg.color = newColor
+        task.style.bg.imgUrl = null
+        onUpdateTask(task)
+    }
+
+    const onSetImg = (imgUrl) => {
+        if (!task.style) task.style = { bg: { imgUrl } }
+        else task.style.bg.imgUrl = imgUrl
+        task.style.bg.color = null
+        onUpdateTask(task)
+    }
+
+    const onRemoveCover = () => {
+        delete task.style
+        onUpdateTask(task)
+        setShowModal(false)
+    }
+    // console.log('render TASK-DETAILS-COVER-MODAL')
     return (
         <section className="cover-modal">
             <img src={closeIcon} onClick={onShowModal} alt="close" className="close-btn" />
@@ -34,18 +53,17 @@ export const TaskDetailsCoverModal = ({ onSetImg, onShowModal, onSetColor, onRem
                 </ul>
             </section>
 
-            {attachments?.length > 0 &&
+            {task.attachments?.length > 0 &&
                 <section>
                     <span className="sub-title">Attachments</span>
                     <ul className="cover-imgs">
-                        {attachments.map(attach =>
+                        {task.attachments.map(attach =>
                             <li className="cover-img-container" key={attach.id}>
                                 <img className="cover-img" alt="cover-img" src={`${attach.url}`} onClick={() => onSetImg(attach.url)}></img>
                             </li>
                         )}
                     </ul>
-                </section>
-            }
+                </section>}
 
             <section>
                 <span className="sub-title">Photos</span>
@@ -61,5 +79,3 @@ export const TaskDetailsCoverModal = ({ onSetImg, onShowModal, onSetColor, onRem
         </section>
     )
 }
-
-

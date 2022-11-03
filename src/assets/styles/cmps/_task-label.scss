@@ -11,24 +11,25 @@
         border-radius: 4px;
         padding: 0 8px;
         margin: 0;
-        transition: all ease-in .5s;
+        transition: all ease-in .1s;
         margin: 4px 0;
 
-        .label-title.hidden {
-            // display:none;
-            visibility: hidden;
-        }
+        // .label-title.hidden {
+        //     // display:none;
+        //     visibility: hidden;
+        // }
 
         &.clicked {
             min-width: 56px;
             width: fit-content;
             height: 16px;
 
-            .label-title.active {
+            // .label-title.active {
+            .label-title {
                 display: flex;
-                // animation-delay: 2s;
+                animation-delay: 2s;
                 // transition: .5s;
-                transition: all ease-in .5s;
+                // transition: all ease-in .5s;
                 color: #172b4d;
                 font-size: 12px;
                 font-weight: 400;

@@ -1,38 +1,32 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { boardService } from '../services/board.service'
-import { getActionUpdateBoard, loadBoards, setBoardBackgroundColor, updateBoard } from '../store/board.actions'
+import { Outlet, useParams } from 'react-router-dom'
+import { getActionUpdateBoard, setBoardBackgroundColor, toggleQuickEdit } from '../store/board.actions'
 import { GroupList } from './group-list'
 import { BoardHeader } from './board-header'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
 import { useDispatch, useSelector } from 'react-redux'
 import { handleDrag } from '../store/board.actions'
 import { getBoard } from '../store/board.actions'
 import { SideMenu } from './side-menu'
-import { socketService, SOCKET_EVENT_BOARD_UPDATE, SOCKET_EVENT_DND } from '../services/socket.service'
+import { socketService, SOCKET_EVENT_BOARD_UPDATE } from '../services/socket.service'
 import { Loader } from './loader'
 import { Dashboard } from '../pages/dashboard.jsx'
 import { FastAverageColor } from 'fast-average-color'
-
-// const taskRef = useRef()
+import { TaskQuickEdit } from './task-quick-edit'
 
 export const Board = () => {
 
     const board = useSelector(state => state.boardModule.board)
+    const isQuickEditOpen = useSelector(state => state.boardModule.isQuickEditOpen)
     // const resizeLabel = useSelector(state => state.boardModule.resizeLabel)
     const dispatch = useDispatch()
     const params = useParams()
-    let [isSideBarOpen, setIsSideBarOpen] = useState(false)
-    let [isBack, setIsBack] = useState(false)
-    let [isDashboard, setIsDashboard] = useState(false)
-
-    // useEffect(() => {
-    //     socketService.on(SOCKET_EVENT_DND, onDnd);
-    //     return () => {
-    //         socketService.off(SOCKET_EVENT_DND, onDnd)
-    //     }
-    // }, [])
+    const [isSideBarOpen, setIsSideBarOpen] = useState(false)
+    const [isDashboard, setIsDashboard] = useState(false)
+    const [quickEditPos, setQuickEditPos] = useState(null)
+    const [groupId, setGroupId] = useState(null)
+    const [task, setTask] = useState(null)
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_UPDATE, onSocketUpdateBoard);
@@ -45,13 +39,12 @@ export const Board = () => {
         dispatch(getActionUpdateBoard(newBoard))
     }
 
-
     useEffect(() => {
         loadBoard()
-    }, [params.id])
+    }, [])
 
     const loadBoard = async () => {
-        const boardId = params.id
+        const boardId = params.boardId
         try {
             await dispatch(getBoard(boardId))
         } catch (err) {
@@ -60,12 +53,7 @@ export const Board = () => {
     }
 
     const toggleMenu = () => {
-        if (isSideBarOpen) {
-            setIsSideBarOpen(false)
-            return
-        } else {
-            setIsSideBarOpen(true)
-        }
+        setIsSideBarOpen(!isSideBarOpen)
     }
 
     const onEnd = result => {
@@ -75,13 +63,12 @@ export const Board = () => {
             handleDrag(board, source.droppableId, destination.droppableId, source.index, destination.index, type)
         )
     }
+
     const getAverageBackgroundColor = async (imgUrl) => {
         try {
-
             const fac = new FastAverageColor();
             const color = await fac.getColorAsync(imgUrl)
             dispatch(setBoardBackgroundColor(color.hex))
-
             return color
         } catch (err) {
             console.log('Cannot get average color', err)
@@ -107,29 +94,47 @@ export const Board = () => {
         return style
     }
 
-    // if (!board) return <div>Loading...</div>
-    if (!board) return <Loader />
+    const getPosition = (evTarget, parent) => {
+        return { top: parent.top, left: parent.left }
+    }
 
+    const openQuickEdit = (ev, currGroupId, currTask) => {
+        ev.stopPropagation()
+        const parentEl = ev.currentTarget.parentNode
+        const position = parentEl.getBoundingClientRect()
+        const style = getPosition(ev.target.getBoundingClientRect(), parentEl.getBoundingClientRect())
+        setQuickEditPos({
+            position,
+            style
+        })
+        setGroupId(currGroupId)
+        setTask(currTask)
+        dispatch(toggleQuickEdit(true))
+    }
+
+    if (!board) return <Loader />
 
     return (
         <React.Fragment>
-            <section className='board-container' style={getBoradBg()}>
+            <section className="board-container" style={getBoradBg()}>
                 <SideMenu
                     isSideBarOpen={isSideBarOpen}
                     toggleMenu={toggleMenu} />
 
                 <DragDropContext onDragEnd={onEnd}>
-                    <section className="board" >
-                        {/* <section className="board" style={getBoradBg()}> */}
+                    <section className="board">
                         <BoardHeader
                             board={board}
                             toggleDashboard={toggleDashboard} />
-                        <GroupList board={board} />
-
+                        <GroupList board={board} openQuickEdit={openQuickEdit} />
                     </section>
                 </DragDropContext>
+
             </section>
+            {/* <Outlet context={[toggleDashboard, 'bla']} /> */}
+            <Outlet />
             {isDashboard && <Dashboard toggleDashboard={toggleDashboard} />}
+            {isQuickEditOpen && <TaskQuickEdit task={task} boardId={params.boardId} groupId={groupId} pos={quickEditPos} />}
         </React.Fragment>
     )
 }

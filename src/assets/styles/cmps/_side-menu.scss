@@ -1,17 +1,15 @@
 .side-menu {
     height: 100%;
     max-width: 17px;
-    min-width: 1px;
-    // background-color: rgba(0, 0, 0, 0.242);
+    // min-width: 1px;
     background-color: rgba(255, 255, 255, 0.26);
-    ;
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(0, 0, 0, 0.271);
     opacity: 0.8;
     overflow-x: hidden;
     overflow-y: hidden;
-    transition: min-width 0.5s;
+    transition: min-width 0.5s ease-in-out;
 
     header>*:not(.open-arrow-div) {
         opacity: 0;
@@ -24,14 +22,13 @@
         transition: opacity 0.3s;
     }
 
-
     header {
         display: flex;
         border-bottom: 1px solid darken($color: $header-bg-color, $amount: 20);
         height: 69px;
         align-items: center;
 
-        .s {
+        .logo-icon {
             color: white;
             background-color: $home-btn-clr;
             background: linear-gradient(darken($home-btn-clr , $amount: 10), $home-btn-clr);
@@ -54,12 +51,10 @@
             font-size: 14px;
             font-weight: 500;
             flex-grow: 1;
-
         }
 
         .arrow-div {
             justify-self: flex-end;
-            // background-color: red;
             border-radius: 3px;
             height: 28px;
             width: 28px;
@@ -72,8 +67,6 @@
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.116);
-
-                // background-color: darken($header-bg-color , $amount: 20);
             }
 
             .arrow {
@@ -103,14 +96,11 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        // background-color: darken($header-bg-color , $amount: 20);
         background-color: #ffffff42;
 
 
         &:hover {
-            // background-color: darken($header-bg-color , $amount: 30);
             background-color: rgba(0, 0, 0, 0.116);
-
         }
     }
 }
@@ -141,16 +131,12 @@
     .boards {
         opacity: 1;
     }
-
 }
-
 
 /////////////       MQ      //////////////
 
-
 @media (max-width: 400px) {
-
-    .side-menu{
+    .side-menu {
         display: none;
     }
 }

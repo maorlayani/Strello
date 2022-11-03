@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 export const useForm = (initialState, callBack) => {
 
     const [fields, setFields] = useState(initialState)
-
     useEffect(() => {
         if (callBack) callBack(fields)
     }, [fields])

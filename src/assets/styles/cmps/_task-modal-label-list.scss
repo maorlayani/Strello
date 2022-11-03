@@ -1,0 +1,32 @@
+.task-modal-label-list {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+
+    .border {
+        border-bottom: 1px solid #0000003d;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .btn-create {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        border-radius: 3px;
+        cursor: pointer;
+        padding: 6px 12px;
+        background-color: #091e420a;
+        color: inherit;
+
+        &:hover {
+            background-color: #091e4214;
+        }
+
+        &:active {
+            background-color: #e4f0f6;
+            color: #0079bf;
+        }
+    }
+}
