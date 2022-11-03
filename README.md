@@ -1,2 +1,1 @@
-# Coding Academy
-## React Starter
+
