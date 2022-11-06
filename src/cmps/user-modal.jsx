@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { onLogout } from "../store/user.actions"
 
-
 export const UserModal = ({ toggleUserModal, user, getUserImg }) => {
     const dispatch = useDispatch()
     const onUserLogout = () => {

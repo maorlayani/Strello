@@ -1,0 +1,113 @@
+.task-modal-attachment {
+    width: 304px;
+    padding: 10px;
+    position: absolute;
+    background-color: whitesmoke;
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+    z-index: 300;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+
+    .btn-close {
+        max-width: 20px;
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        cursor: pointer;
+    }
+
+    .modal-title {
+        padding: 6px 0;
+        color: #5e6c84;
+        text-align: center;
+        border-bottom: 1px solid #0000003d;
+        margin-bottom: 7px;
+    }
+
+    .btn-upload {
+        text-align: left;
+        cursor: pointer;
+        font-weight: 400;
+        padding: 6px 12px;
+        position: relative;
+        text-decoration: none;
+        padding: 0;
+        text-align: center;
+        line-height: 32px;
+        height: 32px;
+        color: inherit;
+
+        &:hover {
+            background-color: #091e420a;
+        }
+
+        input[type="file"] {
+            padding: 6px 12px;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: -32px;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+
+    .sub-title {
+        margin-top: 5px;
+        color: #172b4d;
+        background-color: 'blue';
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: normal;
+        text-align: start;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    input[type="text"] {
+        margin: 4px 0 12px;
+        width: 100%;
+        background-color: #fafbfc;
+        border: none;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        line-height: 20px;
+        outline: none;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 400;
+
+        &:focus {
+            outline: 0;
+            background-color: #fff;
+            box-shadow: inset 0 0 0 2px #0079bf;
+        }
+    }
+
+    .link-name-container {
+        width: 100%;
+    }
+
+    .btn-add-attach {
+        background-color: #091e420a;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        font-weight: 400;
+        line-height: 20px;
+        width: 60px;
+        padding: 6px 12px;
+        border-radius: 3px;
+        color: #172B4D;
+
+        &:hover {
+            background-color: #091e4214;
+        }
+
+        &:active {
+            background-color: #e4f0f6;
+            color: #0079bf;
+        }
+    }
+}

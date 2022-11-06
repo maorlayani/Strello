@@ -188,35 +188,6 @@ export function getTask(boardId, groupId, taskId) {
 //     }
 // }
 
-export function getImgUrl(ev) {
-    return async (dispatch) => {
-        try {
-            const imgEv = await uploadService.uploadImg(ev)
-            if (!imgEv.fileFormat) imgEv.url = 'https://res.cloudinary.com/dln4kbx1f/image/upload/v1664031478/a7aqgf6kxvow44jn3qzf.png'
-            const { imgJson } = dispatch({
-                type: 'SET_IMG_URL',
-                imgJson: imgEv
-            })
-        } catch (err) {
-            console.log('Cannot load img url', err)
-        }
-    }
-}
-
-export function getImgFromUrl(currentImgJson) {
-    return async (dispatch) => {
-        try {
-            const { imgJson } = dispatch({
-                type: 'SET_IMG_URL',
-                imgJson: currentImgJson
-            })
-            return imgJson
-        } catch (err) {
-            console.log('Cannot load img url', err)
-        }
-    }
-}
-
 export function getVidUrl(ev) {
     return async (dispatch) => {
         try {
@@ -231,8 +202,6 @@ export function getVidUrl(ev) {
         }
     }
 }
-
-
 
 export function resizeLabel(resizeLabel) {
     return async (dispatch) => {

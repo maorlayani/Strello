@@ -4,7 +4,6 @@ const initialState = {
     board: null,
     task: null,
     resizeLabel: false,
-    imgJson: '',
     vidJson: '',
     boardThemeColor: '',
     isQuickEditOpen: false
@@ -26,9 +25,6 @@ export function boardReducer(state = initialState, action) {
             break
         case 'SET_TASK':
             newState = { ...state, task: action.task }
-            break
-        case 'SET_IMG_URL':
-            newState = { ...state, imgJson: (action.imgJson) }
             break
         case 'SET_VID_URL':
             newState = { ...state, vidJson: (action.vidJson) }
@@ -70,7 +66,5 @@ export function boardReducer(state = initialState, action) {
     // console.log('Prev State:', state)
     // console.log('Action:', action)
     // console.log('New State:', newState)
-
     return newState
-
 }

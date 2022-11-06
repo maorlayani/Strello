@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import closeIcon from '../../assets/img/icon-close-task-details.svg'
 import { boardService } from "../../services/board.service"
 import { utilService } from "../../services/util.service"
-import { getTask, updateBoard } from "../../store/board.actions"
+import { updateBoard } from "../../store/board.actions"
 
 export const EditLabelModal = ({ toggleEditLabelModal, labelForEdit, onSetLabel }) => {
 

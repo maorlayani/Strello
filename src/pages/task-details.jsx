@@ -9,9 +9,6 @@ import { FaWindowMaximize } from 'react-icons/fa'
 import { ImAttachment } from 'react-icons/im'
 import { AbilityCreator } from "../cmps/ability-creator"
 import { useSelector } from "react-redux"
-import { AttachmentModal } from "../cmps/attachment-modal"
-import moment from 'moment'
-import { AttachmentNameEditModal } from "../cmps/task-details-modals/attachment-name-edit-modal"
 import { ChecklistModal } from "../cmps/checklist-modal"
 import { TaskChecklist } from "../cmps/task-checklist"
 import { DetailsActivities } from "../cmps/task-details-activities"
@@ -24,11 +21,10 @@ import { TaskDetailsMember } from "../cmps/task-details-member"
 import { TaskDetailsLabel } from "../cmps/task-details-label"
 import { TaskDetailsDueDate } from "../cmps/task-details-due-date"
 import { TaskDetailsDesc } from "../cmps/task-details-desc"
-// import { TaskDetailsAttachment } from "../cmps/task-details-attachment"
+import { TaskDetailsAttachment } from "../cmps/task-details-attachment"
 
 export const TaskDetails = () => {
 
-    const imgJson = useSelector(state => state.boardModule.imgJson)
     const stateBoard = useSelector(state => state.boardModule.board)
     const stateTask = useSelector(state => state.boardModule.task)
 
@@ -39,24 +35,13 @@ export const TaskDetails = () => {
     const [showModal, setShowModal] = useState(null)
     const [currentGroupTitle, setGroupTitle] = useState(null)
     const [isMemberModal, setIsMemberModal] = useState(null)
-    const [isAttachmentModal, setIsAttachmentModal] = useState(false)
-    const [isEditAttachName, setIsEditAttachName] = useState(false)
     const [isChecklistModal, setIsChecklistModal] = useState(false)
     const [checklistModalPos, setChecklistModalPos] = useState(null)
-
-    const [attachModalPos, setAttachModalPos] = useState(null)
-    const [editAttachNameModalPos, setEditAttachNameModalPos] = useState(null)
-    const [attachmentToEdit, setAttachmentToEdit] = useState(null)
     const [task, setTask] = useState(null)
 
     useEffect(() => {
         loadTaskDetails()
     }, [])
-
-    useEffect(() => {
-        setIsAttachmentModal(false)
-        if (imgJson) onSetAttachment(false)
-    }, [imgJson])
 
     const loadTaskDetails = async () => {
         try {
@@ -67,10 +52,6 @@ export const TaskDetails = () => {
         } catch (err) {
             console.log('Cannot load task', err)
         }
-    }
-
-    const getTime = (imgJson) => {
-        return moment(imgJson.addedAt).fromNow()
     }
 
     const onUpdateTask = (taskForUpdate, activity) => {
@@ -104,59 +85,6 @@ export const TaskDetails = () => {
         } else {
             setIsChecklistModal(false)
         }
-    }
-
-    const toggleEditAttachNameModal = (ev, attachmentId) => {
-        setAttachmentToEdit(attachmentId)
-
-        if (!isEditAttachName) {
-            const parentEl = ev.currentTarget.parentNode
-            const position = parentEl.getBoundingClientRect()
-
-            const style = {
-                top: ev.target.offsetTop - 300,
-                left: ev.target.offsetLeft
-            }
-            let pos = {
-                position: position,
-                style: style
-            }
-
-            setEditAttachNameModalPos(pos)
-            setIsEditAttachName(!isEditAttachName)
-        } else {
-            setIsEditAttachName(false)
-        }
-    }
-
-    const toggleAttachmentModal = (ev) => {
-        if (!isAttachmentModal) {
-            const grandParentEl = ev.currentTarget.parentNode.parentNode
-            const position = grandParentEl.getBoundingClientRect()
-            const style = {
-                top: grandParentEl.offsetTop - 100,
-                left: grandParentEl.offsetLeft + (730 - 304)
-            }
-            let pos = {
-                position: position,
-                style: style
-            }
-            setAttachModalPos(pos)
-            setIsAttachmentModal(!isAttachmentModal)
-        } else {
-            setIsAttachmentModal(false)
-        }
-    }
-
-    const onSetAttachment = (addOrRemove, attachId) => {
-        if (!addOrRemove) {
-            if (!task.attachments) task.attachments = [(imgJson)]
-            else task.attachments.unshift((imgJson))
-        } else {
-            const idx = task.attachments.findIndex(img => img.id === attachId)
-            task.attachments.splice(idx, 1)
-        }
-        onUpdateTask(task)
     }
 
     const onRemoveTask = () => {
@@ -212,37 +140,9 @@ export const TaskDetails = () => {
                                 <TaskDetailsDesc
                                     task={task}
                                     onUpdateTask={onUpdateTask} />
-                                {/* {task?.attachments && <TaskDetailsAttachment
+                                {task?.attachments && <TaskDetailsAttachment
                                     task={task}
-                                    onUpdateTask={onUpdateTask} />} */}
-                                {task?.attachments && task?.attachments?.length > 0 && <section className="attachment">
-                                    <div className="attachment-title">
-                                        <span className="icon"><ImAttachment /></span>
-                                        <span className="section-title">Attachment</span>
-                                    </div>
-                                    <div className="attachment-body-and-btn">
-                                        {task?.attachments.map(attachment => {
-                                            return <div className="attachment-body" key={attachment.id}>
-                                                <img className="img-attached" src={`${attachment.url}`} />
-                                                <div className="attachment-details">
-                                                    <span className="url-name">{attachment.urlName}{attachment.fileFormat ? `.${attachment.fileFormat}` : ''}</span>
-                                                    <div className="add-time-and-btns">
-                                                        <span className="Added-at">Added {getTime(attachment)}</span>
-                                                        <span>-</span>
-                                                        <span key={`${attachment.id}-dBtn`} className="btn-delete-attachment" onClick={() => onSetAttachment(true, attachment.id)} title={'Delete attachment for ever'}>Delete</span>
-                                                        <span>-</span>
-                                                        <span key={`${attachment.id}-eBtn`} className="btn-delete-attachment" onClick={(ev) => toggleEditAttachNameModal(ev, attachment.id)} title={'Edit attachment name'}>Edit</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        })}
-                                        {isEditAttachName && <AttachmentNameEditModal toggleEditAttachNameModal={toggleEditAttachNameModal} attachmentId={attachmentToEdit} task={task} onUpdateTask={onUpdateTask} editAttachNameModalPos={editAttachNameModalPos} />}
-                                        <button className="btn attachment" onClick={toggleAttachmentModal}>
-                                            <span className="ability">Add an attachment</span>
-                                        </button>
-                                    </div>
-                                </section>}
-                                {isAttachmentModal && <AttachmentModal toggleAttachmentModal={toggleAttachmentModal} attachModalPos={attachModalPos} />}
+                                    onUpdateTask={onUpdateTask} />}
 
                                 {task?.checklists?.length > 0 && <TaskChecklist
                                     checklists={task.checklists}
@@ -276,7 +176,8 @@ export const TaskDetails = () => {
                                     <span className="icon"><BsClock /></span>
                                     <span className="ability">Dates</span>
                                 </button>
-                                <button className="btn abilities" onClick={toggleAttachmentModal}>
+                                {/* <button className="btn abilities" onClick={toggleAttachmentModal}> */}
+                                <button className="btn abilities">
                                     <span className="icon attach"><ImAttachment /></span>
                                     <span className="ability">Attachment</span>
                                 </button>

@@ -12,7 +12,6 @@ function uploadImg(ev) {
   const formData = new FormData()
   formData.append('upload_preset', UPLOAD_PRESET)
   formData.append('file', ev.target.files[0])
-  // formData.append('blob', ev.target.files[0])
 
   return fetch(UPLOAD_URL, {
     method: 'POST',
@@ -21,11 +20,11 @@ function uploadImg(ev) {
     .then(res => res.json())
     .then(res => {
       return ({
-        id: utilService.makeId(),
+        // id: utilService.makeId(),
         urlName: res.original_filename,
         url: res.secure_url,
-        fileFormat:res.format,
-        addedAt: new Date()
+        fileFormat: res.format,
+        // createdAt: new Date()
       })
     })
     .catch(err => console.error(err))
