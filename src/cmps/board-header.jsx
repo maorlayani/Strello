@@ -53,7 +53,7 @@ export const BoardHeader = ({ board, toggleDashboard }) => {
                 <section className="members">
                     {board.members?.length && <TaskMember memberIds={getMembersIds()} />}
                 </section>
-                <button className="btn-add"><img className="mem-svg" src={memberSvg} /> Share</button>
+                {/* <button className="btn-add"><img className="mem-svg" src={memberSvg} /> Share</button> */}
                 <button className="btn-add" onClick={toggleDashboard}> Dashboard</button>
 
                 {!isActivityMenuOpen && <section className="activitis-menu-container" onClick={toggleBoardMenu}>
