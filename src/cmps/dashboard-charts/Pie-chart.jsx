@@ -9,10 +9,8 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 export const PieChart = ({ labelsValues, labelsIds }) => {
 
   const board = useSelector(state => state.boardModule.board)
-  // if (!props) return <div>Loading...</div>
 
   labelsIds = labelsIds.map(labelId => board.labels.find(label => label.id === labelId))
-  
 
   const data = {
     labels: labelsIds.map(label => {
@@ -31,16 +29,14 @@ export const PieChart = ({ labelsValues, labelsIds }) => {
       },
     ],
   }
-
   const options = {
     plugins: {
-        legend: {
-            display: false,
-       
-        }
-    }
-}
+      legend: {
+        display: false,
 
-  return <Doughnut data={data} options={options}/>
+      }
+    }
+  }
+  return <Doughnut data={data} options={options} />
 }
 

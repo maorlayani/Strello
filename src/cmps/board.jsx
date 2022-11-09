@@ -19,7 +19,6 @@ export const Board = () => {
 
     const board = useSelector(state => state.boardModule.board)
     const isQuickEditOpen = useSelector(state => state.boardModule.isQuickEditOpen)
-    // const resizeLabel = useSelector(state => state.boardModule.resizeLabel)
     const dispatch = useDispatch()
     const params = useParams()
     const [isSideBarOpen, setIsSideBarOpen] = useState(false)
@@ -131,7 +130,6 @@ export const Board = () => {
                 </DragDropContext>
 
             </section>
-            {/* <Outlet context={[toggleDashboard, 'bla']} /> */}
             <Outlet />
             {isDashboard && <Dashboard toggleDashboard={toggleDashboard} />}
             {isQuickEditOpen && <TaskQuickEdit task={task} boardId={params.boardId} groupId={groupId} pos={quickEditPos} />}

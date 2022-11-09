@@ -6,7 +6,6 @@
 
     .btn-label {
         min-width: 40px;
-        // max-width: 40px;
         height: 8px;
         border-radius: 4px;
         padding: 0 8px;
@@ -14,22 +13,14 @@
         transition: all ease-in .1s;
         margin: 4px 0;
 
-        // .label-title.hidden {
-        //     // display:none;
-        //     visibility: hidden;
-        // }
-
         &.clicked {
             min-width: 56px;
             width: fit-content;
             height: 16px;
 
-            // .label-title.active {
             .label-title {
                 display: flex;
                 animation-delay: 2s;
-                // transition: .5s;
-                // transition: all ease-in .5s;
                 color: #172b4d;
                 font-size: 12px;
                 font-weight: 400;
@@ -38,10 +29,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-
             }
-
         }
-
     }
 }

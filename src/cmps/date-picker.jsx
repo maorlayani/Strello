@@ -6,7 +6,6 @@ export function DatePicker({ dateClicked, onDayClick }) {
 
     const [value, onChange] = useState(new Date())
 
-
     const handleDayColors = ({ date }) => {
         let tileClassName = "day-view "
         if (dateClicked.getMonth() === date.getMonth()) {
@@ -16,7 +15,6 @@ export function DatePicker({ dateClicked, onDayClick }) {
             dateClicked.getMonth() === date.getMonth()) {
             tileClassName += "clicked "
         }
-
         return tileClassName
     }
 

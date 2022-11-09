@@ -43,7 +43,6 @@
                     justify-content: center;
 
                     .attachment-badge {
-
                         background-image: url('../../img/attac-icon.svg');
                         background-position: center;
                         background-repeat: no-repeat;
@@ -70,7 +69,6 @@
                 }
 
                 .due-date-container {
-                    // background-color: #f2d600;
                     border-radius: 3px;
                     color: #5e6c84;
                     margin-right: 4px;
@@ -90,7 +88,6 @@
                     }
 
                     .due-date-icon {
-                        // background-image: url('../../img/due-date-icon.svg');
                         background-image: url('../../img/due-date-icon-normal.svg');
                         background-position: center;
                         background-repeat: no-repeat;
@@ -102,7 +99,6 @@
 
                     &:hover .due-date-icon {
                         background-image: url('../../img/check-box-icon-normal.svg');
-                        // background-image: url('../../img/check-box-icon.svg');
                     }
                 }
 
@@ -120,45 +116,25 @@
 
                 .due-soon {
                     background-color: #F2D600;
-                    // color: #fff;
 
                     &:hover {
                         background-color: #d9b51c;
                     }
-
-                    // .due-date-icon {
-                    //     background-image: url('../../img/due-date-icon.svg');
-                    // }
-
-                    // &:hover .due-date-icon {
-                    //     background-image: url('../../img/checklist-is-done-icon.svg');
-                    // }
                 }
 
                 .over-due {
                     background-color: #EC9488;
-                    // color: #fff;
 
                     &:hover {
                         background-color: #eb5a46;
                     }
-
-                    //     .due-date-icon {
-                    //         background-image: url('../../img/due-date-icon.svg');
-                    //     }
-
-                    //     &:hover .due-date-icon {
-                    //         background-image: url('../../img/checklist-is-done-icon.svg');
-                    //     }
                 }
 
                 .done {
                     background-color: #61bd4f;
-                    // color: #fff;
 
                     .due-date-icon {
                         background-image: url('../../img/due-date-icon.svg');
-
                     }
 
                     &:hover {
@@ -188,7 +164,6 @@
 
                     .checklist-icon {
                         background-image: url('../../img/checklist-is-done-icon.svg');
-
                     }
                 }
 
@@ -198,8 +173,6 @@
                     display: flex;
                     align-items: flex-end;
                     justify-content: center;
-
-
 
                     .checklist-todos {
                         font-size: 12px;
@@ -219,14 +192,12 @@
                 }
             }
 
-
             span {
                 min-height: 22px;
                 margin: 0;
                 overflow: hidden;
                 word-wrap: break-word;
                 display: block;
-
 
                 &.title-img-cover {
                     display: flex;
@@ -239,7 +210,6 @@
                     margin: 0;
                 }
             }
-
         }
 
         .adjust-height {
@@ -276,7 +246,6 @@
                 background-color: rgba(199, 199, 199, 0.514);
             }
         }
-
     }
 
     &:hover {
@@ -295,11 +264,5 @@
         opacity: 0.6;
         pointer-events: auto;
         z-index: 10;
-    }
-
-    iframe{
-        // border: 2px solid red;
-        width: 250px;
-      
     }
 }

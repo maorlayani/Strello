@@ -5,7 +5,6 @@ export const TaskDetailsMembersModal = ({ memberIds, onSetMember, toggleModal })
 
     return (
         <section className="members-modal">
-
             <img src={closeIcon} onClick={toggleModal} alt="close" className="close-btn" />
             <div className="members-modal-title">Members</div>
             <span className="sub-title">Board members</span>

@@ -1,19 +1,18 @@
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const SearchResult = ({ results, setResults, setIsSearching }) => {
 
-
-    const _getBoardThumbnail=(board)=>{
+    const _getBoardThumbnail = (board) => {
         if (board.style?.imgUrl) return <img src={board.style.imgUrl} className="thumbnail"></img>
-        if (board.style?.bgColor) return <div style={{backgroundColor:board.style.bgColor}} className="color-thumb"></div>
-     else return <div style={{backgroundColor:"grey"}} className="color-thumb"></div>
+        if (board.style?.bgColor) return <div style={{ backgroundColor: board.style.bgColor }} className="color-thumb"></div>
+        else return <div style={{ backgroundColor: "grey" }} className="color-thumb"></div>
     }
 
-    const onLinkClicked=()=>{
+    const onLinkClicked = () => {
         setResults(null)
         setIsSearching(false)
     }
-    
+
     return <section className="search-result">
         <header>BOARDS</header>
         <ul>
@@ -30,10 +29,3 @@ export const SearchResult = ({ results, setResults, setIsSearching }) => {
         </ul>
     </section>
 }
-
-
-// return <Link to={`board/${board._id}`} className='boards-link' key={board._id}><li>
-//                     {board.title}
-//                 </li>
-//                 </Link>
-//             })}

@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { BsCheck2Square } from "react-icons/bs"
-import { useDispatch } from "react-redux"
 import { ProgressBar } from './progress-bar'
 import { TodoList } from './todo-list'
 import { utilService } from "../services/util.service"
@@ -11,8 +10,6 @@ export const ChecklistPreview = ({ task, checklist, onUpdateTask, checklistIdx }
     const [isAddingTodo, setIsAddingTodo] = useState(false)
     const [newTodoTitle, setNewTodoTitle] = useState('')
     const [checklistInfo, setChecklistInfo] = useState(checklist)
-
-    const dispatch = useDispatch()
 
     const onDeleteChecklist = (checklistId) => {
         task.checklists = task.checklists.filter(checklist =>

@@ -1,7 +1,7 @@
 import closeIcon from '../assets/img/icon-close-task-details.svg'
 import { utilService } from '../services/util.service'
 
-export const ChecklistModal = ({ toggleModal, pos, task, onUpdateTask }) => {
+export const ChecklistModal = ({ toggleModal, task, onUpdateTask }) => {
 
     const onAddChecklist = (ev) => {
         ev.preventDefault()
@@ -16,11 +16,9 @@ export const ChecklistModal = ({ toggleModal, pos, task, onUpdateTask }) => {
         if (task?.checklists) task.checklists.push(newChecklist)
         else task.checklists = [newChecklist]
         onUpdateTask(task)
-        // dispat(boardId, groupId, task, title))
     }
 
     return (
-        // <section className="checklist-modal" style={{ ...pos }}>
         <section className="checklist-modal" >
             <section className="header">
                 Add checklist

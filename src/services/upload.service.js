@@ -1,5 +1,3 @@
-import { utilService } from '../services/util.service.js'
-
 export const uploadService = {
   uploadImg
 }
@@ -20,11 +18,9 @@ function uploadImg(ev) {
     .then(res => res.json())
     .then(res => {
       return ({
-        // id: utilService.makeId(),
         urlName: res.original_filename,
         url: res.secure_url,
         fileFormat: res.format,
-        // createdAt: new Date()
       })
     })
     .catch(err => console.error(err))

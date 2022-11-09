@@ -26,7 +26,6 @@ export const TaskList = ({ tasks, groupId, group, isAddTask, handleChangeTask, t
                                 key={task.id}
                                 task={task}
                                 groupId={groupId}
-                                // taskRef={taskListRef}
                                 index={index}
                                 groupTitle={group.title}
                                 openQuickEdit={openQuickEdit} />

@@ -56,7 +56,6 @@ export const Login = () => {
                 <Link to='/signup'><span className="login-link">Sign up for account</span></Link>
                 <Link to='/'><span className="login-link">Back Home</span></Link>
             </div >
-
         </section >
     )
 }

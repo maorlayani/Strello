@@ -4,7 +4,6 @@ const initialState = {
     board: null,
     task: null,
     resizeLabel: false,
-    vidJson: '',
     boardThemeColor: '',
     isQuickEditOpen: false,
     taskDetailsModal: {
@@ -29,9 +28,6 @@ export function boardReducer(state = initialState, action) {
             break
         case 'SET_TASK':
             newState = { ...state, task: action.task }
-            break
-        case 'SET_VID_URL':
-            newState = { ...state, vidJson: (action.vidJson) }
             break
         case 'REMOVE_BOARD':
             boards = state.boards.filter(board => board._id !== action.boardId)
@@ -71,8 +67,5 @@ export function boardReducer(state = initialState, action) {
     }
     // For debug:
     window.boardState = newState
-    // console.log('Prev State:', state)
-    // console.log('Action:', action)
-    // console.log('New State:', newState)
     return newState
 }

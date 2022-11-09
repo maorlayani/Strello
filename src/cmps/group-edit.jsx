@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
-import { boardService } from '../services/board.service'
-import { useFormRegister } from '../hooks/useFormRegister'
 import { utilService } from '../services/util.service'
 import { addGroup } from '../store/board.actions'
 import { useDispatch } from 'react-redux'
@@ -34,13 +31,11 @@ export const GroupEdit = ({ boardId, onAddingGroup }) => {
         }
         disapcth(addGroup(boardId, group, activity))
         onAddingGroup()
-
     }
 
     return (
         <section className="group-edit">
             <form onSubmit={onSaveGroup}>
-                {/* <label htmlFor="title">title</label> */}
                 <input
                     ref={inputRef}
                     value={group.title}

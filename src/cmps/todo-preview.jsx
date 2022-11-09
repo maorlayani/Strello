@@ -45,8 +45,7 @@ export const TodoPreview = ({ todo, onToggleTodo, onSaveTodo }) => {
                             onMouseDown={(ev) => {
                                 onSaveTodo(todo.id, currTodo)
                                 onToggleTextArea(ev, false)
-                            }
-                            }>
+                            }}>
                             Save
                         </button>
                         <button className="checklist-btn">Close</button>

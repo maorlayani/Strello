@@ -1,10 +1,10 @@
 import { GrAttachment } from "react-icons/gr"
 import moment from 'moment'
 
-export const TaskDetailsAttachments = ({ task, imgJson, onSetAttachment, currentBoardId, currentGroupId }) => {
+export const TaskDetailsAttachments = ({ task, onSetAttachment, currentBoardId, currentGroupId }) => {
 
-    const getTime = (imgJson) => {
-        return moment(imgJson.addedAt).fromNow()
+    const getTime = (attachment) => {
+        return moment(attachment.addedAt).fromNow()
     }
 
     return (

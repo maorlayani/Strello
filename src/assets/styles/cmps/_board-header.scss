@@ -6,7 +6,6 @@
         margin: 0;
     }
 
-    // color: #172b4d;
     color: #fff;
     font-family: secular;
     height: 42px;
@@ -14,10 +13,6 @@
     font-size: 18px;
     display: flex;
     align-items: center;
-    // margin-left: 107px;
-    // margin-bottom: 2px;
-    // position: relative;
-    // top: 44px;
 
     .star-container {
         padding: 3px;
@@ -26,7 +21,6 @@
         background-color: rgba(255, 255, 255, 0.256);
         border-radius: 3px;
         margin-inline-start: 17px;
-        // font-size: 16px;
         transition: all .5s;
         height: 32px;
         width: 32px;
@@ -37,12 +31,10 @@
         &:hover {
             background-color: #00000029;
             color: #f2d600;
-
         }
 
         &:hover+.star {
             transform: scale(1.1);
-
         }
 
         .star {
@@ -68,10 +60,7 @@
     .flex-end-side {
         align-items: center;
         display: flex;
-        // border: 2px solid red;
-        // align-self: flex-end;
         justify-self: flex-end;
-        // padding-bottom: 2px;
 
         .btn-add {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -93,11 +82,9 @@
             align-items: center;
             justify-content: center;
             background-color: #00000014;
-            // padding-left: 32px;
             height: 32px;
             line-height: 32px;
             margin: 0 4px 4px 0;
-            // padding: 6px;
             border-radius: 3px;
             margin-top: 4px;
             margin-left: 10px;
@@ -113,7 +100,6 @@
                 padding-right: 12px;
                 margin-top: -2px;
                 color: #172b4d;
-
             }
 
             .menu-img-container {
@@ -127,15 +113,10 @@
             .dots {
                 width: 16px;
                 height: 16px;
-
             }
         }
-
-
     }
 }
-
-
 
 /////////MQ///////
 

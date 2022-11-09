@@ -3,7 +3,7 @@ import { GroupEdit } from './group-edit'
 import { GroupPreview } from './group-preview'
 import { useDispatch, useSelector } from "react-redux"
 import { updateBoard } from '../store/board.actions'
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import { Loader } from './loader'
 
@@ -12,10 +12,6 @@ export const GroupList = ({ openQuickEdit }) => {
     const [isAddingGroup, setIsAddingGroup] = useState(false)
     const groupListRef = useRef()
     const dispatch = useDispatch()
-
-    // useEffect(() => {
-    //     // }, [board])
-    // }, [])
 
     const onAddingGroup = () => {
         setIsAddingGroup(!isAddingGroup)
@@ -47,7 +43,6 @@ export const GroupList = ({ openQuickEdit }) => {
                                     key={group.id}
                                     group={group}
                                     addTask={addTask}
-                                    // taskRef={taskListRef}
                                     index={index}
                                     openQuickEdit={openQuickEdit}
                                 />
@@ -62,7 +57,6 @@ export const GroupList = ({ openQuickEdit }) => {
                     </div>
                 )}
             </Droppable>
-
         </React.Fragment>
     )
 }

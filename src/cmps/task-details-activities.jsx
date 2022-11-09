@@ -6,8 +6,6 @@ import { ActivityList } from "./activity-list"
 import { updateBoard } from '../store/board.actions'
 import { userService } from "../services/user.service"
 
-
-
 export const DetailsActivities = ({ task, groupId, onUpdateTask }) => {
     const board = useSelector(state => state.boardModule.board)
     const [textAreaContent, setTextAreaContent] = useState('')
@@ -46,12 +44,12 @@ export const DetailsActivities = ({ task, groupId, onUpdateTask }) => {
                 }}>
             </textarea>
             {isTextAreaOpen && <section>
-                    <button className={`checklist-btn ${(textAreaContent) ? 'activate' : ''}`} onMouseDown={() => onSaveComment()} >
+                <button className={`checklist-btn ${(textAreaContent) ? 'activate' : ''}`} onMouseDown={() => onSaveComment()} >
                     Save
                 </button>
             </section>}
         </div>
-        {isActivityListShown && <ActivityList task={task}/>}
+        {isActivityListShown && <ActivityList task={task} />}
     </section>
 }
 

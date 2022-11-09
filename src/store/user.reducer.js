@@ -1,6 +1,5 @@
 import { userService } from '../services/user.service.js'
 
-
 var initialState = {
     user: userService.getLoggedinUser(),
     users: [],
@@ -30,5 +29,4 @@ export function userReducer(state = initialState, action) {
     // For debug:
     window.userState = newState
     return newState
-
 }

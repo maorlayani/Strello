@@ -10,7 +10,7 @@
     z-index: 60;
 
     .black-screen {
-        background-color: rgba(0, 0, 0, 0.699);
+        background-color: #000000b2;
         cursor: pointer;
         transition: opacity .6s;
         z-index: 50;
@@ -31,9 +31,9 @@
         background-color: transparent;
         cursor: auto;
         padding: 15px 15px 0 15px;
-        color: rgb(44, 44, 75);
+        color: #2c2c4b;
         border: 3px solid whitesmoke;
-        background-color: rgba(0, 0, 0, 0.504);
+        background-color: #00000081;
 
         .dashboard-title {
             text-align: center;
@@ -47,12 +47,10 @@
             font-weight: 600;
             letter-spacing: 1px;
             background-color: white;
-            background-color: rgb(210, 230, 236);
+            background-color: #d2e6ec;
             padding-top: 10px;
             border-top-right-radius: 3px;
             border-top-left-radius: 3px;
-
-
 
             .star-marked {
                 display: inline;
@@ -60,13 +58,12 @@
                 margin: 0;
                 margin-top: 4px;
                 color: gold;
-
             }
         }
 
         .dashboard-subtitle {
-            background-color: white;
-            background-color: rgb(210, 230, 236);
+            background-color: #ffffff;
+            background-color: #d2e6ec;
             text-align: center;
             padding: 0px;
             margin: 0;
@@ -89,15 +86,14 @@
             margin-top: 10px;
 
             &>* {
-                border: 1px solid rgb(198, 198, 210);
+                border: 1px solid #c6c6d2;
                 border-radius: 3px;
                 padding: 10px;
-                background-color: rgb(210, 230, 236);
+                background-color: #d2e6ec;
                 width: 200px;
             }
 
             .board-members {
-
                 max-width: 200px;
                 padding: 10px;
                 text-align: center;
@@ -110,15 +106,10 @@
             }
 
             .task-stat {
-
                 margin-left: 15px;
                 margin-right: 15px;
                 display: flex;
                 justify-content: center;
-
-
-
-
 
                 .left {
                     width: 100%;
@@ -127,11 +118,7 @@
                         display: flex;
                         justify-content: center;
                     }
-
-
                 }
-
-
             }
 
             .counter {
@@ -151,7 +138,7 @@
             justify-content: space-between;
 
             .chart-container {
-        
+
                 padding: 15px;
                 background-color: rgb(250, 228, 231);
                 border-radius: 3px;

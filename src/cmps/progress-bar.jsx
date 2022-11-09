@@ -1,11 +1,4 @@
-import { useState } from "react"
-import { useEffect } from "react"
-
 export const ProgressBar = ({ checklist }) => {
-    // const [currProgress, setCurrProgress] = useState(null)
-    // useEffect(() => {
-    //     setCurrProgress(getProgressData())
-    // }, [])
 
     const getProgressData = () => {
         const { todos } = checklist
@@ -13,7 +6,7 @@ export const ProgressBar = ({ checklist }) => {
         const progress = (!numOfDoneTodos) ? 0 : numOfDoneTodos / todos.length * 100
         return Math.floor(progress)
     }
-    // console.log('progress', currProgress)
+
     return (
         <section className="progress-bar">
             <span className="checklist-progress-percentage">

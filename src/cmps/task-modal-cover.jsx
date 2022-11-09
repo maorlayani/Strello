@@ -75,7 +75,6 @@ export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
                     )}
                 </ul>
             </section>
-
         </section>
     )
 }

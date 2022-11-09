@@ -127,19 +127,16 @@
 
     .login {
         display: none;
-        // height: 100%;
     }
 
     .signup {
         display: none;
-        // height: 100%;
     }
 }
 
 @media (min-width: $narrow-breakpoint) {
     .app-header {
         .search {
-            // justify-self: flex-end;
             border: 1px solid rgba(82, 82, 83, 0.332);
             background-color: $header-bg-color;
             border-radius: 0.3em;
@@ -177,7 +174,7 @@
             background-color: whitesmoke;
             width: 500px;
             justify-self: flex-end;
-            border: 1px solid rgba(82, 82, 83, 0.332);
+            border: 1px solid #52525355;
             border-radius: 0.3em;
             padding: 0 8px;
             display: flex;
@@ -210,7 +207,6 @@
 }
 
 ////////////////////////////// APPHEADER IN HOMEPAGE ///////////////////////////
-
 
 .app-header.home {
     background-color: white !important;
@@ -300,11 +296,3 @@
 .workspace {
     position: unset;
 }
-
-/////////////////MQ////////////
-
-// @media (max-width: 400px) {
-//     .app-header {
-//         // display: none;
-//     }
-// }

@@ -15,13 +15,9 @@ export const TaskPreview = ({ task, groupId, index, openQuickEdit }) => {
     const navigate = useNavigate()
     const taskRef = useRef()
     const [isFullCover, setIsFullCover] = useState(false)
-    // const [windowWidth, setWidth] = useState(window.innerWidth)
-    // const [windowHeight, setHeight] = useState(window.innerHeight)
 
     useEffect(() => {
         if (task.style) setIsFullCover(task.style.bg.fullCover)
-        // setWidth(window.innerWidth)
-        // setHeight(window.innerHeight)
     }, [])
 
     const setTaskCoverStyle = () => {
@@ -104,8 +100,7 @@ export const TaskPreview = ({ task, groupId, index, openQuickEdit }) => {
                     </div>
                     {!isFullCover && task?.style &&
                         <div className="task-cover" style={setTaskCoverStyle()}></div>}
-                    {task?.key === "video" && <iframe src={task.title}></iframe>}
-                    {!isFullCover && task?.key !== "video" &&
+                    {!isFullCover &&
                         <div className="task-preview-content">
                             {task?.labelIds && <TaskLabel
                                 labelIds={task.labelIds}

@@ -37,7 +37,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
                 border-radius: 50%;
                 height: 30px;
                 width: 30px;
@@ -282,7 +281,7 @@
 }
 
 .black-screen {
-    background-color: rgb(0 0 0 / 60%);
+    background-color: #00000099;
     cursor: pointer;
     transition: opacity .6s;
     z-index: 50;

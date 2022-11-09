@@ -1,5 +1,4 @@
 import { boardService } from "../services/board.service.js"
-import { uploadService } from "../services/upload.service.js"
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -107,7 +106,6 @@ export function updateBoard(board, activity) {
     }
 }
 
-
 /*------------------------------------------------------------------------------*/
 export function updateTask(boardId, groupId, taskForUpdate, activity) {
     return async (dispatch) => {
@@ -185,21 +183,6 @@ export function setTaskDetailsModal(isModalOpen, type) {
     }
 }
 
-export function getVidUrl(ev) {
-    return async (dispatch) => {
-        try {
-            const vidEv = await uploadService.uploadImg(ev)
-            if (!vidEv.fileFormat) vidEv.url = 'https://res.cloudinary.com/dln4kbx1f/image/upload/v1664031478/a7aqgf6kxvow44jn3qzf.png'
-            const { vidJson } = dispatch({
-                type: 'SET_VID_URL',
-                vidJson: vidEv
-            })
-        } catch (err) {
-            console.log('Cannot load video url', err)
-        }
-    }
-}
-
 export function resizeLabel(resizeLabel) {
     return async (dispatch) => {
         try {
@@ -243,8 +226,6 @@ export function setBoardBackgroundColor(color) {
 }
 
 /*------------------------------------------------------------------------------*/
-
-
 export function handleDrag(
     board,
     droppableIdStart,
@@ -255,12 +236,6 @@ export function handleDrag(
 ) {
 
     return async dispatch => {
-
-        // if (type === 'member') {
-        //     console.log('a member has been dragged')
-        //     return
-        // }
-
         if (type === 'group') {
             // remove group from origin
             const group = board.groups.splice(droppableIndexStart, 1)
@@ -288,7 +263,6 @@ export function handleDrag(
             }
             // }
         }
-        // socketService.emit(SOCKET_EMIT_DND, (board))
         try {
             const boardToUpdate = await boardService.save(board)
             dispatch({

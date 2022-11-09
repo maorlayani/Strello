@@ -1,38 +1,29 @@
 .todo-preview {
-    // background-color: #091e420a;
-    // border: 2px solid red;
     border-radius: 3px;
     display: flex;
     align-items: center;
-    // padding: 5px 0;
-
 
     &:hover {
         background-color: #091e4214;
     }
 
-
-    .txt-area-normal.checked{
-        // border: 2px solid green;
+    .txt-area-normal.checked {
         text-decoration: line-through;
     }
 
-    .checkbox{
+    .checkbox {
         color: #0079bf;
         font-size: 20px;
     }
 
-    .txt-and-btns{
-        // border: 2px solid red;
+    .txt-and-btns {
         width: 100%;
     }
 
-    textarea{
+    textarea {
         padding: 0;
         background-color: transparent;
-        // border: 1px solid green;
         margin-bottom: 0;
-        // height: 20px;
         margin-left: 5px;
         padding-top: 5px;
         padding-left: 5px;
@@ -42,24 +33,18 @@
             background-color: transparent;
             color: #091e42;
         }
-      
     }
 
-    .btn-add{
+    .btn-add {
         margin-left: 6px;
     }
 
-    .todo-edit-btns{
+    .todo-edit-btns {
         margin-top: 5px;
     }
-   
 }
 
-
-
-
 .txt-area-normal {
-
     overflow: hidden;
     overflow-wrap: break-word;
     border: none;
@@ -76,7 +61,6 @@
     padding: 8px 12px;
     width: 100%;
     margin-bottom: 5px;
-   
 
     ::placeholder {
         color: inherit;
@@ -93,5 +77,4 @@
         background-color: #091e4214;
         color: #091e42;
     }
-
 }

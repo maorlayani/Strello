@@ -1,11 +1,8 @@
-
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { getActionAddBoard, getActionUpdateBoard } from '../store/board.actions.js'
 import { store } from '../store/store'
 import { httpService } from './http.service'
-
-// const STORAGE_KEY = 'board'
 
 const boardChannel = new BroadcastChannel('boardChannel')
 
@@ -59,7 +56,6 @@ async function getById(boardId) {
 async function remove(boardId) {
     try {
         return await httpService.delete(BASE_URL + boardId)
-        // boardChannel.postMessage(getActionRemoveBoard(boardId))
     }
     catch (err) {
         console.log('Cannot complete the function remove:', err)

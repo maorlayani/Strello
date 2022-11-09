@@ -4,13 +4,12 @@
 @import "setup/mixins";
 @import "setup/typography";
 
+
 // Basics
 // @import "basics/helpers";
 @import "basics/layout";
 @import "basics/base";
-@import "basics/links";
 @import "basics/forms";
-
 
 // Views
 @import "views/app";
@@ -22,7 +21,6 @@
 
 // Components
 @import "cmps/app-header";
-@import "cmps/app-footer";
 @import "cmps/board";
 @import "cmps/group-list";
 @import "cmps/group-preview";
@@ -43,8 +41,6 @@
 @import "cmps/board-edit";
 @import "cmps/side-menu";
 @import "cmps/boards-list";
-@import "cmps/task-details-label";
-@import "cmps/task-details-members";
 @import "cmps/checklist-modal";
 @import "cmps/task-checklist";
 @import "cmps/todo-preview";

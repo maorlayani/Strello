@@ -20,5 +20,4 @@ export const Hero = () => {
             </section>
         </section >
     )
-
 }

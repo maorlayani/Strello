@@ -55,8 +55,8 @@ export const TaskDetailsAttachment = ({ task, onUpdateTask, toggleModal }) => {
         }
     }
 
-    const getTime = (imgJson) => {
-        return moment(imgJson.createdAt).fromNow()
+    const getTime = (attachment) => {
+        return moment(attachment.createdAt).fromNow()
     }
 
     const getImgToDisplay = (attachment) => {

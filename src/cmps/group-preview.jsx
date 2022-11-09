@@ -39,7 +39,6 @@ export const GroupPreview = ({ group, addTask, index, openQuickEdit }) => {
     }
 
     const toggaleEditTitle = () => {
-        // setGroup(group)
         setIsEditTitle(!isEditTitle)
     }
 

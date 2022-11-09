@@ -1,9 +1,7 @@
 .activity-menu {
     position: absolute;
-    // height: 700px;
     min-width: 305px;
     max-width: 305px;
-    // left: 0;
     bottom: 0;
     right: 0;
     top: 44px;
@@ -12,9 +10,6 @@
     box-shadow: 0 12px 24px -6px #091e4240, 0 0 0 1px #091e4214;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #f4f5f7;
-    // display: flex;
-
-
 
     .activity-menu-container {
         display: flex;
@@ -22,7 +17,6 @@
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: flex-start;
-        // overflow: hidden;
         font-size: 14px;
         font-weight: 400;
         line-height: 20px;
@@ -30,14 +24,10 @@
         height: 100%;
 
         .menu-title-container {
-            // align-items: center;
-            // display: flex;
-            // flex-direction: column;
             height: 48px;
             padding: 0 6px 0 12px;
             width: 100%;
             justify-content: center;
-            // align-items: center;
 
             .menu-title-content {
                 align-items: center;
@@ -50,7 +40,6 @@
                     flex: 1;
                     line-height: 20px;
                     margin: 14px 32px;
-                    // overflow: hidden;
                     font-size: 16px;
                     text-align: center;
                     font-weight: 600;
@@ -64,8 +53,6 @@
                         cursor: pointer;
                         color: #091e42;
                     }
-
-
                 }
 
                 .btn-back {
@@ -112,14 +99,12 @@
             border-radius: 15px;
         }
 
-
         .board-background-container {
             display: flex;
             flex-direction: column;
             min-height: 32px;
             max-height: 250px;
             margin-bottom: 14px;
-            // margin-left: 10px;
             justify-content: center;
 
             .background-title-container {
@@ -127,7 +112,6 @@
                 align-items: center;
                 border-radius: 3px;
                 height: 32px;
-
                 padding-left: 11px;
 
                 &:hover {
@@ -149,8 +133,6 @@
                     margin-right: 12px;
                     background-position: center;
                     background-repeat: no-repeat;
-
-                    // margin-left: 5px;
                 }
             }
 
@@ -185,7 +167,6 @@
                     .board-img-title {
                         display: flex;
                         justify-content: center;
-                        // margin-top: 8px;
                     }
                 }
 
@@ -202,13 +183,11 @@
                     .board-color-title {
                         display: flex;
                         justify-content: center;
-                        // margin-top: 8px;
                     }
                 }
             }
         }
     }
-
 
     .archive-container {
         display: flex;
@@ -274,7 +253,6 @@
                 .activity-time {
                     font-size: 12px;
                     color: #5e6c84;
-
                 }
             }
         }

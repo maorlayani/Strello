@@ -24,7 +24,6 @@ export const TaskModalAttachment = ({ onAddAttachment, toggleModal }) => {
     }
 
     return (
-        // <section className="task-modal-attachment" style={{ ...attachModalPos.style }}>
         <section className="task-modal-attachment">
             <img src={closeIcon} onClick={toggleModal} className="btn-close" />
             <div className="modal-title">Attach from...</div>

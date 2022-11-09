@@ -25,7 +25,7 @@ export const ActivityList = ({ task }) => {
     }
 
     const handleChange = ({ target }) => {
-        const { name, value } = target
+        const { value } = target
         setCommentTxt(value)
     }
 
@@ -45,7 +45,6 @@ export const ActivityList = ({ task }) => {
         dispatch(updateBoard(board))
     }
 
-    //BUILT TO REMOVE THE 'TO/FROM' AT THE END OF EVERY ACTIVITY TEXT
     function _removeLastWord(str) {
         const lastIndexOfSpace = str.lastIndexOf(' ')
         if (lastIndexOfSpace === -1) {

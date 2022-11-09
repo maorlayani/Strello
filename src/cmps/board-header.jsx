@@ -1,6 +1,5 @@
 import { HiOutlineStar, HiStar } from 'react-icons/hi'
 import { TaskMember } from './task-member'
-import memberSvg from '../assets/img/add-mem.svg'
 import { useDispatch } from 'react-redux'
 import { updateBoard } from '../store/board.actions'
 import dots from '../assets/img/menu-icon-new.svg'
@@ -53,7 +52,6 @@ export const BoardHeader = ({ board, toggleDashboard }) => {
                 <section className="members">
                     {board.members?.length && <TaskMember memberIds={getMembersIds()} />}
                 </section>
-                {/* <button className="btn-add"><img className="mem-svg" src={memberSvg} /> Share</button> */}
                 <button className="btn-add" onClick={toggleDashboard}> Dashboard</button>
 
                 {!isActivityMenuOpen && <section className="activitis-menu-container" onClick={toggleBoardMenu}>

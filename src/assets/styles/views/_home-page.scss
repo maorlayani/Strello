@@ -1,5 +1,5 @@
 .home-page {
-    background: linear-gradient(rgb(220, 215, 225), $home-bg-color);
+    background: linear-gradient(#dcd7e1, $home-bg-color);
     height: 100%;
     overflow-y: auto;
 
@@ -18,11 +18,4 @@
     &::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
-
-    // .line-through {
-    //     max-width: 70vw;
-    //     margin: auto;
-    //     margin-top: 60px;
-    //     opacity: 0.4;
-    // }
 }

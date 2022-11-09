@@ -1,13 +1,9 @@
 .details-activities {
-
-    // border: 2px solid red;
     color: inherit;
 
     .title-containerr {
-        // border: 1px solid green;
         display: flex;
         align-items: center;
-
 
         .activity-icon {
             font-size: 19px;
@@ -31,7 +27,6 @@
             padding: 10px 12px 0 12px;
             border: 1px solid rgba(128, 128, 128, 0.278);
 
-            // height: 30px;
             &:focus {
                 box-shadow: inset 0 0 0 2px rgba(128, 128, 128, 0.278)
             }
@@ -48,7 +43,6 @@
         line-height: 20px;
         height: 32px;
         text-align: center;
-        // margin: 4px 4px 0 0;
         padding: 0 10px;
 
         &:hover {
@@ -88,26 +82,18 @@
                 color: #5e6c84;
 
             }
-
-
         }
 
         .comment-header {
-            // border: 2px solid green;
             display: flex;
-            // align-items: flex-end;
 
             .activity-time {
-                // border: 1px solid purple;
                 margin-left: 7px;
-                // align-self: flex-end;
                 padding-top: 2px;
             }
         }
 
         .txt-area-normal {
-            // border: 2px solid red;
-            // width: unset;
             flex-grow: 1;
             margin-bottom: 0;
             padding: 5px 10px;
@@ -124,7 +110,6 @@
 
         .comment-edit-btns {
 
-            // font-size: 12px;
             button {
                 font-size: 12px;
                 text-decoration: underline;
@@ -141,14 +126,11 @@
                 margin-left: 5px;
             }
         }
-
     }
-
 }
 
 
 ///////// MQ ////////// 
-
 
 @media (max-width: 400px) {
     .details-activities {
@@ -156,6 +138,4 @@
             margin-left: 0;
         }
     }
-
-
 }

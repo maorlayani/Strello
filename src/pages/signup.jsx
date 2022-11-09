@@ -17,9 +17,7 @@ export const Signup = () => {
 
     const onUserSignup = (ev) => {
         ev.stopPropagation()
-        // console.log('submit form')
         if (!user.username || !user.password || !user.fullname) return
-        // console.log('user', user)
         dispatch(onSignup(user))
         navigate('/board')
     }

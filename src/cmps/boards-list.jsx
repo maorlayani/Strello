@@ -32,7 +32,6 @@ export const BoardsList = () => {
     }
 
     if (!boards || !boards.length) return
-    // console.log('render BOARD LIST')
     return (
         <ul className="boards-list">
             {boards.map(board => {
