@@ -2,7 +2,7 @@ import closeIcon from '../assets/img/icon-close-task-details.svg'
 import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
 
-export const TaskModalAttachment = ({ toggleAttachmentModal, attachModalPos, onAddAttachment }) => {
+export const TaskModalAttachment = ({ onAddAttachment, toggleModal }) => {
     const [attachUrl, setAttachUrl] = useState(null)
     const [attachName, setAttachName] = useState(null)
 
@@ -24,8 +24,9 @@ export const TaskModalAttachment = ({ toggleAttachmentModal, attachModalPos, onA
     }
 
     return (
-        <section className="task-modal-attachment" style={{ ...attachModalPos.style }}>
-            <img src={closeIcon} onClick={toggleAttachmentModal} className="btn-close" />
+        // <section className="task-modal-attachment" style={{ ...attachModalPos.style }}>
+        <section className="task-modal-attachment">
+            <img src={closeIcon} onClick={toggleModal} className="btn-close" />
             <div className="modal-title">Attach from...</div>
             <button className="btn-upload">Computer
                 <input type="file" onChange={onUploadAttacment} />

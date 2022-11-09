@@ -1,10 +1,9 @@
 
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/board.actions.js'
+import { getActionAddBoard, getActionUpdateBoard } from '../store/board.actions.js'
 import { store } from '../store/store'
 import { httpService } from './http.service'
-import { uploadService } from './upload.service.js'
 
 // const STORAGE_KEY = 'board'
 
@@ -25,8 +24,6 @@ export const boardService = {
     getTaskById,
     removeGroupFromBoard,
     getBackground,
-    addChecklist,
-    addTodo,
     addGroupToBoard,
     getTaskBackground,
     getLabelsColors,
@@ -62,8 +59,7 @@ async function getById(boardId) {
 async function remove(boardId) {
     try {
         return await httpService.delete(BASE_URL + boardId)
-        // await storageService.remove(STORAGE_KEY, boardId)
-        boardChannel.postMessage(getActionRemoveBoard(boardId))
+        // boardChannel.postMessage(getActionRemoveBoard(boardId))
     }
     catch (err) {
         console.log('Cannot complete the function remove:', err)
@@ -118,7 +114,6 @@ async function save(board, activity = null) {
                 imgUrl: "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
             }
         }
-        // savedBoard = await storageService.post(STORAGE_KEY, board)
         boardChannel.postMessage(getActionAddBoard(savedBoard))
     }
     return savedBoard
@@ -127,7 +122,6 @@ async function save(board, activity = null) {
 async function getGroupById(boardId, groupId) {
     try {
         const board = await httpService.get(BASE_URL + boardId)
-        // const board = await storageService.get(STORAGE_KEY, boardId)
         return board.groups.find(group => group.id === groupId)
     }
     catch (err) {
@@ -141,7 +135,6 @@ function _addActivityDetails(activity) {
     activity.createdAt = Date.now()
     if (!activity.byMember) {
         const user = userService.getLoggedinUser()
-        // if (activity.byMember) return activity
         if (user) {
             activity.byMember = {
                 _id: user._id,
@@ -176,50 +169,6 @@ async function getTaskById(boardId, groupId, taskId) {
     } catch (err) {
         console.log('Cannot complete the function getTaskById:', err)
         throw err
-    }
-}
-
-async function addTodo(boardId, groupId, taskId, checklistId, title) {
-    const todoToAdd = {
-        id: utilService.makeId(),
-        title,
-        isDone: false,
-    }
-    try {
-        const board = await getById(boardId)
-        const groupIdx = board.groups.findIndex(group => group.id === groupId)
-        const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
-        const checklistIdx = board.groups[groupIdx].tasks[taskIdx].checklists.findIndex(
-            checklist => checklist.id === checklistId
-        )
-        board.groups[groupIdx].tasks[taskIdx].checklists[checklistIdx].todos.push(todoToAdd)
-        save(board)
-        return board
-    } catch (err) {
-        console.log('Cannot add todo, Heres why:', err)
-    }
-}
-
-async function addChecklist(boardId, groupId, taskObj, title) {
-    const newChecklist = {
-        id: utilService.makeId(),
-        title,
-        todos: [],
-    }
-    try {
-        const board = await getById(boardId)
-        const groupIdx = board.groups.findIndex(group => group.id === groupId)
-        const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskObj.id)
-
-        if (board.groups[groupIdx].tasks[taskIdx]?.checklists) {
-            board.groups[groupIdx].tasks[taskIdx].checklists.push(newChecklist)
-        } else {
-            board.groups[groupIdx].tasks[taskIdx].checklists = [newChecklist]
-        }
-        save(board)
-        return board
-    } catch (err) {
-        console.log('Cannot add checklist', err)
     }
 }
 

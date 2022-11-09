@@ -1,33 +1,26 @@
 import React from "react"
-import { useState } from "react"
 import { TaskDetailsCoverModal } from "./task-modal-cover"
 import { FaWindowMaximize } from 'react-icons/fa'
+import { useSelector } from "react-redux"
 
-export const TaskDetailsCover = ({ task, onBack, onUpdateTask }) => {
+export const TaskDetailsCover = ({ task, onBack, onUpdateTask, toggleModal }) => {
 
-    const [showModal, setShowModal] = useState(false)
-    const onShowModal = () => {
-        setShowModal(!showModal)
-    }
+    const taskDetailsModal = useSelector(state => state.boardModule.taskDetailsModal)
 
-    if (!task?.style) return
-    // console.log('render TASk-DETAILS-COVER')
     return (
         <React.Fragment>
-            <section className="task-cover" style={{ backgroundColor: task.style.bg.color }} >
+            {task?.style && <section className="task-cover" style={{ backgroundColor: task.style.bg.color }} >
                 <button onClick={onBack} className="btn close"></button>
                 {task?.style?.bg?.imgUrl && <div className="img-cover" style={{ backgroundImage: `url(${task.style.bg.imgUrl})` }} ></div>}
-                <div onClick={onShowModal} className="btn cover">
+                <div onClick={() => toggleModal('cover')} className="btn cover">
                     <span className="bts-icon"><FaWindowMaximize /></span>
                     <span className="btn-cover-txt">Cover</span>
                 </div>
-            </section>
-            {showModal && <TaskDetailsCoverModal
+            </section>}
+            {taskDetailsModal.isOpen && taskDetailsModal.type === 'cover' && <TaskDetailsCoverModal
                 task={task}
-                onShowModal={onShowModal}
-                onUpdateTask={onUpdateTask}
-                setShowModal={setShowModal}
-            />}
+                toggleModal={toggleModal}
+                onUpdateTask={onUpdateTask} />}
         </React.Fragment>
     )
 }

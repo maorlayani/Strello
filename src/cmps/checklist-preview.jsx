@@ -3,10 +3,9 @@ import { BsCheck2Square } from "react-icons/bs"
 import { useDispatch } from "react-redux"
 import { ProgressBar } from './progress-bar'
 import { TodoList } from './todo-list'
-import { updateTask, addNewTodo } from '../store/board.actions'
+import { utilService } from "../services/util.service"
 
-
-export const ChecklistPreview = ({ board, group, task, checklist }) => {
+export const ChecklistPreview = ({ task, checklist, onUpdateTask, checklistIdx }) => {
 
     const [isEditingTitle, setEditingTitle] = useState(false)
     const [isAddingTodo, setIsAddingTodo] = useState(false)
@@ -19,10 +18,6 @@ export const ChecklistPreview = ({ board, group, task, checklist }) => {
         task.checklists = task.checklists.filter(checklist =>
             (checklist.id !== checklistId))
         onUpdateTask(task)
-    }
-
-    const onUpdateTask = (task) => {
-        dispatch(updateTask(board, group, task))
     }
 
     const onDefocusTxtArea = (ev) => {
@@ -73,93 +68,85 @@ export const ChecklistPreview = ({ board, group, task, checklist }) => {
 
     function onToggleTodo(ev, todoId) {
         ev.preventDefault()
-        const { id } = checklist
         const updatedChecklist = {
             ...checklist, todos: checklist.todos.map(todo =>
                 todo.id !== todoId ? todo : { ...todo, isDone: !todo.isDone })
         }
-        const taskToUpdate = {
-            ...task,
-            checklists: task.checklists.map(checklist => (checklist.id !== id ?
-                checklist : updatedChecklist))
-        }
+        task.checklists = task.checklists.map(currChecklist => {
+            return (currChecklist.id !== checklist.id ? currChecklist : updatedChecklist)
+        })
         setChecklistInfo({ ...checklistInfo })
-        onUpdateTask(taskToUpdate)
+        onUpdateTask(task)
+    }
+
+    const onAddTodo = (title) => {
+        if (!newTodoTitle) return
+        setIsAddingTodo(false)
+        const todoToAdd = {
+            id: utilService.makeId(),
+            title,
+            isDone: false,
+        }
+        task.checklists[checklistIdx].todos.push(todoToAdd)
+        onUpdateTask(task)
+        setNewTodoTitle('')
     }
 
     return (
         <section className="checklist-preview">
-
             {!isEditingTitle && <section>
                 <div className="checklist-header">
                     <BsCheck2Square className="checklist-icon" />
                     <section onClick={() => setEditingTitle(true)} className="checklist-title">
                         {checklist.title}
                     </section>
-
                     <button onClick={() => onDeleteChecklist(checklist.id)} className="checklist-btn">
                         Delete
                     </button>
-
                 </div>
             </section>}
 
             {isEditingTitle && <section>
                 <BsCheck2Square />
                 <textarea
-                className="txt-area-normal"
+                    className="txt-area-normal"
                     name="title"
                     defaultValue={checklist.title}
-                    onClick={(ev) => setEditingTitle(true)}
+                    onClick={() => setEditingTitle(true)}
                     onBlur={(ev) => { onDefocusTxtArea(ev) }}
                     onChange={(ev) => handleChange(ev)}>
                 </textarea>
-                <section>
-                    <div>
-                        <button onClick={(ev) => saveChecklist(ev, checklist.id)} className="btn-add">
-                            Save
-                        </button>
-                        <button className="checklist-btn">Close</button>
-                    </div>
-                </section>
-            </section>
-            }
-
-
+                <div>
+                    <button onClick={(ev) => saveChecklist(ev, checklist.id)} className="btn-add">
+                        Save
+                    </button>
+                    <button className="checklist-btn">Close</button>
+                </div>
+            </section>}
             <ProgressBar checklist={checklist} />
-
             <TodoList
                 onSaveTodo={onSaveTodo}
                 onRemoveTodo={onRemoveTodo}
                 onToggleTodo={onToggleTodo}
-                checklist={checklist}
-            />
+                checklist={checklist} />
 
-            {!isAddingTodo && <button className='checklist-btn add' onClick={() => { setIsAddingTodo(true) }}>
+            {!isAddingTodo && <button className="checklist-btn add" onClick={() => { setIsAddingTodo(true) }}>
                 Add an item
             </button>}
 
             {isAddingTodo && <section>
                 <textarea
-                className="txt-area-normal"
+                    className="txt-area-normal"
                     autoFocus
                     value={newTodoTitle}
                     onChange={(ev) => setNewTodoTitle(ev.target.value)}
-                    placeholder='Add an item'
-                ></textarea>
+                    placeholder="Add an item"></textarea>
                 <div>
-                    <button onClick={(ev) => {
-                        if (!newTodoTitle) return
-                        setIsAddingTodo(false)
-                        dispatch(addNewTodo(board, group, task.id, checklist.id, newTodoTitle))
-                        setNewTodoTitle('')
-                    }} className="btn-add">
+                    <button onClick={() => { onAddTodo(newTodoTitle) }} className="btn-add">
                         Add</button>
-
                     <button className="checklist-btn" onClick={() => setIsAddingTodo(false)} >Cancel</button>
                 </div>
             </section>}
-
         </section>
     )
 }

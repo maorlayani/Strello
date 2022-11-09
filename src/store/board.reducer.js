@@ -6,7 +6,11 @@ const initialState = {
     resizeLabel: false,
     vidJson: '',
     boardThemeColor: '',
-    isQuickEditOpen: false
+    isQuickEditOpen: false,
+    taskDetailsModal: {
+        isOpen: false,
+        type: null
+    }
 }
 
 export function boardReducer(state = initialState, action) {
@@ -58,6 +62,10 @@ export function boardReducer(state = initialState, action) {
         case 'TOGGALE_TASK_QUICK_EDIT':
             isQuickEditOpen = action.isQuickEditOpen
             newState = { ...state, isQuickEditOpen: isQuickEditOpen }
+            break
+
+        case 'SET_TASK_DETAILS_MODAL':
+            newState = { ...state, taskDetailsModal: action.taskDetailsModal }
             break
         default:
     }

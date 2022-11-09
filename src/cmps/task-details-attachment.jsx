@@ -5,14 +5,14 @@ import { TaskAttachmentEditName } from "./task-details-modals/task-attachment-ed
 import { utilService } from "../services/util.service"
 import attachmentImg from '../assets/img/attac-icon.svg'
 import moment from 'moment'
+import { useSelector } from "react-redux"
 
-export const TaskDetailsAttachment = ({ task, onUpdateTask }) => {
+export const TaskDetailsAttachment = ({ task, onUpdateTask, toggleModal }) => {
 
-    const [isAttachmentModal, setIsAttachmentModal] = useState(false)
-    const [attachModalPos, setAttachModalPos] = useState(null)
     const [editAttachNameModalPos, setEditAttachNameModalPos] = useState(null)
     const [attachmentToEdit, setAttachmentToEdit] = useState(null)
     const [isEditAttachName, setIsEditAttachName] = useState(false)
+    const taskDetailsModal = useSelector(state => state.boardModule.taskDetailsModal)
 
     const onAddAttachment = (ev, url, name, fileFormat = null) => {
         ev.preventDefault()
@@ -23,9 +23,8 @@ export const TaskDetailsAttachment = ({ task, onUpdateTask }) => {
             fileFormat,
             createdAt: new Date()
         }
-        if (!fileFormat)
-            if (!task.attachments) task.attachments = [(newAttachment)]
-            else task.attachments.unshift((newAttachment))
+        if (!task.attachments) task.attachments = [(newAttachment)]
+        else task.attachments.unshift((newAttachment))
         onUpdateTask(task)
     }
 
@@ -33,25 +32,6 @@ export const TaskDetailsAttachment = ({ task, onUpdateTask }) => {
         const idx = task.attachments.findIndex(attachment => attachment.id === attachmentId)
         task.attachments.splice(idx, 1)
         onUpdateTask(task)
-    }
-
-    const toggleAttachmentModal = (ev) => {
-        if (!isAttachmentModal) {
-            const grandParentEl = ev.currentTarget.parentNode.parentNode
-            const position = grandParentEl.getBoundingClientRect()
-            const style = {
-                top: grandParentEl.offsetTop - 100,
-                left: grandParentEl.offsetLeft + (730 - 304)
-            }
-            let pos = {
-                position: position,
-                style: style
-            }
-            setAttachModalPos(pos)
-            setIsAttachmentModal(!isAttachmentModal)
-        } else {
-            setIsAttachmentModal(false)
-        }
     }
 
     const toggleEditAttachNameModal = (ev, attachmentId) => {
@@ -87,7 +67,7 @@ export const TaskDetailsAttachment = ({ task, onUpdateTask }) => {
 
     return (
         <React.Fragment>
-            {task?.attachments?.length > 0 && <section className="task-details-attachment">
+            {task?.attachments && task?.attachments?.length > 0 && <section className="task-details-attachment">
                 <div className="attachment-title-container">
                     <span className="icon"><ImAttachment /></span>
                     <span className="section-title">Attachment</span>
@@ -119,14 +99,14 @@ export const TaskDetailsAttachment = ({ task, onUpdateTask }) => {
                         task={task}
                         onUpdateTask={onUpdateTask}
                         editAttachNameModalPos={editAttachNameModalPos} />}
-                    <button className="btn-add-attachment" onClick={toggleAttachmentModal}>Add an attachment
+                    <button className="btn-add-attachment" onClick={() => toggleModal('attachment')}>Add an attachment
                     </button>
                 </div>
             </section>}
-            {isAttachmentModal && <TaskModalAttachment
-                toggleAttachmentModal={toggleAttachmentModal}
-                attachModalPos={attachModalPos}
-                onAddAttachment={onAddAttachment} />}
+            {taskDetailsModal.isOpen && taskDetailsModal.type === 'attachment' &&
+                <TaskModalAttachment
+                    toggleModal={toggleModal}
+                    onAddAttachment={onAddAttachment} />}
         </React.Fragment>
     )
 }

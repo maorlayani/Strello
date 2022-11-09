@@ -12,7 +12,5 @@ export const TodoList = ({ checklist, onToggleTodo, onRemoveTodo, onSaveTodo }) 
                 onRemoveTodo={onRemoveTodo}
             />)
     }
-
-
     return <section className="todo-list">{displayTodos()}</section>
 }

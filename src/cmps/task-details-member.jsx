@@ -1,15 +1,13 @@
-import React, { useState } from "react"
+import React from "react"
 import { GrAdd } from "react-icons/gr"
 import { TaskDetailsMembersModal } from "./task-modal-member"
 import { TaskMember } from "./task-member"
+import { useSelector } from "react-redux"
 
 
-export const TaskDetailsMember = ({ task, onUpdateTask }) => {
-    const [isMemberModal, setIsMemberModal] = useState(null)
+export const TaskDetailsMember = ({ task, onUpdateTask, toggleModal }) => {
 
-    const toggleMembersModal = () => {
-        setIsMemberModal(!isMemberModal)
-    }
+    const taskDetailsModal = useSelector(state => state.boardModule.taskDetailsModal)
 
     const onSetMember = (isMemberOnTask, memberId, fullname) => {
         const activity = {
@@ -37,96 +35,18 @@ export const TaskDetailsMember = ({ task, onUpdateTask }) => {
 
     return (
         <React.Fragment>
-            {task?.memberIds.length > 0 && <section className="members">
+            {task?.memberIds && task?.memberIds.length > 0 && <section className="members">
                 <div className="tag-title">Members</div>
                 <div className="select-members">
                     <TaskMember memberIds={task.memberIds} />
-                    <div onClick={toggleMembersModal} className="plus-icon"><GrAdd /></div>
+                    <div onClick={() => toggleModal('members')} className="plus-icon"><GrAdd /></div>
                 </div>
             </section>}
-            {isMemberModal && <TaskDetailsMembersModal
-                memberIds={task.memberIds}
-                onSetMember={onSetMember}
-                toggleMembersModal={toggleMembersModal} />}
+            {taskDetailsModal.isOpen && taskDetailsModal.type === 'members' &&
+                <TaskDetailsMembersModal
+                    memberIds={task.memberIds}
+                    onSetMember={onSetMember}
+                    toggleModal={toggleModal} />}
         </React.Fragment>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // const board = useSelector(state => state.boardModule.board)
-
-    // const getMemberName = (memberId) => {
-    //     const member = board.members.find(member => member._id === memberId)
-
-    //     const fullname = member.fullname.split(' ')
-    //     let initials = fullname[0][0]
-    //     if (fullname.length >= 2) {
-    //         initials += fullname[1][0]
-    //     }
-
-    // if (member.imgUrl) {
-    //     return (
-    //         <section className="member-details">
-    //             <div className="member-img-container">
-    //                 <div style={{
-    //                     backgroundImage: `url(${member.imgUrl})`,
-    //                     backgroundSize: "cover",
-    //                     height: "28px",
-    //                     width: "28px",
-    //                     borderRadius: "50%"
-    //                 }}></div>
-    //             </div>
-    //             <div className="member-fullname">{member.fullname}</div>
-    //         </section>
-    //     )
-    // }
-
-    // return (
-    //     <section className="member-details">
-    //         <div className="member-initials-container">
-    //             <div className="member-initials">{initials}</div>
-    //             <div className="member-fullname">{member.fullname}</div>
-    //         </div>
-    //     </section>
-    // )
-    // }
-
-    // const checkTaskMember = (memberId) => {
-    //     if (!memberIds) return
-    //     const checkedMember = memberIds.find(member => member === memberId)
-    //     if (checkedMember) return false
-    //     return true
-    // }
-
-
-    // if (!board.members) return <div>No board members found</div>
-    // return (
-    //     <div className="board-member-container">
-    //         {board.members.map(member => {
-    //             return <div className="member"
-    //                 key={member._id}
-    //                 onClick={() => onSetMember(checkTaskMember(member._id), member._id, member.fullname)}>
-    //                 {getMemberName(member._id)}
-    //                 {checkTaskMember(member._id) && <span className="isMember">✔</span>}
-    //             </div>
-    //         })}
-    //     </div>
-    // )
-

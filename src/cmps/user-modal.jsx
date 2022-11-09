@@ -8,7 +8,7 @@ export const UserModal = ({ toggleUserModal, user, getUserImg }) => {
     const onUserLogout = () => {
         dispatch(onLogout())
     }
-    // console.log('user', user)
+
     return (
         <section className="user-modal">
             <div className="user-modal-title-container">

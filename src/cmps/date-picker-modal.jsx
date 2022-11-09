@@ -2,7 +2,7 @@ import { DatePicker } from "./date-picker"
 import closeIcon from '../assets/img/icon-close-task-details.svg'
 import { useState } from "react"
 
-export const DatePickerModal = ({ onToggleDatePicker, task, onUpdateTask }) => {
+export const DatePickerModal = ({ toggleModal, task, onUpdateTask }) => {
 
     const [dateClicked, setDate] = useState(new Date())
 
@@ -17,13 +17,13 @@ export const DatePickerModal = ({ onToggleDatePicker, task, onUpdateTask }) => {
             createdAt: Date.now()
         }
         onUpdateTask(task)
-        onToggleDatePicker()
+        toggleModal()
     }
 
     const onRemoveDueDate = () => {
         delete task.dueDate
         onUpdateTask(task)
-        onToggleDatePicker()
+        toggleModal()
     }
 
     return (
@@ -31,7 +31,7 @@ export const DatePickerModal = ({ onToggleDatePicker, task, onUpdateTask }) => {
             <div className="date-picker-title-container">
                 <div className="date-picker-title-content">
                     <h3 className="date-picker-title">Dates</h3>
-                    <img src={closeIcon} onClick={onToggleDatePicker} className="btn-close-date-picker" />
+                    <img src={closeIcon} onClick={toggleModal} className="btn-close-date-picker" />
                 </div>
                 <hr className="date-picker-hr" />
             </div>

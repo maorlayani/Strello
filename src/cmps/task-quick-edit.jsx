@@ -57,7 +57,6 @@ export const TaskQuickEdit = ({ task, pos, boardId, groupId }) => {
       ...task,
       title
     }
-    // taskToSave.title = title
     onUpdateTask(taskToSave)
     dispatch(toggleQuickEdit(false))
   }
@@ -129,7 +128,6 @@ export const TaskQuickEdit = ({ task, pos, boardId, groupId }) => {
               <section className="labels">
                 {task?.labelIds && <TaskLabel labelIds={task.labelIds} />}
               </section>
-              {/* <form onSubmit={onEditTaskTitle}> */}
               <div className="task-title-container">
                 <input type="text" value={title} onChange={handleChange} />
               </div>
@@ -141,8 +139,6 @@ export const TaskQuickEdit = ({ task, pos, boardId, groupId }) => {
             <li onClick={onGoToDetails}><FaWindowMaximize /> Open card</li>
             <li onClick={toggleLabelModal}><BsTagFill /> Edit labels</li>
             {labelModal && <section ref={refLabelModal}>
-
-              {/* started changing here */}
               <TaskModalLabel labelIds={task.labelIds} onSetLabel={onSetLabel} toggleLabelsModal={toggleLabelModal} labelModalPos={labelModalPos} />
             </section>}
             <li><HiUser /> Change members</li>

@@ -88,7 +88,6 @@ export const TaskPreview = ({ task, groupId, index, openQuickEdit }) => {
         return ''
     }
 
-    // if (task.id === 'c301') console.log('render TASK PREVIEW', task.memberIds)
     if (!task) return <Loader />
     return (
         <Draggable

@@ -1,24 +1,30 @@
-import { useDispatch } from 'react-redux'
 import closeIcon from '../assets/img/icon-close-task-details.svg'
-import { addChecklist } from '../store/board.actions'
+import { utilService } from '../services/util.service'
 
-export const ChecklistModal = ({ toggleChecklistModal, pos, boardId, groupId, task }) => {
-
-    const dispatch = useDispatch()
+export const ChecklistModal = ({ toggleModal, pos, task, onUpdateTask }) => {
 
     const onAddChecklist = (ev) => {
         ev.preventDefault()
         if (!ev.target.checklistTitle.value) return
         const title = ev.target.checklistTitle.value
-        toggleChecklistModal()
-        dispatch(addChecklist(boardId, groupId, task, title))
+        toggleModal()
+        const newChecklist = {
+            id: utilService.makeId(),
+            title,
+            todos: [],
+        }
+        if (task?.checklists) task.checklists.push(newChecklist)
+        else task.checklists = [newChecklist]
+        onUpdateTask(task)
+        // dispat(boardId, groupId, task, title))
     }
 
     return (
-        <section className="checklist-modal" style={{ ...pos }}>
+        // <section className="checklist-modal" style={{ ...pos }}>
+        <section className="checklist-modal" >
             <section className="header">
                 Add checklist
-                <img src={closeIcon} onClick={toggleChecklistModal} alt="close" className="close-btn" />
+                <img src={closeIcon} onClick={toggleModal} alt="close" className="close-btn" />
             </section>
             <section className="main">
                 <section className="title">
@@ -29,7 +35,7 @@ export const ChecklistModal = ({ toggleChecklistModal, pos, boardId, groupId, ta
                     <label htmlFor="checklistTitle">
                         <input type="text" placeholder="Checklist" name="checklistTitle" className="checklist-search-input" />
                     </label>
-                    <button className='btn-add'>Add</button>
+                    <button className="btn-add">Add</button>
                 </form>
 
             </section>

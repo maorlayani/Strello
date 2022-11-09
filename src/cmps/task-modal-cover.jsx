@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import closeIcon from '../assets/img/icon-close-task-details.svg'
 import { boardService } from "../services/board.service"
 
-export const TaskDetailsCoverModal = ({ onShowModal, task, onUpdateTask, setShowModal }) => {
+export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
 
     const [backgroundImages, setBackgroundImages] = useState([])
     const [backgroundColors, setBackgroundColors] = useState([])
@@ -33,12 +33,12 @@ export const TaskDetailsCoverModal = ({ onShowModal, task, onUpdateTask, setShow
     const onRemoveCover = () => {
         delete task.style
         onUpdateTask(task)
-        setShowModal(false)
+        toggleModal()
     }
-    // console.log('render TASK-DETAILS-COVER-MODAL')
+
     return (
         <section className="cover-modal">
-            <img src={closeIcon} onClick={onShowModal} alt="close" className="close-btn" />
+            <img src={closeIcon} onClick={toggleModal} alt="close" className="close-btn" />
             <div className="cover-modal-title">Cover</div>
             <button className="btn-remove" onClick={onRemoveCover}>Remove cover</button>
 

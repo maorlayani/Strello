@@ -66,7 +66,6 @@ export function removeBoard(boardId) {
 export function addGroup(boardId, group, activity) {
     return async (dispatch) => {
         try {
-            console.log('group', group)
             const updateBoard = await boardService.addGroupToBoard(boardId, group, activity)
             return dispatch(getActionUpdateBoard(updateBoard))
         } catch (err) {
@@ -89,9 +88,7 @@ export function removeGroup(boardId, groupId, activity) {
 export function addBoard(board, activity) {
     return async (dispatch) => {
         try {
-            console.log('board from action BEFORE', board)
             const savedBoard = await boardService.save(board, activity)
-            console.log('board from action AFTER', savedBoard)
             return dispatch(getActionAddBoard(savedBoard)).board
         } catch (err) {
             console.log('Cannot add board', err)
@@ -100,7 +97,6 @@ export function addBoard(board, activity) {
 }
 
 export function updateBoard(board, activity) {
-
     return async (dispatch) => {
         try {
             const savedBoard = await boardService.save(board, activity)
@@ -177,16 +173,17 @@ export function getTask(boardId, groupId, taskId) {
     }
 }
 
-// export function setTask(currTask) {
-//     return (dispatch) => {
-//         // const { task } =
-//         dispatch({
-//             type: 'SET_TASK',
-//             task: currTask
-//         })
-//         // return currTask
-//     }
-// }
+export function setTaskDetailsModal(isModalOpen, type) {
+    return (dispatch) => {
+        dispatch({
+            type: 'SET_TASK_DETAILS_MODAL',
+            taskDetailsModal: {
+                isOpen: isModalOpen,
+                type
+            }
+        })
+    }
+}
 
 export function getVidUrl(ev) {
     return async (dispatch) => {
@@ -245,9 +242,6 @@ export function setBoardBackgroundColor(color) {
     }
 }
 
-export function getUploadedImg(imgUrl) {
-
-}
 /*------------------------------------------------------------------------------*/
 
 
@@ -303,43 +297,6 @@ export function handleDrag(
             })
         } catch (err) {
             console.log('Cannot update board', err)
-
-        }
-    }
-}
-
-export function addChecklist(board, group, task, title) {
-
-    return async dispatch => {
-        try {
-            const boardToSave = await boardService.addChecklist(
-                board,
-                group,
-                task,
-                title
-            )
-            // console.log('boardToSave FROM ACTION:', boardToSave)
-            dispatch({
-                type: 'UPDATE_BOARD',
-                board: boardToSave,
-            })
-        } catch (err) {
-            console.log('Cannot add checklist', err)
-        }
-    }
-}
-
-export function addNewTodo(board, groupId, taskId, checklistId, title) {
-
-    return async dispatch => {
-        try {
-            const updatedBoard = await boardService.addTodo(board, groupId, taskId, checklistId, title)
-            dispatch({
-                type: 'UPDATE_BOARD',
-                board: updatedBoard,
-            })
-        } catch (err) {
-            console.log('Cannot add Todo. Heres why:', err)
         }
     }
 }

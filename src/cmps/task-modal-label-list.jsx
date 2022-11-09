@@ -19,7 +19,7 @@ export const TaskModalLabelList = ({ labelIds, onSetLabel, pos }) => {
             {isEditLabelModal && <EditLabelModal
                 toggleEditLabelModal={toggleEditLabelModal}
                 labelForEdit={labelForEdit}
-                style={{ ...pos }}
+                // style={{ ...pos }}
                 onSetLabel={onSetLabel} />}
             <ul className="label-list">
                 {board.labels.map(label => <TaskModalLabelPreview

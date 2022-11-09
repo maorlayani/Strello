@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { Loader } from "./loader"
 
 export const TaskMember = ({ memberIds, onSetMember, isTaskDetailsOpen }) => {
 
@@ -9,6 +10,7 @@ export const TaskMember = ({ memberIds, onSetMember, isTaskDetailsOpen }) => {
 
     useEffect(() => {
         if (isTaskDetailsOpen) {
+            if (!board?.members) return
             const baordMembersIds = board.members.map(member => member._id)
             setMemberIdsToDsiaplay(baordMembersIds)
         }
@@ -22,6 +24,7 @@ export const TaskMember = ({ memberIds, onSetMember, isTaskDetailsOpen }) => {
     }
 
     const isMemberOnTask = (memberId) => {
+        if (!memberIds) return
         return memberIds.includes(memberId)
     }
 
@@ -39,7 +42,8 @@ export const TaskMember = ({ memberIds, onSetMember, isTaskDetailsOpen }) => {
         }
         return <div>{initials}</div>
     }
-
+    if (!board?.members) return <span className="sub-title">There are no members to display</span>
+    if (!memberIdsToDsiaplay) return <Loader />
     return (
         <div className="task-member-container">
             {memberIdsToDsiaplay.map(memberId => {

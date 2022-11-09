@@ -3,9 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import { ImTrello } from 'react-icons/im'
 import { IoSearchSharp } from 'react-icons/io5'
 import { SearchResult } from './search-result'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { BoardEdit } from './board-edit'
-import { loadBoards } from '../store/board.actions';
 import { UserModal } from './user-modal'
 
 export function AppHeader() {
@@ -15,7 +14,7 @@ export function AppHeader() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
     const [isUserModalOpen, setIsUserModalOpen] = useState(false)
     const pathname = useLocation().pathname
-    const dispatch = useDispatch()
+
     const boards = useSelector(state => state.boardModule.boards)
     const user = useSelector(state => state.userModule.user)
     const themeColor = useSelector(state => state.boardModule.boardThemeColor)
@@ -27,10 +26,6 @@ export function AppHeader() {
                 document.removeEventListener("click", handleClickOutside, false)
             }
         )
-    }, [])
-
-    useEffect(() => {
-        dispatch(loadBoards())
     }, [])
 
     const handleClickOutside = (e) => {

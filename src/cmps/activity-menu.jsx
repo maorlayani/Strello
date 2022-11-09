@@ -20,7 +20,6 @@ export const ActivityMenu = ({ toggleBoardMenu }) => {
     const getTime = (activity) => {
         return moment(activity.createdAt).fromNow()
     }
-    // console.log("activities", activities)
     const onRemoveBoard = () => {
         dispatch(removeBoard(board._id))
         navigate('/board')
@@ -34,7 +33,6 @@ export const ActivityMenu = ({ toggleBoardMenu }) => {
         setIsBackgroundMenuOpen(!isBackgroundMenuOpen)
         bsetBckgroundTypeMenu(type)
     }
-
 
     return (
         <section className="activity-menu">
@@ -76,7 +74,6 @@ export const ActivityMenu = ({ toggleBoardMenu }) => {
                         <h3 className="archive-title">Delete board</h3>
                     </div>
                     <hr className="menu-hr" />
-
 
                     <div className="activity-container">
                         <div className="activity-title-container">
