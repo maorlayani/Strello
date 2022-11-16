@@ -139,10 +139,10 @@ export const TaskQuickEdit = ({ task, pos, boardId, groupId }) => {
             <li onClick={onGoToDetails}><FaWindowMaximize /> Open card</li>
             <li onClick={toggleLabelModal}><BsTagFill /> Edit labels</li>
             {labelModal && <section ref={refLabelModal}>
-              <TaskModalLabel labelIds={task.labelIds} onSetLabel={onSetLabel} toggleLabelsModal={toggleLabelModal} labelModalPos={labelModalPos} />
+              <TaskModalLabel labelIds={task.labelIds} onSetLabel={onSetLabel} toggleLabelsModal={toggleLabelModal} />
             </section>}
-            <li><HiUser /> Change members</li>
-            <li><FaWindowMaximize /> Change Cover</li>
+            {/* <li><HiUser /> Change members</li>
+            <li><FaWindowMaximize /> Change Cover</li> */}
             <li onClick={onRemoveTask}><HiArchive /> Archive</li>
           </ul>
         </section>
