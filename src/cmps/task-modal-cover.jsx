@@ -37,7 +37,9 @@ export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
     }
 
     const attacmentToDisplayAsCover = (attachments) => {
+        if (!attachments) return []
         const attacmentToDisplay = attachments.filter(attach => (/\.(jpeg|jpg|png|gif)\b/i).test(attach.url))
+        if (attacmentToDisplay) return []
         return attacmentToDisplay
     }
 
