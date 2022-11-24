@@ -36,6 +36,11 @@ export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
         toggleModal()
     }
 
+    const attacmentToDisplayAsCover = (attachments) => {
+        const attacmentToDisplay = attachments.filter(attach => (/\.(jpeg|jpg|png|gif)\b/i).test(attach.url))
+        return attacmentToDisplay
+    }
+
     return (
         <section className="cover-modal">
             <img src={closeIcon} onClick={toggleModal} alt="close" className="close-btn" />
@@ -53,11 +58,11 @@ export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
                 </ul>
             </section>
 
-            {task.attachments?.length > 0 &&
+            {attacmentToDisplayAsCover(task.attachments).length > 0 &&
                 <section>
                     <span className="sub-title">Attachments</span>
                     <ul className="cover-imgs">
-                        {task.attachments.map(attach =>
+                        {attacmentToDisplayAsCover(task.attachments).map(attach =>
                             <li className="cover-img-container" key={attach.id}>
                                 <img className="cover-img" alt="cover-img" src={`${attach.url}`} onClick={() => onSetImg(attach.url)}></img>
                             </li>
