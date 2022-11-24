@@ -4,15 +4,12 @@ $home-font-clr: #282e33;
 $home-bg-color: #e7eced;
 $header-bg-color: #c2c3c3;
 $header-font-color: #172b4ddd;
-// $header-font-color:darken($header-bg-color,60%);
-
-
 
 $layoutPadding: 20px;
+
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
-// $normal-breakpoint: 960px;
 $normal-breakpoint: 1050px;
 
 $padded-break-mobile: $mobile-breakpoint + $layoutPadding * 2;

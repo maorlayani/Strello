@@ -82,7 +82,8 @@
         padding: 0 6px 8px 12px;
         margin-top: 16px;
         height: 100%;
-        overflow-x: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         &::-webkit-scrollbar {
             border-radius: 15px;
@@ -241,6 +242,7 @@
             .activity-content {
                 flex: 1;
                 margin-left: 10px;
+                word-break: break-word;
 
                 .user-name {
                     font-weight: 700;
@@ -256,5 +258,13 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: $mobile-breakpoint) {
+    .activity-menu {
+        @include mobile-modal-display;
+        min-width: 100%;
+        max-width: 100%;
     }
 }

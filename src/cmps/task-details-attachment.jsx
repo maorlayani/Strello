@@ -26,6 +26,7 @@ export const TaskDetailsAttachment = ({ task, onUpdateTask, toggleModal }) => {
         if (!task.attachments) task.attachments = [(newAttachment)]
         else task.attachments.unshift((newAttachment))
         onUpdateTask(task)
+        toggleModal()
     }
 
     const onDeleteAttachment = (attachmentId) => {

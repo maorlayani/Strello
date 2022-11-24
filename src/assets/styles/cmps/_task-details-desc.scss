@@ -126,13 +126,23 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: $mobile-breakpoint) {
     .task-details-desc {
         .description-main-content {
             margin-left: 0;
 
             .description-icon {
                 margin-left: 9px;
+            }
+        }
+
+        .description-placeholder {
+            width: 85%;
+        }
+
+        .description-edit-container {
+            .description-textarea {
+                width: 85%;
             }
         }
     }

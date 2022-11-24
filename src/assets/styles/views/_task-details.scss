@@ -14,7 +14,7 @@
         flex-direction: column;
         margin: 48px 0 80px;
         overflow-y: visible;
-        width: 770px;
+        width: 100%;
         border-radius: 3px;
         background-color: #f4f5f7;
         cursor: auto;
@@ -197,7 +197,7 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: $mobile-breakpoint) {
     .task-details-main {
 
         .task-details-container {
@@ -210,13 +210,9 @@
                     position: relative;
                 }
 
-                .btn.cover {
-                    display: none;
-                }
-
                 .img-cover {
                     width: 100%;
-                    height: 290px;
+                    height: 160px;
                 }
             }
 
@@ -276,6 +272,16 @@
                 }
 
             }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .task-details-main {
+
+
+        .task-details-container {
+            width: 770px;
         }
     }
 }

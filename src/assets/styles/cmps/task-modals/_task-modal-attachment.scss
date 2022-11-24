@@ -113,3 +113,9 @@
         }
     }
 }
+
+@media (max-width: $mobile-breakpoint) {
+    .task-modal-attachment {
+        @include mobile-modal-display;
+    }
+}

@@ -38,3 +38,9 @@
         font-weight: 500;
     }
 }
+
+@media (max-width: $mobile-breakpoint) {
+    .task-model-label {
+        @include mobile-modal-display;
+    }
+}

@@ -100,6 +100,7 @@
                 padding-right: 12px;
                 margin-top: -2px;
                 color: #172b4d;
+                min-width: 85px;
             }
 
             .menu-img-container {
@@ -120,7 +121,7 @@
 
 /////////MQ///////
 
-@media (max-width: 400px) {
+@media (max-width: $mobile-breakpoint) {
 
     .board-header {
         .flex-end-side {

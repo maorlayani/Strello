@@ -108,3 +108,9 @@
         }
     }
 }
+
+@media (max-width: $mobile-breakpoint) {
+    .date-picker-modal {
+        @include mobile-modal-display;
+    }
+}

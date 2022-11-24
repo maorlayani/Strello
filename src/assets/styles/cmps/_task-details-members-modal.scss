@@ -105,3 +105,9 @@
         }
     }
 }
+
+@media (max-width: $mobile-breakpoint) {
+    .members-modal {
+        @include mobile-modal-display;
+    }
+}

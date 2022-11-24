@@ -131,3 +131,10 @@
         }
     }
 }
+
+@media (max-width: $mobile-breakpoint) {
+    .cover-modal {
+        @include mobile-modal-display;
+        top: 160px;
+    }
+}
