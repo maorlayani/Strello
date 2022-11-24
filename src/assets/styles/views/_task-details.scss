@@ -14,7 +14,7 @@
         flex-direction: column;
         margin: 48px 0 80px;
         overflow-y: visible;
-        width: 100%;
+        width: 95%;
         border-radius: 3px;
         background-color: #f4f5f7;
         cursor: auto;
@@ -75,7 +75,6 @@
                         display: flex;
                         flex-wrap: wrap;
                         margin-top: 8px;
-                        margin-left: 40px;
                         max-width: 420px;
                         margin-right: 8px;
                         margin-bottom: 8px;
@@ -279,9 +278,19 @@
 @media (min-width: 800px) {
     .task-details-main {
 
-
         .task-details-container {
             width: 770px;
+        }
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+
+    .task-main-container {
+        .task-main-container-left {
+            .tags {
+                margin-left: 40px;
+            }
         }
     }
 }

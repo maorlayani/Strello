@@ -1,5 +1,5 @@
 .task-details-due-date {
-    margin: 0 8px 8px 40px;
+    margin: 0 8px 8px 0px;
     width: 100%;
 
     .due-date-container {
@@ -94,5 +94,11 @@
             margin: 2px 0 0 4px;
             line-height: 1;
         }
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+    .task-details-due-date {
+        margin-left: 40px;
     }
 }
