@@ -3,7 +3,7 @@
     padding: 10px;
     position: absolute;
     top: 40%;
-    left: 50%;
+    left: 30%;
     z-index: 300;
 
     background-color: whitesmoke;
@@ -65,5 +65,11 @@
 @media (max-width: $mobile-breakpoint) {
     .checklist-modal {
         @include mobile-modal-display;
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+    .checklist-modal {
+        left: 50%;
     }
 }

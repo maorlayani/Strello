@@ -50,10 +50,12 @@ export const TaskDetailsSideMenu = ({ toggleModal, onRemoveTask, task }) => {
     return (
         <div className="task-main-container-right">
             <span className="add-to-card">Add to card</span>
-            {getActionBtns().map(btn => {
-                if (task?.style && btn.name === 'Cover') return ''
-                return <ActionButton key={btn.name} onClickFunc={btn.onClickFunc} iconCmp={btn.iconCmp} name={btn.name} />
-            })}
+            <div className="actions-container">
+                {getActionBtns().map(btn => {
+                    if (task?.style && btn.name === 'Cover') return ''
+                    return <ActionButton key={btn.name} onClickFunc={btn.onClickFunc} iconCmp={btn.iconCmp} name={btn.name} />
+                })}
+            </div>
         </div>
     )
 }

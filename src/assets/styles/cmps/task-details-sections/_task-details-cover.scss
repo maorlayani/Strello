@@ -5,7 +5,7 @@
         border-top-right-radius: 3px;
         background-color: #969899;
         display: grid;
-        grid-template-columns: minmax(auto, 256px) 256px minmax(auto, 256px);
+        grid-template-columns: 1fr 256px 1fr;
         grid-template-rows: 30px 100px 30px;
 
         .color-cover {
@@ -72,6 +72,16 @@
             background-image: url('../../../img/icon-close-task-details.svg');
             background-position: center;
             background-repeat: no-repeat;
+        }
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+    .task-details-main {
+
+        .task-cover {
+            grid-template-columns: minmax(auto, 256px) 256px minmax(auto, 256px);
+
         }
     }
 }

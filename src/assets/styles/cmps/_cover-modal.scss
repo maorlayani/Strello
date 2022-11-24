@@ -2,12 +2,15 @@
     width: 304px;
     padding: 10px;
     position: absolute;
+    top: 30%;
+    left: 50%;
     background-color: whitesmoke;
     box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     z-index: 300;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
+
 
     .close-btn {
         max-width: 20px;

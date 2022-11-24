@@ -157,6 +157,11 @@
                 padding: 0 16px 8px 8px;
                 margin-bottom: 25px;
 
+                .add-to-card {
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+
                 .ability {
                     font-size: 12px;
                     color: #5e6c84;
@@ -251,21 +256,15 @@
 
                 .task-main-container-right {
                     padding-right: 8px;
+                    margin-bottom: 0;
 
-                    .add-to-card {
-                        display: none;
-                    }
-
-                    .btn {
-                        width: unset;
-                        height: unset;
-
-                        .icon {
-                            font-size: 20px;
-                        }
-
-                        .ability {
-                            font-size: 18px;
+                    .actions-container {
+                        .btn {
+                            display: inline-block;
+                            margin-right: 8px;
+                            width: calc(50% - 8px);
+                            text-align: left;
+                            min-width: 120px;
                         }
                     }
                 }

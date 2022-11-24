@@ -2,6 +2,8 @@
     width: 304px;
     padding: 10px;
     position: absolute;
+    top: 30%;
+    left: 30%;
     background-color: whitesmoke;
     box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     z-index: 300;
@@ -109,5 +111,11 @@
 @media (max-width: $mobile-breakpoint) {
     .members-modal {
         @include mobile-modal-display;
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+    .members-modal {
+        left: 40%;
     }
 }
