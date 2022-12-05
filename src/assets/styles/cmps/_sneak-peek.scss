@@ -45,7 +45,7 @@
     }
 
     .txt-area {
-        text-align: left;
+        text-align: center;
         padding-top: 50px;
         padding-bottom: 30px;
         align-self: flex-start;
@@ -62,6 +62,14 @@
             font-size: 2rem;
             line-height: 50px;
             margin-bottom: 30px;
+        }
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+    .sneak-peek {
+        .txt-area {
+            text-align: left;
         }
     }
 }

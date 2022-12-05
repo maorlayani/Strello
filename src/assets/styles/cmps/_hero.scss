@@ -6,12 +6,13 @@
     font-family: secular;
     color: $home-font-clr;
     color: #141442;
+    text-align: center;
 
     .hero-txt {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-right: 100px;
+        align-items: center;
 
         p {
             font-family: sans-serif;
@@ -30,7 +31,7 @@
             justify-content: center;
             align-items: center;
             border-radius: 0.4rem;
-            padding: 10px 0;
+            padding: 10px;
             background-color: $home-btn-clr;
             color: whitesmoke;
             max-width: 150px;
@@ -47,8 +48,21 @@
     .hero-img-container {
         display: none;
     }
+}
 
-    @media (min-width: $narrow-breakpoint) {
+@media (min-width: $narrow-breakpoint) {
+    .hero {
+        text-align: left;
+
+        .hero-txt {
+            align-items: unset;
+            margin-right: 100px;
+
+            .try-yourself {
+                padding: 10px 0;
+            }
+        }
+
         .hero-img-container {
             display: flex;
             flex-direction: column;
