@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "../hooks/useForm"
 import { onLogin } from "../store/user.actions"
+import leftImg from "../assets/img/login-signup-left.svg"
+import rightImg from "../assets/img/login-signup-right.svg"
 
 export const Login = () => {
     const navigate = useNavigate()
@@ -28,34 +30,38 @@ export const Login = () => {
                     sTrello
                 </section>
             </div>
-            <div className="form-container">
-                <h1 className="signup-title">Login to sTrello</h1>
-                <form onSubmit={onUserLogin}>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Enter Username"
-                        id="username"
-                        value={credentials.username}
-                        onChange={handleChange}
-                        required />
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter Password"
-                        id="password"
-                        value={credentials.password}
-                        onChange={handleChange}
-                        required />
-                    <button className=
-                        {"btn-submit " + (credentials.username && credentials.password ? "enabled" : "")}>
-                        Continue
-                    </button>
-                </form>
-                <hr className="signup-separate-line" />
-                <Link to='/signup'><span className="login-link">Sign up for account</span></Link>
-                <Link to='/'><span className="login-link">Back Home</span></Link>
-            </div >
+            <div className="main-content-container">
+                <img src={leftImg} />
+                <div className="form-container">
+                    <h1 className="signup-title">Login to sTrello</h1>
+                    <form onSubmit={onUserLogin}>
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="Enter Username"
+                            id="username"
+                            value={credentials.username}
+                            onChange={handleChange}
+                            required />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter Password"
+                            id="password"
+                            value={credentials.password}
+                            onChange={handleChange}
+                            required />
+                        <button className=
+                            {"btn-submit " + (credentials.username && credentials.password ? "enabled" : "")}>
+                            Continue
+                        </button>
+                    </form>
+                    <hr className="signup-separate-line" />
+                    <Link to='/signup'><span className="login-link">Sign up for account</span></Link>
+                    <Link to='/'><span className="login-link">Back Home</span></Link>
+                </div>
+                <img src={rightImg} />
+            </div>
         </section >
     )
 }
