@@ -7,13 +7,12 @@ export const TaskLabel = ({ labelIds, isDetailsOpen }) => {
 
     const board = useSelector(state => state.boardModule.board)
     const task = useSelector(state => state.boardModule.task)
-
     const resizeLabelState = useSelector(state => state.boardModule.resizeLabel)
     const [isClicked, setIsClicked] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (isDetailsOpen) dispatch(resizeLabel(true))
+        if (isDetailsOpen) dispatch(resizeLabel(false))
     }, [])
 
     const getLabel = (labelId) => {
@@ -39,7 +38,7 @@ export const TaskLabel = ({ labelIds, isDetailsOpen }) => {
         dispatch(resizeLabel(isClicked))
         setIsClicked(!isClicked)
     }
-    // console.log('FROM TASK-LABEL', labelIds)
+
     return (
         <div className="task-label-container">
             {labelIds.map(labelId => {
@@ -49,13 +48,12 @@ export const TaskLabel = ({ labelIds, isDetailsOpen }) => {
                     className={`btn-label ${resizeLabelState ? 'clicked' : ''}`}
                     // style={{ backgroundColor: getLabel(labelId).color }}>
                     style={getLabelStyle(labelId)}>
-                    <span className="label-title">
-                        {resizeLabelState && getLabelTitle(labelId)}
-                        {!resizeLabelState && ''}
-                    </span>
-                    {/* {resizeLabelState && <span className="label-title">
-                        {getLabel(labelId).title}
-                    </span>} */}
+                    {isDetailsOpen && <span className="label-title">
+                        {getLabelTitle(labelId)}
+                    </span>}
+                    {resizeLabelState && <span className="label-title">
+                        {getLabelTitle(labelId)}
+                    </span>}
                 </button>
             })}
         </div>

@@ -118,6 +118,10 @@
                                         max-width: 100%;
                                         min-width: 48px;
                                         height: 32px;
+
+                                        &:hover {
+                                            cursor: unset;
+                                        }
                                     }
                                 }
                             }
