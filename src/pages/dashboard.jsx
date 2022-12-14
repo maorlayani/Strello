@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import { BarChart } from "../cmps/dashboard-charts/bar-chart.jsx"
 import { PieChart } from "../cmps/dashboard-charts/Pie-chart.jsx"
 import { PolarChart } from "../cmps/dashboard-charts/polar-chart.jsx"
-import { TaskMember } from "../cmps/task-member.jsx"
+import { TaskMember } from "../cmps/task-details/task-member"
 import { BiTask } from 'react-icons/bi'
 import { BsListTask } from 'react-icons/bs'
 import { MdSettings, MdOutlineDoneAll } from 'react-icons/md'

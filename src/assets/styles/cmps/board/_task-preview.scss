@@ -1,0 +1,268 @@
+.task-preview {
+    background-color: #fff;
+    box-shadow: 0 1px 0 #091e4240;
+    border-radius: 3px;
+    margin-bottom: 9px;
+    overflow: hidden;
+    max-width: 254px;
+
+    &:hover {
+        border-bottom-color: #091e4240;
+        background-color: #f3f5fa;
+        cursor: pointer;
+    }
+
+    .task-preview-content {
+        padding: 6px 8px 8px;
+
+        &.add-border {
+            border-radius: 3px;
+        }
+
+        .badges-container {
+            width: 100%;
+            margin: 0px 4px 4px 0px;
+            max-height: 60px;
+            position: relative;
+
+            .right-badges-container {
+                float: right;
+                margin-top: 5px;
+            }
+
+            .left-badges-container {
+                float: left;
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 4px;
+
+                .attachment-badge-container {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+
+                    .attachment-badge {
+                        background-image: url('../../../img/attac-icon.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        height: 16px;
+                        width: 16px;
+                    }
+
+                    span {
+                        font-size: 12px;
+                        color: #5e6c84;
+                        padding: 0px 4px 0px 2px;
+                        margin-bottom: -4px;
+                        margin-right: 4px;
+                    }
+                }
+
+                .viewed-by-user {
+                    background-image: url('../../../img/viewed-by-user-icon.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 4px;
+                }
+
+                .due-date-container {
+                    border-radius: 3px;
+                    color: #5e6c84;
+                    margin-right: 4px;
+                    display: flex;
+                    padding: 0px 2px 0px 4px;
+                    align-items: center;
+                    margin-bottom: 2px;
+
+                    &:hover {
+                        background-color: #ebecf0;
+                    }
+
+                    .due-date-txt {
+                        font-size: 12px;
+                        padding: 0 4px 0 2px;
+                        margin-top: 2px;
+                    }
+
+                    .due-date-icon {
+                        background-image: url('../../../img/due-date-icon-normal.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        height: 16px;
+                        width: 16px;
+                        align-self: center;
+                        color: #5e6c84;
+                    }
+
+                    &:hover .due-date-icon {
+                        background-image: url('../../../img/check-box-icon-normal.svg');
+                    }
+                }
+
+                .due-task-display {
+                    color: #fff;
+
+                    .due-date-icon {
+                        background-image: url('../../../img/due-date-icon.svg');
+                    }
+
+                    &:hover .due-date-icon {
+                        background-image: url('../../../img/check-box-icon.svg');
+                    }
+                }
+
+                .due-soon {
+                    background-color: #F2D600;
+
+                    &:hover {
+                        background-color: #d9b51c;
+                    }
+                }
+
+                .over-due {
+                    background-color: #EC9488;
+
+                    &:hover {
+                        background-color: #eb5a46;
+                    }
+                }
+
+                .done {
+                    background-color: #61bd4f;
+
+                    .due-date-icon {
+                        background-image: url('../../../img/due-date-icon.svg');
+                    }
+
+                    &:hover {
+                        background-color: #519839;
+                    }
+
+                    &:hover .due-date-icon {
+                        background-image: url('../../../img/checklist-is-done-icon.svg');
+                    }
+                }
+
+                .task-desc-icon {
+                    background-image: url('../../../img/desc-icon.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 4px;
+                    padding: 2px;
+                }
+
+                .checklist-container.done {
+                    background-color: #61bd4f;
+                    color: #fff;
+                    border-radius: 3px;
+                    padding: 1px 2px 4px 2px;
+
+                    .checklist-icon {
+                        background-image: url('../../../img/checklist-is-done-icon.svg');
+                    }
+                }
+
+                .checklist-container {
+                    padding: 0 4px 0 2px;
+                    color: #5e6c84;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+
+                    .checklist-todos {
+                        font-size: 12px;
+                        padding: 2px;
+                        margin-bottom: -4px;
+                        margin-right: 4px;
+                    }
+
+                    .checklist-icon {
+                        background-image: url('../../../img/checklist-icon.svg');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        height: 16px;
+                        width: 16px;
+                        margin-right: 4px;
+                    }
+                }
+            }
+
+            span {
+                min-height: 22px;
+                margin: 0;
+                overflow: hidden;
+                word-wrap: break-word;
+                display: block;
+
+                &.title-img-cover {
+                    display: flex;
+                    position: relative;
+                    top: 90%;
+                    align-items: flex-start;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 16px;
+                    margin: 0;
+                }
+            }
+        }
+
+        .adjust-height {
+            min-height: 26px;
+        }
+    }
+
+    .task-cover {
+        width: 100%;
+        height: 32px;
+        padding: 0;
+        margin: 0;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+
+    .btn-quick-edit {
+        margin: 0;
+        float: right;
+        border-radius: 3px;
+        margin: 2px 2px 0 0;
+        padding: 15px;
+        background-image: url('../../../img/btn-quick-edit.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 15px;
+        width: 15px;
+        z-index: 10;
+
+        &.hide {
+            opacity: 0;
+
+            &:hover {
+                background-color: rgba(199, 199, 199, 0.514);
+            }
+        }
+    }
+
+    &:hover {
+        .hide {
+            opacity: 0.6;
+        }
+    }
+
+    .dark-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.6;
+        pointer-events: auto;
+        z-index: 10;
+    }
+}

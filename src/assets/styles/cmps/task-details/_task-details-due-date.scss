@@ -1,0 +1,104 @@
+.task-details-due-date {
+    margin: 0 8px 8px 0px;
+    width: 100%;
+
+    .due-date-container {
+        align-items: center;
+        display: flex;
+        margin: 0 8px 8px 0;
+        width: 100%;
+    }
+
+    .due-date-checkbox {
+        background-color: #fafbfc;
+        border-radius: 2px;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        height: 16px;
+        margin: auto 4px auto 0;
+        overflow: hidden;
+        transition: all .2s ease-in-out;
+        width: 16px;
+
+        &.is-done {
+            background-image: url("../../../img/selected-background.svg");
+            background-color: #0079bf;
+            box-shadow: inset 0 0 0 2px #0079bf;
+
+            &:hover {
+                background-color: #5ba4cf;
+                box-shadow: inset 0 0 0 2px #5ba4cf;
+            }
+        }
+
+        &:hover {
+            background-color: #ebecf0;
+            box-shadow: inset 0 0 0 2px #dfe1e6;
+            cursor: pointer;
+        }
+    }
+
+    .due-date-content {
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        padding: 6px 12px;
+        display: flex;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        background-color: #091e420a;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: #091e4214;
+            cursor: pointer;
+        }
+
+        &:active {
+            color: #0079bf;
+            background-color: #e4f0f6;
+        }
+
+        .due-date-tag {
+            font-size: 12px;
+            line-height: 16px;
+            padding: 0 4px;
+            border-radius: 2px;
+            margin: auto 0 auto 8px;
+            color: #fff;
+
+            &.due-soon {
+                background-color: #F2D600;
+                color: #172B4D;
+
+                &::before {
+                    content: "due soon";
+                }
+            }
+
+            &.over-due {
+                background-color: #EC9488;
+
+                &::before {
+                    content: "overdue";
+                }
+            }
+
+            &.is-done {
+                background-color: #61BD4F;
+            }
+        }
+
+        .due-date-dropdwon-icon {
+            font-size: 16px;
+            margin: 2px 0 0 4px;
+            line-height: 1;
+        }
+    }
+}
+
+@media (min-width: $narrow-breakpoint) {
+    .task-details-due-date {
+        margin-left: 40px;
+    }
+}

@@ -105,9 +105,7 @@ async function save(board, activity = null) {
             }
         } else {
             savedBoard.createdBy = {
-                _id: 'u199',
-                fullname: 'Guest',
-                imgUrl: "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
+                ...getGuestUser()
             }
         }
         boardChannel.postMessage(getActionAddBoard(savedBoard))
@@ -135,13 +133,11 @@ function _addActivityDetails(activity) {
             activity.byMember = {
                 _id: user._id,
                 fullname: user.fullname,
-                imgUrl: user.imgUrl || "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
+                imgUrl: user.imgUrl || getGuestUser().imgUrl
             }
         } else {
             activity.byMember = {
-                _id: "u199",
-                fullname: "Guest",
-                imgUrl: "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
+                ...getGuestUser()
             }
         }
     }
@@ -149,11 +145,11 @@ function _addActivityDetails(activity) {
 }
 
 function getGuestUser() {
-    return ({
+    return {
         _id: "u199",
         fullname: "Guest",
-        imgUrl: "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
-    })
+        imgUrl: "https://res.cloudinary.com/dqhrqqqul/image/upload/v1670317536/170_t4mend.png"
+    }
 }
 
 async function getTaskById(boardId, groupId, taskId) {
