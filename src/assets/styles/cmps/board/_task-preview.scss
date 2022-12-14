@@ -15,6 +15,10 @@
     .task-preview-content {
         padding: 6px 8px 8px;
 
+        .task-title {
+            word-break: break-word;
+        }
+
         &.add-border {
             border-radius: 3px;
         }

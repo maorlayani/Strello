@@ -105,7 +105,7 @@ export const TaskPreview = ({ task, groupId, index, openQuickEdit }) => {
                             {task?.labelIds && <TaskLabel
                                 labelIds={task.labelIds}
                             />}
-                            <span>{task.title}</span>
+                            <span className="task-title">{task.title}</span>
                             <div className={"badges-container " +
                                 (!task?.memberIds && task?.dueDate ? "adjust-height" : "")} >
                                 <div className="left-badges-container">
