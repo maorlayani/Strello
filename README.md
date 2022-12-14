@@ -7,8 +7,10 @@
 
 [board]: https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/appScreenshot.png
 
-* [Trello Description](https://github.com/maorlayani/strello-frontend/blob//main/README.md##TrelloDescription)
-* [Application Features](https://github.com/maorlayani/strello-frontend/blob//main/README.md##ApplicationFeatures)
+<!-- * [Trello Description](https://github.com/maorlayani/strello-frontend/blob//main/README.md##TrelloDescription) -->
+* Trello Description
+<!-- * [Application Features](https://github.com/maorlayani/strello-frontend/blob//main/README.md##ApplicationFeatures) -->
+* Application Features
 * Technologies
 * Getting started
 * Showcase
