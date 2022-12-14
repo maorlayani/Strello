@@ -7,13 +7,11 @@
 
 [board]: https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/appScreenshot.png
 
-<!-- * [Trello Description](https://github.com/maorlayani/strello-frontend/blob//main/README.md##TrelloDescription) -->
-* Trello Description
-<!-- * [Application Features](https://github.com/maorlayani/strello-frontend/blob//main/README.md##ApplicationFeatures) -->
-* Application Features
-* Technologies
-* Getting started
-* Showcase
+* [Trello Description](#trello-description)
+* [Application Features](#application-features)
+* [Technologies](#technologies)
+* [Getting started](#getting-started)
+* [Showcase](#showcase)
 
 ## Trello Description
 
@@ -66,7 +64,7 @@ All of the user's boards. Here the user can create new boards and visit existing
 ![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/workspace.png)
 
 ### Board
-All the functionality that you have in Trello, D&D, live-updates, editing tasks to the deepest level, side-menu, editing board members and much more - just check it out...!
+All the functionality that you have in Trello, D&D, live-updates, editing tasks to the deepest level, side-menu, editing board members and much more - [just check it out...!](https://strello-app.onrender.com/)
 
 ![alt text][board]
 
