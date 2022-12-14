@@ -75,7 +75,7 @@ We created a sign up system with authentication flow, including encrypting the u
 ### Task details
 Here the user can edit his tasks and watch it happens live, on this page and behind it on the board.
 
-![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/task-details.png)
+<img width="947" alt="task-details" src="https://user-images.githubusercontent.com/109607661/207602294-a1dcdbbd-6c1a-4131-b80d-a3b2bee624f9.png">
 
 ### Side menu
 The menu on the right which is opened by pressing the "Show menu" button enables the user to change the board's background with Images from unsplash and watch the activities of the board.
@@ -85,7 +85,13 @@ The menu on the right which is opened by pressing the "Show menu" button enables
 ### Some mobile!
 Just a taste of the mobile experience. We used different mixins, conditional rendering and the "mobile first" approach.
 
-![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-home-page.png)
-![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-workspace.png)
-![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-board.png)
-![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-task-details.png)
+<!-- ![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-home-page.png) -->
+<!-- ![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-workspace.png) -->
+<!-- ![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-board.png) -->
+<!-- ![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/mobile-task-details.png) -->
+<p float="left">
+<img width="196" alt="mobile-home-page" src="https://user-images.githubusercontent.com/109607661/207602837-794e8def-ed7f-4265-a17b-ec2efe14d01b.png">
+<img width="197" alt="mobile-workspace" src="https://user-images.githubusercontent.com/109607661/207602826-b9ebe206-4a87-46b9-8dd6-f35fc388afef.png">
+<img width="194" alt="mobile-board" src="https://user-images.githubusercontent.com/109607661/207602843-c473ce6c-20e3-410a-a3c4-0c460daac857.png">
+<img width="197" alt="mobile-task-details" src="https://user-images.githubusercontent.com/109607661/207602840-694070a8-7291-435e-b82d-38148da885a8.png">
+ </p>
