@@ -23,7 +23,6 @@ export const SearchResult = ({ results, setResults, setIsSearching }) => {
                 return <Link to={`board/${board._id}`} className="boards-link" key={board._id} onClick={onLinkClicked}>
                     <li>
                         <span className="flex-left">{getBoardThumbnail(board)}{board.title}</span>
-                        <span className="flex-middle"></span>
                         <span className="flex-end">sTrello Workspace</span>
                     </li>
                 </Link>
