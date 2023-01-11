@@ -38,6 +38,10 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
 
+            .board-preview.full {
+                background-color: unset;
+            }
+
             .board-preview {
                 border-radius: 3px;
                 width: 165px;
@@ -47,6 +51,9 @@
                 margin: 5px;
                 display: flex;
                 position: relative;
+                background-color: #0000004d;
+                background-size: cover;
+                background-position: 50%;
 
                 .board-preview-content:not(.full) {
                     background-color: #0000004d;

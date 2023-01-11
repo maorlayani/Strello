@@ -20,10 +20,6 @@ export function BoardPage() {
     const getBoardBg = (board) => {
         let style = {}
         if (board.style?.imgUrl) {
-            style = {
-                backgroundSize: "cover",
-                backgroundPosition: "50%"
-            }
             if (board.style?.thumbUrl) style.backgroundImage = `url(${board.style.thumbUrl})`
             else style.backgroundImage = `url(${board.style.imgUrl})`
         } else style = { backgroundColor: board.style.bgColor }
@@ -103,7 +99,7 @@ export function BoardPage() {
                         </Link>
                     })}
 
-                    <li className="board-preview" onClick={toggleCreateBoardModal}>
+                    <li className="board-preview full" onClick={toggleCreateBoardModal}>
                         <div className="board-preview-content full">
                             <div className="board-title create-new"><span>Create new board</span></div>
                         </div>
