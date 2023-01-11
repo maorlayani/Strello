@@ -126,6 +126,9 @@
             .cover-img {
                 cursor: pointer;
                 border-radius: 3px;
+                // height: 98px;
+                // min-width: 88px;
+                object-fit: contain;
 
                 &:hover {
                     filter: saturate(85%) brightness(85%);

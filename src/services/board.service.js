@@ -192,12 +192,30 @@ function getBackground(type) {
 function getTaskBackground(type) {
     if (type === 'url') {
         return [
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1663348742/background-img-mountains_kqtnuv.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1663348746/background-img-fog_qkibl9.jpg',
-            'https://images.unsplash.com/photo-1663076121570-eb6e69bdde3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDEwfDMxNzA5OXx8fHx8Mnx8MTY2MzM0ODI4OQ&ixlib=rb-1.2.1&q=80&w=200',
-            'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x365/0eba7de903143c66f2ac55cdb0b7de58/photo-1662943523548-373718f22124.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1663229161/bug_bkvxx9.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1663229153/code_mvpcmf.jpg'
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197377/ash-from-modern-afflatus-NQ6Lh81BTRs-unsplash_qoe8no.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673355189/ash-from-modern-afflatus-NQ6Lh81BTRs-unsplash-min_ncx2rj.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196311/ian-dooley-DuBNA1QMpPA-unsplash_cpw29l.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673422167/ian-dooley-DuBNA1QMpPA-unsplash-min_eqdmlp.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196414/ian-dooley-DJ7bWa-Gwks-unsplash_hr2qyq.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673357083/ian-dooley-DJ7bWa-Gwks-unsplash-min_lnhojz.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196528/jeremy-thomas-O6N9RV2rzX8-unsplash_ndcnyj.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673356416/jeremy-thomas-O6N9RV2rzX8-unsplash-min_wnrfhl.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664708145/sigmund-eTgMFFzroGc-unsplash_hg0wdj.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358937/sigmund-eTgMFFzroGc-unsplash-min_rdpz4b.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664692449/kyle-glenn-_AR74EoWdy0-unsplash_rhf2nb.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358500/kyle-glenn-_AR74EoWdy0-unsplash-min_zkygrg.jpg'
+            }
         ]
     } else if (type === 'color') {
         return [
@@ -216,7 +234,6 @@ function getTaskBackground(type) {
 }
 
 function getLabelsColors() {
-
     return [
         '#D6ECD2', '#FAF3C0', '#FCE6C6', '#F5D3CE', '#EDDBF4',
         '#B7DDB0', '#F5EA92', '#FAD29C', '#EFB3AB', '#DFC0EB',
@@ -308,7 +325,7 @@ function getBoardBackgrounds() {
             {
                 imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664708145/sigmund-eTgMFFzroGc-unsplash_hg0wdj.jpg',
                 thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358937/sigmund-eTgMFFzroGc-unsplash-min_rdpz4b.jpg'
-            },
+            }
         ]
     }
 }

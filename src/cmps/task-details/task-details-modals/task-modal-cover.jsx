@@ -23,9 +23,9 @@ export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
         onUpdateTask(task)
     }
 
-    const onSetImg = (imgUrl) => {
-        if (!task.style) task.style = { bg: { imgUrl } }
-        else task.style.bg.imgUrl = imgUrl
+    const onSetImg = (img) => {
+        if (!task.style) task.style = { bg: { imgUrl: img.thumbUrl } }
+        else task.style.bg.imgUrl = img.thumbUrl
         task.style.bg.color = null
         onUpdateTask(task)
     }
@@ -75,9 +75,9 @@ export const TaskDetailsCoverModal = ({ toggleModal, task, onUpdateTask }) => {
             <section>
                 <span className="sub-title">Photos</span>
                 <ul className="cover-imgs">
-                    {backgroundImages.map(imgUrl =>
-                        <li className="cover-img-container" key={imgUrl}>
-                            <img className="cover-img" src={`${imgUrl}`} onClick={() => onSetImg(imgUrl)}></img>
+                    {backgroundImages.map(img =>
+                        <li className="cover-img-container" key={img.thumbUrl}>
+                            <img className="cover-img" src={`${img.thumbUrl}`} onClick={() => onSetImg(img)}></img>
                         </li>
                     )}
                 </ul>
