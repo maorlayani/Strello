@@ -14,6 +14,10 @@
     .checkbox {
         color: #0079bf;
         font-size: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .txt-and-btns {
