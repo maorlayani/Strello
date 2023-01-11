@@ -35,9 +35,9 @@ export const BoardBackgroundMenu = ({ board, type }) => {
             </div>}
 
             {type === 'img' && <div className="background-container">
-                {boardService.getBoardBackgrounds().imgs.map(img => {
+                {boardService.getBoardBackgrounds().imgs.map((img, idx) => {
                     return <div
-                        key={img.thumbUrl}
+                        key={img.thumbUrl + idx}
                         className="background-option"
                         style={{ backgroundImage: `url(${img.thumbUrl})` }}
                         onClick={() => setBoardBackgroundImg(img.imgUrl, img.thumbUrl)}>

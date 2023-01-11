@@ -49,12 +49,14 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
     const setBoardBackground = (type, background) => {
         const boardToUpdate = board
         if (type === 'url') {
-            boardToUpdate.style.imgUrl = background
+            boardToUpdate.style.imgUrl = background.imgUrl
+            boardToUpdate.style.thumbUrl = background.thumbUrl
             boardToUpdate.style.bgColor = null
         }
         else if (type === 'color') {
             boardToUpdate.style.bgColor = background
             boardToUpdate.style.imgUrl = null
+            boardToUpdate.style.thumbUrl = null
         }
         setBoard({ ...boardToUpdate })
     }
@@ -97,22 +99,22 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
                     </div>
                     <div className="background-picker">
                         <ul className="image-picker">
-                            {getBackground("url").map(imgUrl => {
-                                return <li key={imgUrl}>
+                            {getBackground('url').map(img => {
+                                return <li key={img.thumbUrl}>
                                     <button
-                                        style={{ backgroundImage: `url(${imgUrl})` }}
-                                        onClick={() => setBoardBackground('url', imgUrl)}>
-                                        {checkIsSelected(imgUrl) &&
+                                        style={{ backgroundImage: `url(${img.thumbUrl})` }}
+                                        onClick={() => setBoardBackground('url', img)}>
+                                        {checkIsSelected(img.imgUrl) &&
                                             <span className="marked" style={{ backgroundColor: "#091e4233" }}>
                                             </span>}
-                                        {!checkIsSelected(imgUrl) &&
+                                        {!checkIsSelected(img.imgUrl) &&
                                             <span className="unmarked"></span>}
                                     </button>
                                 </li>
                             })}
                         </ul>
                         <ul className="color-picker">
-                            {getBackground("color").map(color => {
+                            {getBackground('color').map(color => {
                                 return <li key={color}>
                                     <button
                                         style={{ backgroundColor: color }}
@@ -124,11 +126,6 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
                                     </button>
                                 </li>
                             })}
-                            <li>
-                                <button style={{ backgroundColor: "#091e420a" }}>
-                                    <span className="full-color-picker"></span>
-                                </button>
-                            </li>
                         </ul>
                     </div>
                 </div>

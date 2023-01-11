@@ -29,9 +29,11 @@
             align-items: flex-end;
 
             .thumbnail {
-                max-width: 20px;
+                max-width: 25px;
                 border-radius: 2px;
                 margin-right: 10px;
+                height: 20px;
+                object-fit: cover;
             }
 
             .color-thumb {

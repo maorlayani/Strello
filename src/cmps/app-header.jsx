@@ -4,14 +4,13 @@ import { ImTrello } from 'react-icons/im'
 import { IoSearchSharp } from 'react-icons/io5'
 import { SearchResult } from './search-result'
 import { useSelector } from 'react-redux'
-import { BoardEdit } from './board-edit'
 import { UserModal } from './user-modal'
 
 export function AppHeader() {
     const refOne = useRef(null)
     const [results, setResults] = useState(null)
     const [isSearching, setIsSearching] = useState(false)
-    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
     const [isUserModalOpen, setIsUserModalOpen] = useState(false)
     const pathname = useLocation().pathname
 
@@ -33,15 +32,14 @@ export function AppHeader() {
         if (!refOne.current.contains(e.target)) {
             setResults(null)
             setIsSearching(false)
+            setSearchValue('')
         }
     }
 
-    const onChange = ({ target }) => {
-        if (!target.value) {
-            setResults(null)
-            return
-        }
-        setResults(boards.filter(b => b.title.toLowerCase().includes(target.value.toLowerCase())))
+    const handleChange = ({ target }) => {
+        setSearchValue(target.value)
+        if (!target.value) setResults(null)
+        else setResults(boards.filter(b => b.title.toLowerCase().includes(target.value.toLowerCase())))
     }
 
     const onSearching = () => {
@@ -57,9 +55,6 @@ export function AppHeader() {
         } else {
             return "app-header home"
         }
-    }
-    const showCreateBoardMoadl = () => {
-        setIsCreateModalOpen(!isCreateModalOpen)
     }
 
     const getUserImg = () => {
@@ -94,11 +89,10 @@ export function AppHeader() {
                         </li>
                     </Link>
                 </ul>
-                {isCreateModalOpen && <BoardEdit toggleCreateBoardModal={showCreateBoardMoadl} />}
             </section>
 
             <section className={isSearching ? 'search search-wide' : 'search'} >
-                <IoSearchSharp className="mag-glass" /><input type="text" onChange={onChange} placeholder="Search" onClick={onSearching} />
+                <IoSearchSharp className="mag-glass" /><input type="text" onChange={handleChange} placeholder="Search" onClick={onSearching} value={searchValue} />
             </section>
 
             <section ref={refOne}>

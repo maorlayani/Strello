@@ -167,13 +167,25 @@ async function getTaskById(boardId, groupId, taskId) {
 function getBackground(type) {
     if (type === 'url') {
         return [
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197071/pawel-czerwinski-lKEvGdP0Oig-unsplash_xhxxbf.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187242/karsten-winegeart-j5z0DZMWViU-unsplash_yyaw6e.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187022/maxim-berg-Tba7ds4aF_k-unsplash_1_woirqi.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196414/ian-dooley-DJ7bWa-Gwks-unsplash_hr2qyq.jpg'
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197071/pawel-czerwinski-lKEvGdP0Oig-unsplash_xhxxbf.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673421655/pawel-czerwinski-lKEvGdP0Oig-unsplash-min_v5gebi.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187242/karsten-winegeart-j5z0DZMWViU-unsplash_yyaw6e.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673353048/karsten-winegeart-j5z0DZMWViU-unsplash-min_o3rne4.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187022/maxim-berg-Tba7ds4aF_k-unsplash_1_woirqi.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673356761/maxim-berg-Tba7ds4aF_k-unsplash-min_vzzpcs.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196414/ian-dooley-DJ7bWa-Gwks-unsplash_hr2qyq.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673357083/ian-dooley-DJ7bWa-Gwks-unsplash-min_lnhojz.jpg'
+            }
         ]
     } else if (type === 'color') {
-        return ["#0079bf", "#d29034", "#519839", "#b04632", "#89609e"]
+        return ["#0079bf", "#d29034", "#519839", "#b04632", "#89609e", '#838c91']
     }
 }
 

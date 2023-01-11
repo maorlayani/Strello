@@ -1,11 +1,10 @@
 .add-board {
-    position: fixed;
+    position: absolute;
     box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     border-radius: 3px;
     z-index: 100;
-    right: 350px;
-    max-height: calc(100vh - 80px);
-    top: 60px;
+    top: 10%;
+    left: 30%;
     width: 304px;
     background-color: #fff;
     display: flex;
@@ -192,12 +191,6 @@
                             width: 100%;
                             cursor: pointer;
 
-                            .full-color-picker {
-                                background-image: url('../../img/group-menu-icon.svg');
-                                background-position: center;
-                                background-repeat: no-repeat;
-                            }
-
                             span {
                                 position: relative;
                                 z-index: 1;
@@ -300,5 +293,11 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+@media (max-width: $mobile-breakpoint) {
+    .add-board {
+        left: 15%;
     }
 }
