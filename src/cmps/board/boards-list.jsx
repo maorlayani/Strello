@@ -12,7 +12,7 @@ export const BoardsList = () => {
     const boards = useSelector(state => state.boardModule.boards)
 
     useEffect(() => {
-        if (!boards) dispatch(loadBoards())
+        if (!boards || !boards.length) dispatch(loadBoards())
     }, [])
 
     const getBoardThumbnail = (board) => {

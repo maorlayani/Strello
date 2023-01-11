@@ -9,6 +9,7 @@ import { TaskMember } from "../cmps/task-details/task-member"
 import { BiTask } from 'react-icons/bi'
 import { BsListTask } from 'react-icons/bs'
 import { MdSettings, MdOutlineDoneAll } from 'react-icons/md'
+import { Loader } from "../cmps/loader.jsx"
 
 export const Dashboard = ({ toggleDashboard }) => {
 
@@ -25,8 +26,10 @@ export const Dashboard = ({ toggleDashboard }) => {
     const [groupsTasksCount, setGroupsTasksCount] = useState([])
 
     useEffect(() => {
-        getMembersIds()
-        getTaskStat()
+        if (board && board.groups !== 0) {
+            getMembersIds()
+            getTaskStat()
+        }
     }, [])
 
     const clickedOnModal = (ev) => {
@@ -73,18 +76,18 @@ export const Dashboard = ({ toggleDashboard }) => {
                 }
             })
         })
-        ///for pie chart
+        //for pie chart
         setLabelsValues(Object.values(labelsMap))
         setLabelsIds(Object.keys(labelsMap))
-        ///for bar chart
+        //for bar chart
         setMemberTaskCount(Object.values(membersMap))
         setMemberIds(Object.keys(membersMap))
-        ///for polar chart
+        //for polar chart
         setTaskCount(taskCount)
         setDoneCounter(doneCounter)
     }
 
-    if (!board || !board.groups || board.groups === 0) return <div>No statistics yet</div>
+    if (!board) return <Loader />
     return (
         <section className="dashboard">
             <div className="black-screen" onClick={toggleDashboard}>

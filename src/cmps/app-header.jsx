@@ -5,6 +5,8 @@ import { IoSearchSharp } from 'react-icons/io5'
 import { SearchResult } from './search-result'
 import { useSelector } from 'react-redux'
 import { UserModal } from './user-modal'
+import { loadBoards } from '../store/board.actions'
+import { useDispatch } from 'react-redux'
 
 export function AppHeader() {
     const refOne = useRef(null)
@@ -13,10 +15,14 @@ export function AppHeader() {
     const [searchValue, setSearchValue] = useState('')
     const [isUserModalOpen, setIsUserModalOpen] = useState(false)
     const pathname = useLocation().pathname
-
+    const dispatch = useDispatch()
     const boards = useSelector(state => state.boardModule.boards)
     const user = useSelector(state => state.userModule.user)
     const themeColor = useSelector(state => state.boardModule.boardThemeColor)
+
+    useEffect(() => {
+        if (!boards || !boards.length) dispatch(loadBoards())
+    }, [])
 
     useEffect(() => {
         document.addEventListener("click", handleClickOutside, true)
