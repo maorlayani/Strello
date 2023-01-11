@@ -8,17 +8,37 @@
     opacity: 0.8;
     overflow-x: hidden;
     overflow-y: hidden;
-    transition: min-width 0.5s ease-in-out;
+    // transition: min-width 0.5s ease-in-out;
 
     header>*:not(.open-arrow-div) {
         opacity: 0;
-        transition: opacity 0.3s;
+        // transition: opacity 0.3s;
     }
 
     .main,
     .boards {
         opacity: 0;
-        transition: opacity 0.3s;
+        // transition: opacity 0.3s;
+    }
+
+    .boards {
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            border-radius: 3px;
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #091e4213;
+            border-radius: 3px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #abb6bf;
+            border-radius: 3px;
+        }
+
     }
 
     header {
@@ -65,7 +85,7 @@
             display: none;
 
             &:hover {
-                background-color: rgba(0, 0, 0, 0.116);
+                background-color: #0000001e;
             }
 
             .arrow {
@@ -99,7 +119,7 @@
 
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.116);
+            background-color: #0000001e;
         }
     }
 }
@@ -107,7 +127,7 @@
 ///////////////////OPEN /////////////////
 
 .side-menu.open {
-    background-color: darken($header-bg-color , $amount: 10);
+    background-color: #f4f5f7;
     min-width: 260px;
     border-right: none;
     opacity: 1;

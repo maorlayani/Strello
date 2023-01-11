@@ -9,12 +9,14 @@ export const BoardBackgroundMenu = ({ board, type }) => {
         const boardToUpdate = { ...board }
         boardToUpdate.style.bgColor = color
         boardToUpdate.style.imgUrl = null
+        boardToUpdate.style.thumbUrl = null
         dispacth(updateBoard(boardToUpdate))
     }
 
-    const setBoardBackgroundImg = (imgUrl) => {
+    const setBoardBackgroundImg = (imgUrl, thumbUrl) => {
         const boardToUpdate = { ...board }
         boardToUpdate.style.imgUrl = imgUrl
+        boardToUpdate.style.thumbUrl = thumbUrl
         boardToUpdate.style.bgColor = null
         dispacth(updateBoard(boardToUpdate))
     }
@@ -33,12 +35,12 @@ export const BoardBackgroundMenu = ({ board, type }) => {
             </div>}
 
             {type === 'img' && <div className="background-container">
-                {boardService.getBoardBackgrounds().imgsUrl.map(imgUrl => {
+                {boardService.getBoardBackgrounds().imgs.map(img => {
                     return <div
-                        key={imgUrl}
+                        key={img.thumbUrl}
                         className="background-option"
-                        style={{ backgroundImage: `url(${imgUrl})` }}
-                        onClick={() => setBoardBackgroundImg(imgUrl)}>
+                        style={{ backgroundImage: `url(${img.thumbUrl})` }}
+                        onClick={() => setBoardBackgroundImg(img.imgUrl, img.thumbUrl)}>
                     </div>
                 })}
             </div>}

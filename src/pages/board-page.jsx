@@ -21,10 +21,11 @@ export function BoardPage() {
         let style = {}
         if (board.style?.imgUrl) {
             style = {
-                backgroundImage: `url(${board.style.imgUrl})`,
                 backgroundSize: "cover",
                 backgroundPosition: "50%"
             }
+            if (board.style?.thumbUrl) style.backgroundImage = `url(${board.style.thumbUrl})`
+            else style.backgroundImage = `url(${board.style.imgUrl})`
         } else style = { backgroundColor: board.style.bgColor }
         return style
     }

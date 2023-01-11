@@ -16,14 +16,16 @@ export const BoardsList = () => {
     }, [])
 
     const getBoardThumbnail = (board) => {
-        if (board.style?.imgUrl) return <img src={board.style.imgUrl} className="thumbnail"></img>
+        if (board.style?.imgUrl) {
+            if (board.style?.thumbUrl) return <img src={board.style.thumbUrl} className="thumbnail"></img>
+            else return <img src={board.style.imgUrl} className="thumbnail"></img>
+        }
         else if (board.style?.bgColor) return <div style={{ backgroundColor: board.style.bgColor }} className="color-thumb"></div>
-        else return <div style={{ backgroundColor: "grey" }} className="color-thumb"></div>
     }
 
     const getActiveLink = (id) => {
         if (pathname.includes(id)) return 'active'
-        else return ''
+        return ''
     }
 
     const onSelectedBoard = (boardId) => {
@@ -32,6 +34,7 @@ export const BoardsList = () => {
     }
 
     if (!boards || !boards.length) return
+
     return (
         <ul className="boards-list">
             {boards.map(board => {

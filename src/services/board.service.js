@@ -224,24 +224,79 @@ function getBoardBackgrounds() {
             '#89609e', '#cd5a91', '#4bbf6b', '#00aecc',
             '#838c91'
         ],
-        imgsUrl: [
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197071/pawel-czerwinski-lKEvGdP0Oig-unsplash_xhxxbf.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664186705/rrvviiii-EVEHo6gWzSM-unsplash_jqec7i.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187242/karsten-winegeart-j5z0DZMWViU-unsplash_yyaw6e.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196200/alexander-sinn-KgLtFCgfC28-unsplash_viu9fl.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187022/maxim-berg-Tba7ds4aF_k-unsplash_1_woirqi.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196311/ian-dooley-DuBNA1QMpPA-unsplash_cpw29l.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196414/ian-dooley-DJ7bWa-Gwks-unsplash_hr2qyq.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196528/jeremy-thomas-O6N9RV2rzX8-unsplash_ndcnyj.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197377/ash-from-modern-afflatus-NQ6Lh81BTRs-unsplash_qoe8no.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664382696/katie-smith-uQs1802D0CQ-unsplash_dwxpri.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664382882/john-price-FE7ATjzRRMs-unsplash_cznmhq.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664689530/frank-mckenna-OD9EOzfSOh0-unsplash_eyotjy.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664692449/kyle-glenn-_AR74EoWdy0-unsplash_rhf2nb.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664698270/amy-shamblen-pJ_DCj9KswI-unsplash_dpiduu.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664699079/raphael-biscaldi-7RQf2X6aXXI-unsplash_k6crnk.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664699491/ana-frantz-Pg6YGIJ97lw-unsplash_aj7dr4.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664704915/kelly-sikkema-IZOAOjvwhaM-unsplash_m2ivzg.jpg',
-            'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664708145/sigmund-eTgMFFzroGc-unsplash_hg0wdj.jpg']
+        imgs: [
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197071/pawel-czerwinski-lKEvGdP0Oig-unsplash_xhxxbf.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673421655/pawel-czerwinski-lKEvGdP0Oig-unsplash-min_v5gebi.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664186705/rrvviiii-EVEHo6gWzSM-unsplash_jqec7i.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358107/rrvviiii-EVEHo6gWzSM-unsplash-min_hsyg7m.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187242/karsten-winegeart-j5z0DZMWViU-unsplash_yyaw6e.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673353048/karsten-winegeart-j5z0DZMWViU-unsplash-min_o3rne4.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196200/alexander-sinn-KgLtFCgfC28-unsplash_viu9fl.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673354984/alexander-sinn-KgLtFCgfC28-unsplash-min_e3qint.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664187022/maxim-berg-Tba7ds4aF_k-unsplash_1_woirqi.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673356761/maxim-berg-Tba7ds4aF_k-unsplash-min_vzzpcs.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196311/ian-dooley-DuBNA1QMpPA-unsplash_cpw29l.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673422167/ian-dooley-DuBNA1QMpPA-unsplash-min_eqdmlp.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196414/ian-dooley-DJ7bWa-Gwks-unsplash_hr2qyq.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673357083/ian-dooley-DJ7bWa-Gwks-unsplash-min_lnhojz.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664196528/jeremy-thomas-O6N9RV2rzX8-unsplash_ndcnyj.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673356416/jeremy-thomas-O6N9RV2rzX8-unsplash-min_wnrfhl.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664197377/ash-from-modern-afflatus-NQ6Lh81BTRs-unsplash_qoe8no.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673355189/ash-from-modern-afflatus-NQ6Lh81BTRs-unsplash-min_ncx2rj.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664382696/katie-smith-uQs1802D0CQ-unsplash_dwxpri.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358315/katie-smith-uQs1802D0CQ-unsplash-min_eorucd.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664382882/john-price-FE7ATjzRRMs-unsplash_cznmhq.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673357473/john-price-FE7ATjzRRMs-unsplash-min_fbj9bt.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664689530/frank-mckenna-OD9EOzfSOh0-unsplash_eyotjy.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673422464/frank-mckenna-OD9EOzfSOh0-unsplash-min_r3ppxb.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664692449/kyle-glenn-_AR74EoWdy0-unsplash_rhf2nb.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358500/kyle-glenn-_AR74EoWdy0-unsplash-min_zkygrg.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664698270/amy-shamblen-pJ_DCj9KswI-unsplash_dpiduu.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358755/amy-shamblen-pJ_DCj9KswI-unsplash-min_bxgvk7.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664699079/raphael-biscaldi-7RQf2X6aXXI-unsplash_k6crnk.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358645/raphael-biscaldi-7RQf2X6aXXI-unsplash-min_v67zh8.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664699491/ana-frantz-Pg6YGIJ97lw-unsplash_aj7dr4.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673356285/ana-frantz-Pg6YGIJ97lw-unsplash-min_rupmh3.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664704915/kelly-sikkema-IZOAOjvwhaM-unsplash_m2ivzg.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673356955/kelly-sikkema-IZOAOjvwhaM-unsplash-min_wyhrch.jpg'
+            },
+            {
+                imgUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1664708145/sigmund-eTgMFFzroGc-unsplash_hg0wdj.jpg',
+                thumbUrl: 'https://res.cloudinary.com/dqhrqqqul/image/upload/v1673358937/sigmund-eTgMFFzroGc-unsplash-min_rdpz4b.jpg'
+            },
+        ]
     }
 }

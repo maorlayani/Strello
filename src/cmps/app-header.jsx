@@ -73,7 +73,9 @@ export function AppHeader() {
     const toggleUserModal = () => {
         setIsUserModalOpen(!isUserModalOpen)
     }
+
     if (pathname.includes("/signup") || pathname.includes("/login")) return <section></section>
+
     return (
         <section className={_getHeaderClass()}
             style={(_getHeaderClass() === 'app-header' ?

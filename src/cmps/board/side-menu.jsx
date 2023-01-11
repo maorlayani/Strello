@@ -1,22 +1,17 @@
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { BoardsList } from './boards-list'
 import { ImTrello } from 'react-icons/im'
-import { useSelector } from 'react-redux'
 
 export const SideMenu = ({ isSideBarOpen, toggleMenu }) => {
 
-    const themeColor = useSelector(state => state.boardModule.boardThemeColor)
-
-    const _getMenuClass = () => {
+    const getMenuClass = () => {
         if (isSideBarOpen) return "side-menu open"
         return "side-menu"
     }
 
     return (
         <section
-            className={_getMenuClass()}
-            style={(_getMenuClass() === 'side-menu open' ?
-                { backgroundColor: themeColor } : { backgroundColor: '#ffffff42' })}>
+            className={getMenuClass()}>
             <header>
                 <div className="logo-icon"><ImTrello /></div>
                 <section className="header-txt">
