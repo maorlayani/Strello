@@ -65,7 +65,5 @@ export function boardReducer(state = initialState, action) {
             break
         default:
     }
-    // For debug:
-    window.boardState = newState
     return newState
 }

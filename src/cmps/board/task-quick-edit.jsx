@@ -77,7 +77,6 @@ export const TaskQuickEdit = ({ task, pos, boardId, groupId }) => {
   }
 
   const toggleModal = (type = null) => {
-    console.log('heee')
     dispatch(setTaskDetailsModal(!taskDetailsModal.isOpen, type))
   }
 
