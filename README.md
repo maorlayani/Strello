@@ -69,7 +69,7 @@ All the functionality that you have in Trello, D&D, live-updates, editing tasks 
 ![alt text][board]
 
 ### Signup
-We created a sign up system with authentication flow, including encrypting the user's details and midelwears.
+We created a sign up system with authentication flow, including encrypting the user's details and middlewares.
 ![alt text](https://github.com/maorlayani/strello-frontend/blob/4872109c4011386f29737998143658a2584e262e/src/assets/img/signup.png)
 
 ### Task details
