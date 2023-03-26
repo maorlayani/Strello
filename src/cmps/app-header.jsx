@@ -64,7 +64,7 @@ export function AppHeader() {
     }
 
     const getUserImg = () => {
-        const guestImgUrl = "https://trello-members.s3.amazonaws.com/63197a231392a3015ea3b649/1af72162e2d7c08fd66a6b36476c1515/170.png"
+        const guestImgUrl = "https://res.cloudinary.com/dqhrqqqul/image/upload/v1670317536/170_t4mend.png"
         if (!user?.imgUrl) return {
             backgroundImage: `url(${guestImgUrl})`
         }
