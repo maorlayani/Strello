@@ -8,7 +8,6 @@ export function getActionRemoveBoard(boardId) {
     }
 }
 export function getActionAddBoard(board) {
-
     return {
         type: 'ADD_BOARD',
         board
@@ -21,14 +20,12 @@ export function getActionUpdateBoard(board) {
     }
 }
 
+// Board actions
 export function loadBoards(filterBY = {}) {
     return async (dispatch) => {
         try {
             const boards = await boardService.query(filterBY)
-            dispatch({
-                type: 'SET_BOARDS',
-                boards
-            })
+            dispatch({ type: 'SET_BOARDS', boards })
         } catch (err) {
             console.log('Cannot load boards', err)
         }
@@ -39,10 +36,7 @@ export function getBoard(boardId) {
     return async (dispatch) => {
         try {
             const updatedBoard = await boardService.getById(boardId)
-            const { board } = dispatch({
-                type: 'SET_BOARD',
-                board: updatedBoard
-            })
+            const { board } = dispatch({ type: 'SET_BOARD', board: updatedBoard })
             return board
         } catch (err) {
             console.log('Cannot get board by id', err)
@@ -54,32 +48,10 @@ export function getBoard(boardId) {
 export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
-            await boardService.remove(boardId)
+            const remove = await boardService.remove(boardId)
             dispatch(getActionRemoveBoard(boardId))
         } catch (err) {
             console.log('Cannot remove board', err)
-        }
-    }
-}
-
-export function addGroup(boardId, group, activity) {
-    return async (dispatch) => {
-        try {
-            const updateBoard = await boardService.addGroupToBoard(boardId, group, activity)
-            return dispatch(getActionUpdateBoard(updateBoard))
-        } catch (err) {
-            console.log('Cannot add group', err)
-        }
-    }
-}
-
-export function removeGroup(boardId, groupId, activity) {
-    return async (dispatch) => {
-        try {
-            const updateBoard = await boardService.removeGroupFromBoard(boardId, groupId, activity)
-            return dispatch(getActionUpdateBoard(updateBoard))
-        } catch (err) {
-            console.log('Cannot remove group', err)
         }
     }
 }
@@ -106,7 +78,30 @@ export function updateBoard(board, activity) {
     }
 }
 
-/*------------------------------------------------------------------------------*/
+// Group actions
+export function addGroup(boardId, group, activity) {
+    return async (dispatch) => {
+        try {
+            const updateBoard = await boardService.addGroupToBoard(boardId, group, activity)
+            return dispatch(getActionUpdateBoard(updateBoard))
+        } catch (err) {
+            console.log('Cannot add group', err)
+        }
+    }
+}
+
+export function removeGroup(boardId, groupId, activity) {
+    return async (dispatch) => {
+        try {
+            const updateBoard = await boardService.removeGroupFromBoard(boardId, groupId, activity)
+            return dispatch(getActionUpdateBoard(updateBoard))
+        } catch (err) {
+            console.log('Cannot remove group', err)
+        }
+    }
+}
+
+// Task actions
 export function updateTask(boardId, groupId, taskForUpdate, activity) {
     return async (dispatch) => {
         try {
@@ -171,6 +166,7 @@ export function getTask(boardId, groupId, taskId) {
     }
 }
 
+// General actions
 export function setTaskDetailsModal(isModalOpen, type) {
     return (dispatch) => {
         dispatch({
@@ -225,7 +221,7 @@ export function setBoardBackgroundColor(color) {
     }
 }
 
-/*------------------------------------------------------------------------------*/
+// D&D board update
 export function handleDrag(
     board,
     droppableIdStart,

@@ -1,16 +1,6 @@
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { getActionAddBoard, getActionUpdateBoard } from '../store/board.actions.js'
-import { store } from '../store/store'
 import { httpService } from './http.service'
-
-const boardChannel = new BroadcastChannel('boardChannel')
-
-    ; (() => {
-        boardChannel.addEventListener('message', (ev) => {
-            store.dispatch(ev.data)
-        })
-    })()
 
 export const boardService = {
     query,
@@ -91,7 +81,6 @@ async function save(board, activity = null) {
     if (board._id) {
         if (activity) board.activities.unshift(activity)
         savedBoard = await httpService.put(BASE_URL + board._id, board)
-        boardChannel.postMessage(getActionUpdateBoard(savedBoard))
     } else {
         if (activity) board.activities = [activity]
         savedBoard = await httpService.post(BASE_URL, board)
@@ -108,7 +97,6 @@ async function save(board, activity = null) {
                 ...getGuestUser()
             }
         }
-        boardChannel.postMessage(getActionAddBoard(savedBoard))
     }
     return savedBoard
 }

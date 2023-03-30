@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './assets/styles/main.scss'
 import { Routes, Route } from 'react-router'
 import { AppHeader } from './cmps/app-header'
