@@ -2,7 +2,19 @@ import 'core-js'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { boardService } from '../services/board.service'
-import { addBoard, getBoard, removeBoard, updateBoard, toggleQuickEdit, resizeLabel, loadBoards } from './board.actions'
+import {
+    addBoard,
+    loadBoards,
+    getBoard,
+    removeBoard,
+    updateBoard,
+    toggleQuickEdit,
+    resizeLabel,
+    setTaskDetailsModal,
+    addGroup,
+    removeGroup,
+    setBoardBackgroundColor
+} from './board.actions'
 jest.mock('../services/board.service')
 
 describe('Board actions', () => {
@@ -65,7 +77,7 @@ describe('Board actions', () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.getById.mockResolvedValue(httpResp)
-            await store.dispatch(loadBoards(httpResp))
+            await store.dispatch(loadBoards({}))
 
             const action = store.getActions()[0]
             expect(action.type).toBe('SET_BOARDS')
@@ -74,7 +86,7 @@ describe('Board actions', () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.query.mockResolvedValue(httpResp)
-            await store.dispatch(getBoard(httpResp))
+            await store.dispatch(getBoard(httpResp._id))
 
             const action = store.getActions()[0]
             expect(action.type).toBe('SET_BOARD')
@@ -105,6 +117,56 @@ describe('Board actions', () => {
 
             const action = store.getActions()[0]
             expect(action.type).toBe('UPDATE_BOARD')
+        })
+    })
+    describe('group CRUD', () => {
+        test('creates UPDATE_BOARD when user add group', async () => {
+            expect.assertions(1)
+            const httpResp = mockBoard
+            boardService.addGroupToBoard.mockResolvedValue(httpResp)
+            await store.dispatch(addGroup(httpResp))
+
+            const action = store.getActions()[0]
+            expect(action.type).toBe('UPDATE_BOARD')
+        })
+        test('creates UPDATE_BOARD when user delete group', async () => {
+            expect.assertions(1)
+            const httpResp = mockBoard
+            boardService.removeGroupFromBoard.mockResolvedValue(httpResp)
+            await store.dispatch(removeGroup(httpResp))
+
+            const action = store.getActions()[0]
+            expect(action.type).toBe('UPDATE_BOARD')
+        })
+    })
+    describe('general actions', () => {
+        test('creates SET_TASK_DETAILS_MODAL when user open task details/quick edit screens', () => {
+            expect.assertions(1)
+            store.dispatch(setTaskDetailsModal({ isOpen: true, type: 'cover' }))
+
+            const action = store.getActions()[0]
+            expect(action.type).toBe('SET_TASK_DETAILS_MODAL')
+        })
+        test('creates TOGGALE_TASK_QUICK_EDIT when user open/close task quick edit screen', async () => {
+            expect.assertions(1)
+            await store.dispatch(toggleQuickEdit(true))
+
+            const action = store.getActions()[0]
+            expect(action.type).toBe('TOGGALE_TASK_QUICK_EDIT')
+        })
+        test('creates SET_BOARD_THEME_COLOR when user choose board', async () => {
+            expect.assertions(1)
+            await store.dispatch(setBoardBackgroundColor('#0079bf'))
+
+            const action = store.getActions()[0]
+            expect(action.type).toBe('SET_BOARD_THEME_COLOR')
+        })
+        test('creates RESIZE_LABEL when user click on label displayed in task preview', () => {
+            expect.assertions(1)
+            store.dispatch(resizeLabel(true))
+
+            const action = store.getActions()[0]
+            expect(action.type).toBe('RESIZE_LABEL')
         })
     })
 })
