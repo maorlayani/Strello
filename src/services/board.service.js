@@ -17,27 +17,23 @@ export const boardService = {
     getBoardBackgrounds,
     getGuestUser
 }
-window.cs = boardService
 
 const BASE_URL = `board/`
 
-async function query(filterBy) {
+async function query(filterBy = {}) {
     try {
-        let boards = httpService.get(BASE_URL, { params: filterBy })
-        if (filterBy?.title) {
-            boards = boards.filter(b => b.title.toLowerCase().includes(filterBy.title.toLowerCase()))
-        }
+        let boards = await httpService.get(BASE_URL, { params: filterBy })
         return boards
     } catch (err) {
         console.log('Cannot complete the function query:', err)
         throw err
     }
 }
+
 async function getById(boardId) {
     try {
         return await httpService.get(BASE_URL + boardId, boardId)
-    }
-    catch (err) {
+    } catch (err) {
         console.log('Cannot complete the function getById:', err)
         throw err
     }
@@ -46,9 +42,39 @@ async function getById(boardId) {
 async function remove(boardId) {
     try {
         return await httpService.delete(BASE_URL + boardId)
-    }
-    catch (err) {
+    } catch (err) {
         console.log('Cannot complete the function remove:', err)
+        throw err
+    }
+}
+
+async function save(board, activity = null) {
+    try {
+        let savedBoard
+        if (activity) _addActivityDetails(activity)
+        if (board._id) {
+            if (activity) board.activities.unshift(activity)
+            savedBoard = await httpService.put(BASE_URL + board._id, board)
+        } else {
+            if (activity) board.activities = [activity]
+            savedBoard = await httpService.post(BASE_URL, board)
+            savedBoard.isStarred = false
+            const user = userService.getLoggedinUser()
+            if (user) {
+                savedBoard.createdBy = {
+                    _id: user._id,
+                    fullname: user.fullname,
+                    imgUrl: user.imgUrl
+                }
+            } else {
+                savedBoard.createdBy = {
+                    ...getGuestUser()
+                }
+            }
+        }
+        return savedBoard
+    } catch (err) {
+        console.log('Cannot complete the function save:', err)
         throw err
     }
 }
@@ -64,6 +90,7 @@ async function addGroupToBoard(boardId, group, activity) {
         throw err
     }
 }
+
 async function removeGroupFromBoard(boardId, groupId, activity) {
     try {
         let boardToUpdate = await getById(boardId)
@@ -75,39 +102,24 @@ async function removeGroupFromBoard(boardId, groupId, activity) {
     }
 }
 
-async function save(board, activity = null) {
-    var savedBoard
-    if (activity) _addActivityDetails(activity)
-    if (board._id) {
-        if (activity) board.activities.unshift(activity)
-        savedBoard = await httpService.put(BASE_URL + board._id, board)
-    } else {
-        if (activity) board.activities = [activity]
-        savedBoard = await httpService.post(BASE_URL, board)
-        savedBoard.isStarred = false
-        const user = userService.getLoggedinUser()
-        if (user) {
-            savedBoard.createdBy = {
-                _id: user._id,
-                fullname: user.fullname,
-                imgUrl: user.imgUrl
-            }
-        } else {
-            savedBoard.createdBy = {
-                ...getGuestUser()
-            }
-        }
-    }
-    return savedBoard
-}
-
 async function getGroupById(boardId, groupId) {
     try {
         const board = await httpService.get(BASE_URL + boardId)
         return board.groups.find(group => group.id === groupId)
-    }
-    catch (err) {
+    } catch (err) {
         console.log('Cannot complete the function getGroupById:', err)
+        throw err
+    }
+}
+
+async function getTaskById(boardId, groupId, taskId) {
+    try {
+        const group = await getGroupById(boardId, groupId)
+        const task = group.tasks.find(task => task.id === taskId)
+        return task
+
+    } catch (err) {
+        console.log('Cannot complete the function getTaskById:', err)
         throw err
     }
 }
@@ -137,18 +149,6 @@ function getGuestUser() {
         _id: "u199",
         fullname: "Guest",
         imgUrl: "https://res.cloudinary.com/dqhrqqqul/image/upload/v1670317536/170_t4mend.png"
-    }
-}
-
-async function getTaskById(boardId, groupId, taskId) {
-    try {
-        const group = await getGroupById(boardId, groupId)
-        const task = group.tasks.find(task => task.id === taskId)
-        return task
-
-    } catch (err) {
-        console.log('Cannot complete the function getTaskById:', err)
-        throw err
     }
 }
 
