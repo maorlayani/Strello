@@ -6,7 +6,7 @@ import { resizeLabel } from "../../store/board.actions"
 export const TaskLabel = ({ labelIds, isDetailsOpen }) => {
 
     const board = useSelector(state => state.boardModule.board)
-    const task = useSelector(state => state.boardModule.task)
+    // const task = useSelector(state => state.boardModule.task)
     const resizeLabelState = useSelector(state => state.boardModule.resizeLabel)
     const [isClicked, setIsClicked] = useState(false)
     const dispatch = useDispatch()

@@ -15,7 +15,8 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
         style: {
             bgColor: null,
             imgUrl: boardService.getBackground('url')[0]
-        }
+        },
+        groups: []
     })
 
     const inputRef = useRef()

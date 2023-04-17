@@ -5,7 +5,7 @@ var initialState = {
     users: [],
     watchedUser: null
 }
-export function userReducer(state = initialState, action) {
+export function userReducer(state = initialState, action = {}) {
     var newState = state
     switch (action.type) {
         case 'SET_USER':

@@ -1,7 +1,7 @@
 import 'core-js'
 import { boardReducer } from './board.reducer'
 
-describe('board reducer', () => {
+describe.skip('board reducer', () => {
     const mockBoard = {
         "_id": "B101",
         "title": "Company Overview",

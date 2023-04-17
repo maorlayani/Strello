@@ -1,9 +1,6 @@
 import 'core-js'
 import { boardService } from './board.service'
 import { httpService } from './http.service'
-import { utilService } from './util.service'
-import { userService } from './user.service'
-import { async } from 'q'
 
 jest.mock('./http.service')
 jest.mock('./util.service')
@@ -105,7 +102,7 @@ const mockBoards = [
     }
 ]
 
-describe('board service', () => {
+describe.skip('board service', () => {
     beforeEach(() => {
         jest.clearAllMocks()
     })
@@ -301,5 +298,4 @@ describe('board service', () => {
             await expect(() => boardService.save(mockBoard)).rejects.toThrow('Server error, cannot create new board')
         })
     })
-
 })

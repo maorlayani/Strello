@@ -105,7 +105,6 @@ export function removeGroup(boardId, groupId, activity) {
 export function updateTask(boardId, groupId, taskForUpdate, activity) {
     return async (dispatch) => {
         try {
-
             const groupForUpdate = await boardService.getGroupById(boardId, groupId)
             const board = await boardService.getById(boardId)
 
@@ -116,12 +115,7 @@ export function updateTask(boardId, groupId, taskForUpdate, activity) {
             board.groups.splice(groupIdx, 1, groupForUpdate)
 
             dispatch(updateBoard(board, activity))
-
-            dispatch({
-                type: 'SET_TASK',
-                task: taskForUpdate
-            })
-
+            // dispatch({ type: 'SET_TASK', task: taskForUpdate })
             return board
         } catch (err) {
             console.log('Cannot complete updateTask', err)
@@ -145,23 +139,8 @@ export function removeTask(boardId, groupId, taskForUpdate) {
             dispatch(updateBoard(board))
             return board
         } catch (err) {
-            console.log('Cannot complete removeTask', err)
+            console.log('Cannot complete remove task', err)
             throw err
-        }
-    }
-}
-
-export function getTask(boardId, groupId, taskId) {
-    return async (dispatch) => {
-        try {
-            const updatedTask = await boardService.getTaskById(boardId, groupId, taskId)
-            const { task } = dispatch({
-                type: 'SET_TASK',
-                task: updatedTask
-            })
-            return task
-        } catch (err) {
-            console.log('Cannot load task', err)
         }
     }
 }

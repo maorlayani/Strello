@@ -12,7 +12,7 @@ const initialState = {
     }
 }
 
-export function boardReducer(state = initialState, action) {
+export function boardReducer(state = initialState, action = {}) {
     var newState = state
     var boards
     var board

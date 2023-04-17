@@ -81,9 +81,8 @@ async function save(board, activity = null) {
 
 async function addGroupToBoard(boardId, group, activity) {
     try {
-        let boardToUpdate = await getById(boardId)
-        if (boardToUpdate?.groups) boardToUpdate.groups.push({ ...group })
-        else boardToUpdate.groups = [group]
+        const boardToUpdate = await getById(boardId)
+        boardToUpdate.groups.push(group)
         return await save(boardToUpdate, activity)
     } catch (err) {
         console.log('Cannot complete the function addGroupToBoard:', err)

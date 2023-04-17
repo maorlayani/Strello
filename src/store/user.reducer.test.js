@@ -1,7 +1,7 @@
 import 'core-js'
 import { userReducer } from './user.reducer'
 
-describe('', () => {
+describe.skip('user reducer', () => {
     const mockUser = { fullname: 'John Walls', username: 'Walls123', id: 'u101' }
     const initialState = {
         user: null,

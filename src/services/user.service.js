@@ -10,12 +10,8 @@ export const userService = {
     getLoggedinUser,
     saveLocalUser,
     getUsers,
-    getById,
-    remove,
-    update
+    getById
 }
-
-window.userService = userService
 
 function getUsers() {
     return httpService.get(`user`)
@@ -24,15 +20,6 @@ function getUsers() {
 async function getById(userId) {
     const user = await httpService.get(`user/${userId}`)
     socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
-    return user
-}
-function remove(userId) {
-    return httpService.delete(`user/${userId}`)
-}
-
-async function update(user) {
-    user = await httpService.put(`user/${user._id}`, user)
-    if (getLoggedinUser()._id === user._id) saveLocalUser(user)
     return user
 }
 
@@ -62,6 +49,3 @@ function saveLocalUser(user) {
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
-
-
-
