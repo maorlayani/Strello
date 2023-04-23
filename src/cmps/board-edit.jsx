@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -14,7 +14,8 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
         title: '',
         style: {
             bgColor: null,
-            imgUrl: boardService.getBackground('url')[0]
+            imgUrl: boardService.getBackground('url')[0].imgUrl,
+            thumbUrl: boardService.getBackground('url')[0].thumbUrl
         },
         groups: []
     })
@@ -42,11 +43,6 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
         }
     }
 
-    const getBackground = (type) => {
-        const imgUrl = boardService.getBackground(type)
-        return imgUrl
-    }
-
     const setBoardBackground = (type, background) => {
         const boardToUpdate = board
         if (type === 'url') {
@@ -71,7 +67,8 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
     const getCoverBackground = () => {
         let style = {}
         if (board.style.imgUrl) {
-            style.backgroundImage = `url(${board.style.imgUrl})`
+            style.backgroundImage = `url(${board.style.thumbUrl})`
+            console.log(board);
         }
         else if (board.style.bgColor) {
             style.backgroundColor = board.style.bgColor
@@ -100,7 +97,7 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
                     </div>
                     <div className="background-picker">
                         <ul className="image-picker">
-                            {getBackground('url').map(img => {
+                            {boardService.getBackground('url').map(img => {
                                 return <li key={img.thumbUrl}>
                                     <button
                                         style={{ backgroundImage: `url(${img.thumbUrl})` }}
@@ -115,7 +112,7 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
                             })}
                         </ul>
                         <ul className="color-picker">
-                            {getBackground('color').map(color => {
+                            {boardService.getBackground('color').map(color => {
                                 return <li key={color}>
                                     <button
                                         style={{ backgroundColor: color }}
