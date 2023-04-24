@@ -66,13 +66,8 @@ export const BoardEdit = ({ toggleCreateBoardModal }) => {
 
     const getCoverBackground = () => {
         let style = {}
-        if (board.style.imgUrl) {
-            style.backgroundImage = `url(${board.style.thumbUrl})`
-            console.log(board);
-        }
-        else if (board.style.bgColor) {
-            style.backgroundColor = board.style.bgColor
-        }
+        if (board.style.imgUrl) style.backgroundImage = `url(${board.style.thumbUrl})`
+        else if (board.style.bgColor) style.backgroundColor = board.style.bgColor
         return style
     }
 
