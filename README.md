@@ -28,6 +28,8 @@ We spent a lot of effort on making sure that the app is as close as possible to 
 ## Technologies
 The technology stack we used was MERN - MongoDB, Express, React, Node.js. The app uses webSockets to update the board in real-time. The API calls to the backend are done with the REST API method, and we used middlewares to authenticate and authorize actions.
 
+Testing - performing unit testing using Jest to cover the happy path of the main scenarios.
+
 We have used many third side libraries for many goals, such as D&D and more. The layout and pixel-perfect were made with Sass.
 
 ## Getting started
