@@ -67,26 +67,26 @@ describe.skip('board reducer', () => {
         initialState.board = null
     })
     describe('board CRUDL', () => {
-        test('creates initial state', () => {
+        it('creates initial state', () => {
             expect.assertions(1)
             const state = boardReducer(initialState)
             expect(state).toBe(initialState)
         })
-        test('should set a boards in the state', () => {
+        it('should set a boards in the state', () => {
             expect.assertions(2)
             let state = boardReducer(initialState)
             expect(state.boards).toEqual([])
             state = boardReducer(state, { type: 'SET_BOARDS', boards: [mockBoard] })
             expect(state.boards).toBeTruthy()
         })
-        test('should set a board in the state', () => {
+        it('should set a board in the state', () => {
             expect.assertions(2)
             let state = boardReducer(initialState)
             expect(state.board).toBeFalsy()
             state = boardReducer(state, { type: 'SET_BOARD', board: mockBoard })
             expect(state.board).toBeTruthy()
         })
-        test('should remove a board in boards state', () => {
+        it('should remove a board in boards state', () => {
             expect.assertions(3)
             initialState.boards = [mockBoard]
             initialState.board = mockBoard
@@ -96,14 +96,14 @@ describe.skip('board reducer', () => {
             expect(state.board).toBeFalsy()
             expect(state.boards).toEqual([])
         })
-        test('should add a board in boards state', () => {
+        it('should add a board in boards state', () => {
             expect.assertions(2)
             let state = boardReducer(initialState)
             expect(state.boards).toEqual([])
             state = boardReducer(state, { type: 'ADD_BOARD', board: mockBoard })
             expect(state.boards).toEqual([mockBoard])
         })
-        test('should update board in boards state', () => {
+        it('should update board in boards state', () => {
             expect.assertions(2)
             initialState.boards = [mockBoard]
             let state = boardReducer(initialState)
@@ -114,7 +114,7 @@ describe.skip('board reducer', () => {
         })
     })
     describe('general actions types', () => {
-        test('should handle SET_TASK_DETAILS_MODAL', () => {
+        it('should handle SET_TASK_DETAILS_MODAL', () => {
             expect.assertions(2)
             let state = boardReducer(initialState)
             expect(state.taskDetailsModal).toEqual({ isOpen: false, type: null })
@@ -125,20 +125,20 @@ describe.skip('board reducer', () => {
             })
             expect(state.taskDetailsModal).toEqual({ isOpen: true, type: 'cover' })
         })
-        test('should handle TOGGALE_TASK_QUICK_EDIT', () => {
+        it('should handle TOGGALE_TASK_QUICK_EDIT', () => {
             expect.assertions(2)
             let state = boardReducer(initialState)
             expect(state.isQuickEditOpen).toEqual(false)
             state = boardReducer(state, { type: 'TOGGALE_TASK_QUICK_EDIT', isQuickEditOpen: true })
             expect(state.isQuickEditOpen).toEqual(true)
         })
-        test('should handle SET_BOARD_THEME_COLOR', () => {
+        it('should handle SET_BOARD_THEME_COLOR', () => {
             let state = boardReducer(initialState)
             expect(state.boardThemeColor).toBeFalsy()
             state = boardReducer(state, { type: 'SET_BOARD_THEME_COLOR', boardThemeColor: '#0079bf' })
             expect(state.boardThemeColor).toBeTruthy()
         })
-        test('should handle RESIZE_LABEL', () => {
+        it('should handle RESIZE_LABEL', () => {
             let state = boardReducer(initialState)
             expect(state.resizeLabel).toBeFalsy()
             state = boardReducer(state, { type: 'RESIZE_LABEL', resizeLabel: true })

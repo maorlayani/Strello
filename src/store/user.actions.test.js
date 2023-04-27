@@ -16,7 +16,7 @@ describe.skip('User actions', () => {
         mockStore = configureMockStore(middlewares)
         store = mockStore({})
     })
-    test('creates SET_USER when user signup', async () => {
+    it('creates SET_USER when user signup', async () => {
         expect.assertions(1)
         const httpResp = mockUser;
         userService.signup.mockResolvedValue(httpResp)
@@ -25,7 +25,7 @@ describe.skip('User actions', () => {
         const action = store.getActions()[0]
         expect(action.type).toBe('SET_USER')
     })
-    test('creates SET_USER when user login', async () => {
+    it('creates SET_USER when user login', async () => {
         expect.assertions(1)
         const httpResp = mockUser;
         userService.login.mockResolvedValue(httpResp)
@@ -34,7 +34,7 @@ describe.skip('User actions', () => {
         const action = store.getActions()[0]
         expect(action.type).toBe('SET_USER')
     })
-    test('creates SET_USER when user logout', async () => {
+    it('creates SET_USER when user logout', async () => {
         expect.assertions(1)
         const httpResp = undefined
         userService.logout.mockResolvedValue(httpResp)

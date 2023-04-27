@@ -22,13 +22,13 @@ describe.skip('login', () => {
     }
 
     describe('submit btn', () => {
-        test('should not have enabled className when inputs are empty', () => {
+        it('should not have enabled className when inputs are empty', () => {
             expect.assertions(1)
             render(<Login />)
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should not have enabled className when password input empty', () => {
+        it('should not have enabled className when password input empty', () => {
             expect.assertions(1)
             const user = {
                 username: 'John Walls',
@@ -38,7 +38,7 @@ describe.skip('login', () => {
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should not have enabled className when username input empty', () => {
+        it('should not have enabled className when username input empty', () => {
             expect.assertions(1)
             const user = {
                 username: 'John Walls',
@@ -48,7 +48,7 @@ describe.skip('login', () => {
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should have enabled className to submit btn', () => {
+        it('should have enabled className to submit btn', () => {
             expect.assertions(1)
             const user = {
                 username: 'Dani',
@@ -65,7 +65,7 @@ describe.skip('login', () => {
             expect(btnWrapper.classList.contains('enabled')).toBe(true)
         })
     })
-    test('should trigger submit event with the user details', () => {
+    it('should trigger submit event with the user details', () => {
         window._virtualConsole.emit = jest.fn();
         expect.assertions(2)
         render(<Login />)

@@ -8,12 +8,12 @@ describe.skip('user reducer', () => {
         users: [],
         watchedUser: null
     }
-    test('creates initial state', () => {
+    it('creates initial state', () => {
         expect.assertions(1)
         const state = userReducer(initialState)
         expect(state).toBe(initialState)
     })
-    test('should set a user in the state', () => {
+    it('should set a user in the state', () => {
         expect.assertions(2)
         let state = userReducer(initialState)
         expect(state.user).toBeFalsy()

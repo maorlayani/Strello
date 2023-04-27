@@ -73,7 +73,7 @@ describe.skip('Board actions', () => {
         store = mockStore({})
     })
     describe('board CRUDL', () => {
-        test('creates SET_BOARD when call getBoard function', async () => {
+        it('creates SET_BOARD when call getBoard function', async () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.getById.mockResolvedValue(httpResp)
@@ -82,7 +82,7 @@ describe.skip('Board actions', () => {
             const action = store.getActions()[0]
             expect(action.type).toBe('SET_BOARDS')
         })
-        test('creates SET_BOARDS when call loadBoard function', async () => {
+        it('creates SET_BOARDS when call loadBoard function', async () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.query.mockResolvedValue(httpResp)
@@ -91,7 +91,7 @@ describe.skip('Board actions', () => {
             const action = store.getActions()[0]
             expect(action.type).toBe('SET_BOARD')
         })
-        test('creates REMOVE_BOARD when user delete Board', async () => {
+        it('creates REMOVE_BOARD when user delete Board', async () => {
             expect.assertions(1)
             const httpResp = { msg: 'Removed succesfully' }
             boardService.remove.mockResolvedValue(httpResp)
@@ -100,7 +100,7 @@ describe.skip('Board actions', () => {
             const action = store.getActions()[0]
             expect(action.type).toBe('REMOVE_BOARD')
         })
-        test('creates ADD_BOARD when user add new board to workspace', async () => {
+        it('creates ADD_BOARD when user add new board to workspace', async () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.save.mockResolvedValue(httpResp)
@@ -109,7 +109,7 @@ describe.skip('Board actions', () => {
             const action = store.getActions()[0]
             expect(action.type).toBe('ADD_BOARD')
         })
-        test('creates UPDATE_BOARD when user update board', async () => {
+        it('creates UPDATE_BOARD when user update board', async () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.save.mockResolvedValue(httpResp)
@@ -120,7 +120,7 @@ describe.skip('Board actions', () => {
         })
     })
     describe('group CRUD', () => {
-        test('creates UPDATE_BOARD when user add group', async () => {
+        it('creates UPDATE_BOARD when user add group', async () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.addGroupToBoard.mockResolvedValue(httpResp)
@@ -129,7 +129,7 @@ describe.skip('Board actions', () => {
             const action = store.getActions()[0]
             expect(action.type).toBe('UPDATE_BOARD')
         })
-        test('creates UPDATE_BOARD when user delete group', async () => {
+        it('creates UPDATE_BOARD when user delete group', async () => {
             expect.assertions(1)
             const httpResp = mockBoard
             boardService.removeGroupFromBoard.mockResolvedValue(httpResp)
@@ -140,28 +140,28 @@ describe.skip('Board actions', () => {
         })
     })
     describe('general actions', () => {
-        test('creates SET_TASK_DETAILS_MODAL when user open task details/quick edit screens', () => {
+        it('creates SET_TASK_DETAILS_MODAL when user open task details/quick edit screens', () => {
             expect.assertions(1)
             store.dispatch(setTaskDetailsModal({ isOpen: true, type: 'cover' }))
 
             const action = store.getActions()[0]
             expect(action.type).toBe('SET_TASK_DETAILS_MODAL')
         })
-        test('creates TOGGALE_TASK_QUICK_EDIT when user open/close task quick edit screen', async () => {
+        it('creates TOGGALE_TASK_QUICK_EDIT when user open/close task quick edit screen', async () => {
             expect.assertions(1)
             await store.dispatch(toggleQuickEdit(true))
 
             const action = store.getActions()[0]
             expect(action.type).toBe('TOGGALE_TASK_QUICK_EDIT')
         })
-        test('creates SET_BOARD_THEME_COLOR when user choose board', async () => {
+        it('creates SET_BOARD_THEME_COLOR when user choose board', async () => {
             expect.assertions(1)
             await store.dispatch(setBoardBackgroundColor('#0079bf'))
 
             const action = store.getActions()[0]
             expect(action.type).toBe('SET_BOARD_THEME_COLOR')
         })
-        test('creates RESIZE_LABEL when user click on label displayed in task preview', () => {
+        it('creates RESIZE_LABEL when user click on label displayed in task preview', () => {
             expect.assertions(1)
             store.dispatch(resizeLabel(true))
 

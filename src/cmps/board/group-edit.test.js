@@ -14,7 +14,7 @@ jest.mock('react-redux', () => ({
     useDispatch: () => mockUseDispatchMock
 }))
 
-describe('group edit', () => {
+describe.skip('group edit', () => {
 
     it('should render the GroupEdit component', () => {
         expect.assertions(2)

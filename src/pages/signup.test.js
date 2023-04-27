@@ -24,13 +24,13 @@ describe.skip('signup', () => {
         password: '12ab34'
     }
     describe('submit btn', () => {
-        test('should not have enabled className when inputs are empty', () => {
+        it('should not have enabled className when inputs are empty', () => {
             expect.assertions(1)
             render(<Signup />)
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should not have enabled className when password input empty', () => {
+        it('should not have enabled className when password input empty', () => {
             expect.assertions(1)
             const user = {
                 fullname: 'John Walls',
@@ -41,7 +41,7 @@ describe.skip('signup', () => {
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should not have enabled className when username input empty', () => {
+        it('should not have enabled className when username input empty', () => {
             expect.assertions(1)
             const user = {
                 fullname: 'John Walls',
@@ -52,7 +52,7 @@ describe.skip('signup', () => {
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should not have enabled className when fullname input empty', () => {
+        it('should not have enabled className when fullname input empty', () => {
             expect.assertions(1)
             const user = {
                 fullname: '',
@@ -63,7 +63,7 @@ describe.skip('signup', () => {
             const btnWrapper = screen.getByRole('button', { name: 'Continue' })
             expect(btnWrapper.classList.contains('enabled')).toBe(false)
         })
-        test('should have enabled className to submit btn', () => {
+        it('should have enabled className to submit btn', () => {
             expect.assertions(1)
             const user = {
                 fullname: 'John Walls',
@@ -83,7 +83,7 @@ describe.skip('signup', () => {
             expect(btnWrapper.classList.contains('enabled')).toBe(true)
         })
     })
-    test('should trigger submit event with the user details', () => {
+    it('should trigger submit event with the user details', () => {
         window._virtualConsole.emit = jest.fn();
         expect.assertions(2)
         render(<Signup />)

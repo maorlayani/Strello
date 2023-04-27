@@ -39,19 +39,9 @@ export const Board = () => {
     }
 
     useEffect(() => {
-        // loadBoard()
         const boardId = params.boardId
         dispatch(getBoard(boardId))
     }, [])
-
-    // const loadBoard = async () => {
-    //     const boardId = params.boardId
-    //     try {
-    //         await dispatch(getBoard(boardId))
-    //     } catch (err) {
-    //         console.log('Cannot load board', err)
-    //     }
-    // }
 
     const toggleMenu = () => {
         setIsSideBarOpen(!isSideBarOpen)

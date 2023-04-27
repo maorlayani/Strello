@@ -27,7 +27,7 @@ describe.skip('user service', () => {
         jest.clearAllMocks()
     })
 
-    test('should login successfully', async () => {
+    it('should login successfully', async () => {
         expect.assertions(4)
         const setItemSpy = jest.spyOn(window.sessionStorage, 'setItem')
         const httpResp = mockUser
@@ -39,7 +39,7 @@ describe.skip('user service', () => {
         expect(socketService.login).toHaveBeenCalledWith(res.id)
         expect(res).toEqual(httpResp)
     })
-    test('should signup successfully', async () => {
+    it('should signup successfully', async () => {
         expect.assertions(3)
         const setItemSpy = jest.spyOn(window.sessionStorage, 'setItem')
         const httpResp = mockUser
@@ -50,7 +50,7 @@ describe.skip('user service', () => {
         expect(httpService.post).toHaveBeenCalledWith('auth/signup', mockCred)
         expect(res).toEqual(httpResp)
     })
-    test('should logout successfully', async () => {
+    it('should logout successfully', async () => {
         expect.assertions(2)
         const removeItemSpy = jest.spyOn(window.sessionStorage, 'removeItem')
         httpService.post.mockResolvedValue()
